@@ -1,0 +1,8 @@
+1. Number is Armstrong number or no?(sum of cube of number is that number or not)?(ex:-0,1,153,770)
+2. String is palindrom or no?
+3. Sum of all digits of a number.
+4.  Fibonacci series?
+4. Write a searching algorithm?(liner)
+5. write a sorting function?
+6. String count in a line.
+7. number is prime or not?

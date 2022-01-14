@@ -1,0 +1,5 @@
+1. what happens in the backend when you type google.com?
+2. difeerence between http and https?
+3. Ip address and port?
+4. Private ip vs public ip?
+5.

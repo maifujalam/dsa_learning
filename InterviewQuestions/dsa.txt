@@ -1,0 +1,4 @@
+1.What is data structure? Name few of them.
+2. difference between array and linked list.
+3. Stack vs queue?
+4.
