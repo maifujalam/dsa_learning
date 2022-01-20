@@ -1,3 +1,5 @@
 1. List slice
     a. a[start:end:diff]
     b. a[0:len(a):1] = a[::]
+
+2. read_tc and read_input

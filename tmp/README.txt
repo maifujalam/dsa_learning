@@ -1,0 +1,1 @@
+/home/alam/IdeaProjects/kubernetes-git/vm-provision

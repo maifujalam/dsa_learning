@@ -1,0 +1,2 @@
+1. iam_user@account_id_(or account id alias)
+2. inline_policy: policy only attached to a user may or may not belong to group.

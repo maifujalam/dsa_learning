@@ -1,0 +1,23 @@
+1. What is the Relationship?
+    The Relationship is defined as an association among two or more entities. There are three type of relationships in DBMS-
+
+    One-To-One: Here one record of any object can be related to one record of another object.
+
+    One-To-Many (many-to-one): Here one record of any object can be related to many records of other object and vice versa.
+
+    Many-to-many: Here more than one records of an object can be related to n number of records of another object.
+
+2. Create table of SQL
+
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+3. What is a NULL Value?
+A field with a NULL value is a field with no value.
+
+If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field. Then, the field will be saved with a NULL value
