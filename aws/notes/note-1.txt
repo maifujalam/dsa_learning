@@ -1,2 +1,5 @@
 1. iam_user@account_id_(or account id alias)
 2. inline_policy: policy only attached to a user may or may not belong to group.
+3. Multi factor authentication=> Virual MFA Device(Google Authenticator,Authy),YubiKey(like usb),Hardware Key Fob ,Surepass ID(for GovCloud)
+4. AWS SDK is build on python named:- boto
+5.

@@ -3,3 +3,5 @@
     b. a[0:len(a):1] = a[::]
 
 2. read_tc and read_input
+3. a,b = map(int, input().strip().split())
+4. a=[int(i) for i in input().split()]
