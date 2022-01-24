@@ -2,4 +2,4 @@
 2. inline_policy: policy only attached to a user may or may not belong to group.
 3. Multi factor authentication=> Virual MFA Device(Google Authenticator,Authy),YubiKey(like usb),Hardware Key Fob ,Surepass ID(for GovCloud)
 4. AWS SDK is build on python named:- boto
-5.
+5. Security Groups(SG)s are attached with AWS EC2 network interface.
