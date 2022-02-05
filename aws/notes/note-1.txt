@@ -3,3 +3,79 @@
 3. Multi factor authentication=> Virual MFA Device(Google Authenticator,Authy),YubiKey(like usb),Hardware Key Fob ,Surepass ID(for GovCloud)
 4. AWS SDK is build on python named:- boto
 5. Security Groups(SG)s are attached with AWS EC2 network interface.
+6. when you download key.pem is permission is 0644 (Bad permission when used with ssh) -> chmod 0400 key.pem
+7. Instance purchase criteria:-
+    a.On-Demand Instance:- short workload,predictable pricing => high cost,bill per seconds (after first minute).Other then linux,windows /bill per hr.
+    b.Reserved (Minimum 1 year ):- (1 or 3 year reserved,purchase with no,partial,all upfront(payment)),reserved vm type(no change)
+        i. Reserved Instances: long workload (ex:- database) => 75% off
+        ii.Convertable Reserved Instances:long workload with flexible instances ( chnage instance type) 54% off
+        iii.Scheduled reserved Instance: Like every thursday from 10:00 AM to 12:00PM during pick hours.
+    c. Spot Instance: short workload,cheap,can lose instance(less reliable).pto 90%,you can loose instance any time
+       if your max price is less then current spot price( image process,batch job,data analysis,distributed workload,flexible work time).Not suitable for critic.
+    d. Dedicated Hosts: book entire physical server.Required when compliance meet(data should stay in country),server bound software licence,3 year,expensive.
+
+    a. Dedicated instance: charged per instance based but use dedicated host.
+
+[Elastic Block Storage-EBS]
+1. EBS are zonal based.
+2. cannot connect ebs from one zone to another zone(zone lock).
+3. One ebs connect to one instance at a time(instance lock).
+4. vm can connect multiple ebs.
+5. ebs can be moved to different az using snapshot.
+6. ebs have delete on termination, which deletes on vm deletes.
+7. default:-
+    root volume ebs: deleted
+    attached ebs:   not deleted
+8. disable delete on termination if you want to preserve root volume after vm terminates
+9.not compulsory to detach am ebs volume for snapshot but recommended.
+10. snapshots:- a. same saze as ebs
+                b. snapshot stored on region
+                c. copy snapshot from one region to another
+                d. create volume from snapshot (choose any az this time)
+11. Types are: - standard(magnetic),gp2,gp3,io1,io2
+12. Using EBS Multi-Attach, you can attach the same EBS volume to multiple EC2 instances in the same AZ. Each EC2 instance has full read/write permissions.
+
+[Amazon Machine Iamage-AMI]
+1. AMI is customization of EC2 instance.
+2. AMI is region based but can be copied to other region.
+
+[Elastic File System EFS]
+1. Its a managed NFS workes which can be mounted on many EC2 (advantage over EBS)
+2. EFS works with EC2 instances from multiple AZs. (advantage over EBS)
+3. Highly Available,Scalable,expensive(3 * gp2 type),pay per use.
+4. Use-case:- content management,web serving,word press,data sharing.
+5. Based on NFS 4.1
+6. Uses SECURITY GROUP to control access to EFS.
+7. Compatible with Linux based AMI not Windows.
+8. Encryption at rest by KMS.
+9. Uses POSIX file system (i.e. Linux) that have standard API.
+10. File system scales automatically,pay per use,no capacity planning required.
+11. 1000+ of concurrent efs clients.zup to 10GB/S throughput.
+12. Grow upto Petabyte ,so no planning of size required.
+13. Different modes:-
+    a. Performance modes:-
+        General(web server,cms).
+        MaxIO -high throughput ,parallel(big data,media processing).
+    b. Throughput mode:-
+        Bursting(In 1TB=50Mi/S + bursting uptp 100Mi/S)
+        Provisioned: set throughput regardless of size(ex,1GBPS for 1TB)
+14. Storage Tier (Move files after N days):-
+    Standard:- For frequest file access.
+    Infrequent Access(EFS-IA): low price to store but cost to retrieve file.
+16. Steps to mount efs
+    a. Require amazon-efs-utils: sudo yum install amazon-efs-utils -y
+    b. Require efs directory: mkdir efs
+    c. each subnet (where vm contains) should be in mount point of efs.
+    d. It takes around 2-3 mins if you attach another subnet endpoint in efs.
+    e. check mount status: df -hT
+    f. Unmount: sudo umount efs
+
+
+
+
+
+
+
+
+
+

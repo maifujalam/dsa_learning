@@ -1,0 +1,20 @@
+Elastic Load balancer [ELB]
+1. ELB Provides:-
+    a. single point of access (DNS) to your app.
+    b. handles failure of downstream instances by health check.
+    c. Provide SSL (HTTPS)to traffic.
+    d. Enforce stickiness with cookies.
+    e. HA across zones.
+    f. Separate public and private traffic.
+2. Healthcheck are done by a port and a route , response of 200 is expected.
+3. Types of LB:-
+    a. Classic (v1):- TCP(L4),HTTP(L7),HTTPS(L7)
+    b. Application LB
+    3. Network LB
+    d. Gateway LB
+4. Application Load balancer target group:-
+    a. Instance
+    b. IPAddress
+    c. Lambda Functions
+    d. Application Load Balancer
+5.

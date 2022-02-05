@@ -1,0 +1,1 @@
+{"clusterName":"cluster-1","clusterID":"390c7262-e921-477f-91fe-f0f6a482f641","infraID":"cluster-1-rcbjx","aws":{"region":"us-east-1","identifier":[{"kubernetes.io/cluster/cluster-1-rcbjx":"owned"},{"openshiftClusterID":"390c7262-e921-477f-91fe-f0f6a482f641"}],"clusterDomain":"cluster-1.ocp-test.com"}}

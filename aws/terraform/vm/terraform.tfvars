@@ -1,0 +1,14 @@
+region = "us-east-1"
+zone = "us-east-1a"
+instance_name = "vm-ubuntu"
+instance_os = "ubuntu"  # it will be ubuntu or rhel
+instance_type = "t2.micro"
+root_volume_size = 10
+instance_count = 1
+ingress_ports = [22,80,443,8080]
+vpc_name = "default-vpc"
+subnet_name = "default-subnet-1"
+security_group = "vm-sg"
+instance_key = "vm-key"
+public_key_path = "~/.ssh/id_rsa.pub"
+private_key_path = "~/.ssh/id_rsa"

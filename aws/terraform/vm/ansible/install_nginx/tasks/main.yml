@@ -1,0 +1,21 @@
+- name: Install nginx on rhel
+  yum:
+    name: ["nginx"]
+    state: present
+  become: true
+  when: ansible_os_family == 'RedHat'
+
+- name: Install nginx on ubuntu
+  apt:
+    name: ["nginx"]  # as httpd is nginx-core and nginx
+    state: present
+  become: true
+  when: ansible_os_family == 'Debian'
+
+- name: Copy index config
+  copy:
+    src: files/index.html
+    dest: /var/www/html/
+  become: true
+  notify:
+    - restart_nginx
