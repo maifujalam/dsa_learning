@@ -7,15 +7,21 @@
 
 - name: Install nginx on ubuntu
   apt:
-    name: ["nginx"]  # as httpd is nginx-core and nginx
+    name: ["nginx","net-tools"]  # as httpd is nginx-core and nginx
     state: present
   become: true
   when: ansible_os_family == 'Debian'
 
 - name: Copy index config
-  copy:
-    src: files/index.html
-    dest: /var/www/html/
+  template:
+    src: templates/index.html.j2
+    dest: /var/www/html/index.html
   become: true
+
+- name: Copy nginx config
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/
   notify:
     - restart_nginx
+  become: true
