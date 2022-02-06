@@ -1,5 +1,9 @@
 [server]
-54.174.102.218
+
+34.234.64.82 
+
+3.90.199.117 
+
 [all:vars]
 ansible_user=ubuntu
 ansible_ssh_private_key_file=~/.ssh/id_rsa

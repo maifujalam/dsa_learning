@@ -76,9 +76,9 @@ data "template_file" "host_template" {
   template = <<EOF
 [server]
 
-%{~ for ip in aws_instance.vm[*].public_ip ~}
-${ip}
-%{~ endfor ~}
+%{ for ip in aws_instance.vm[*].public_ip ~}
+${ip} ${"\n"}
+%{ endfor ~}
 
 [all:vars]
 ansible_user=${var.ssh_user[var.instance_os]}
@@ -87,12 +87,9 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 $ansible_python_interpreter=/bin/python3
 EOF
 }
-resource "local_file" "create_host" {
+resource "local_file" "ansible" {
   content = data.template_file.host_template.rendered
   filename = "${path.cwd}/ansible/hosts"
-}
-resource "null_resource" "ansible_run" {
-  depends_on = [local_file.create_host]
   provisioner "local-exec" {
     command= <<EOF
              ansible-playbook ${path.cwd}/ansible/install_nginx.yaml -i ${path.cwd}/ansible/hosts
