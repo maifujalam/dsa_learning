@@ -61,8 +61,10 @@ resource "aws_instance" "vm" {
   }
   provisioner "remote-exec" {
     inline = [
-      "echo server provisioned."
+      "echo server provisioned.",
+      "sudo apt update -y"
     ]
+
   }
   connection {
     type = "ssh"
