@@ -60,3 +60,7 @@ variable "instance_os" {
   type = string
   default = "rhel"
 }
+variable "enable_public_ip" {
+  default = "true"
+  description = "Whether to provide Public IP t"
+}

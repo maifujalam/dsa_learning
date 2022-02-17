@@ -1,0 +1,6 @@
+- name: Approve CSR
+  hosts: localhost
+  become: false
+  tasks:
+    - include_role:
+        name: approve_csr

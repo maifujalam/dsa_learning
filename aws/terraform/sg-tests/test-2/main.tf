@@ -6,10 +6,10 @@ resource "null_resource" "example" {
 }
 
 data "local_file" "example" {
-  filename = "${path.module}/metadata.json"
+  filename = "${path.module}/machoine-set.yaml"
   depends_on = ["null_resource.example"]
 }
 
 output "aaa" {
-  value = jsondecode(data.local_file.example.content)["infraID"]
+  value = yamldecode(data.local_file.example.content)["metadata"]["labels"]["machine.openshift.io/cluster-api-cluster"]
 }

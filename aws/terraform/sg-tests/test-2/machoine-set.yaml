@@ -1,0 +1,62 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  creationTimestamp: null
+  labels:
+    machine.openshift.io/cluster-api-cluster: cluster-1-6589f
+  name: cluster-1-6589f-worker-us-east-1b
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: cluster-1-6589f
+      machine.openshift.io/cluster-api-machineset: cluster-1-6589f-worker-us-east-1b
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: cluster-1-6589f
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: cluster-1-6589f-worker-us-east-1b
+    spec:
+      metadata: {}
+      providerSpec:
+        value:
+          ami:
+            id: ami-0d5f9982f029fbc14
+          apiVersion: awsproviderconfig.openshift.io/v1beta1
+          blockDevices:
+            - ebs:
+                encrypted: true
+                iops: 0
+                kmsKey:
+                  arn: ""
+                volumeSize: 120
+                volumeType: gp2
+          credentialsSecret:
+            name: aws-cloud-credentials
+          deviceIndex: 0
+          iamInstanceProfile:
+            id: cluster-1-6589f-worker-profile
+          instanceType: m5.xlarge
+          kind: AWSMachineProviderConfig
+          metadata:
+            creationTimestamp: null
+          placement:
+            availabilityZone: us-east-1b
+            region: us-east-1
+          securityGroups:
+            - filters:
+                - name: tag:Name
+                  values:
+                    - cluster-1-6589f-worker-sg
+          subnet:
+            id: subnet-05d8d93667bdb8e3a
+          tags:
+            - name: kubernetes.io/cluster/cluster-1-6589f
+              value: owned
+          userDataSecret:
+            name: worker-user-data
+status:
+  replicas: 0
