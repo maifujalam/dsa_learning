@@ -4,3 +4,10 @@ variable "aws_region" {
 variable "vpc_name" {
     description = "VPC Name"
 }
+variable "allowed-ports" {
+  type = list(map(any))
+  default = [
+    {"port":"179","protocol":"tcp"},
+    {"port":"4","protocol":"4"},
+  ]
+}

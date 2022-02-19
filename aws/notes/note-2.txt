@@ -17,4 +17,6 @@ Elastic Load balancer [ELB]
     b. IPAddress
     c. Lambda Functions
     d. Application Load Balancer
-5.
+5. each subnet reserve 5 ip
+6. each elb creation require at least 8 free ip to be present.
+7. ELB dns name is xxx.region.elb.amazonaws.com.example

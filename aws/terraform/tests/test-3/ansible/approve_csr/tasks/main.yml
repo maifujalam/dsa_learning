@@ -1,0 +1,9 @@
+#- name: Approving all CSRS while cluster is creating..
+#  shell: sh approve_csr.sh approve_csr/tasks/a
+#  args:
+#    chdir: approve_csr/files
+
+- name: Approving all CSRS while cluster is creating..
+  shell: sh approve_csr.sh {{install_complete_flag}}
+  args:
+    chdir: approve_csr/files

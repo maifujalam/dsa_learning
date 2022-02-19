@@ -62,7 +62,7 @@ resource "aws_instance" "vm" {
   provisioner "remote-exec" {
     inline = [
       "echo server provisioned.",
-      "sudo apt update -y"
+      #"sudo apt update -y"
     ]
 
   }
@@ -82,6 +82,7 @@ resource "local_file" "ansible" {
   filename = "${path.cwd}/ansible/hosts"
   provisioner "local-exec" {
     command= <<EOF
+             slepp 30
              ansible-playbook ${path.cwd}/ansible/install_nginx.yaml -i ${path.cwd}/ansible/hosts
     EOF
   }

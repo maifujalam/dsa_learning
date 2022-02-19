@@ -1,0 +1,12 @@
+- name: Listing all ports
+  debug:
+    msg: "{{ allowed_ports }}"
+
+#- debug:
+#    msg: "{{item}}"
+#  loop: "{{allowed_ports}}"
+
+- name: Patch Master SG
+  shell: aws ec2 authorize-security-group-ingress --group-id={{master_sg}} --ip-permissions IpProtocol=tcp,FromPort={{item}},ToPort={{item}},UserIdGroupPairs=[{GroupId="{{worker_sg}}"}]
+  loop: "{{allowed_ports}}"
+  ignore_errors: true
