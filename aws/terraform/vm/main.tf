@@ -82,7 +82,6 @@ resource "local_file" "ansible" {
   filename = "${path.cwd}/ansible/hosts"
   provisioner "local-exec" {
     command= <<EOF
-             slepp 30
              ansible-playbook ${path.cwd}/ansible/install_nginx.yaml -i ${path.cwd}/ansible/hosts
     EOF
   }
