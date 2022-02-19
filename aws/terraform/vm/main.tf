@@ -1,5 +1,6 @@
 locals {
   ports = var.ingress_ports
+  az= slice(sort(data.aws_availability_zones.available.names),0,var.instance_count)
 }
 resource "aws_key_pair" "key" {
   public_key = file(var.public_key_path)
@@ -10,7 +11,7 @@ resource "aws_key_pair" "key" {
   }
 }
 resource "aws_security_group" "sg" {
-  name = var.security_group
+  name = "${var.instance_name}-${var.security_group}"
   vpc_id = data.aws_vpc.get_vpc.id
   dynamic "ingress" {
     for_each = local.ports
@@ -54,7 +55,7 @@ resource "aws_instance" "vm" {
   subnet_id                   = data.aws_subnet.get_subnet.id
   vpc_security_group_ids      = [aws_security_group.sg.id]
   associate_public_ip_address = true
-  availability_zone = var.zone
+  availability_zone = element(local.az,count.index % length(local.az))
   root_block_device {
     volume_size = var.root_volume_size
     delete_on_termination = true

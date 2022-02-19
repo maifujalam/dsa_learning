@@ -1,9 +1,6 @@
 variable "region" {
   description = "Region Name"
 }
-variable "zone" {
-  description = "Zone name"
-}
 variable "ami" {
   description = "AMI"
   type        = map(string)

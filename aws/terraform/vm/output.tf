@@ -1,3 +1,6 @@
+output "all_zones" {
+  value = local.az
+}
 output "public-ip" {
   value = aws_instance.vm[*].public_ip
 }

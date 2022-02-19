@@ -13,6 +13,9 @@ data "aws_subnet" "get_subnet" {
     values = [var.subnet_name]
   }
 }
+data "aws_availability_zones" "available" {
+  state = "available"
+}
 data "template_file" "host_template" {
   template = <<EOF
 [server]
