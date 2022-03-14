@@ -1,0 +1,6 @@
+- name: Get all hosts
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: get users
+      shell: whoami

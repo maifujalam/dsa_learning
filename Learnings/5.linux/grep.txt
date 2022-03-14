@@ -1,0 +1,6 @@
+1.The grep filter searches a file for a particular pattern of characters, and displays all lines that contain that pattern
+
+2. Search with case sensitive " warning"?
+    grep -i "error" lll.logs
+
+3.

@@ -1,0 +1,36 @@
+references:-
+adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands/#ex1
+
+1. Write adhoc command to list no of users.
+
+2. adhoc command to gather facts?
+   ansible localhost -m setup
+
+3. Pass ansible adhoc module args?
+   ansible localhost -m module_name -a "args" (hare -a is for args)
+
+4. adhoc command to install package?
+   ansible localhost -m yum -a "name=tree state=resent"
+
+5. adhoc to check count no of users.
+   ansible localhost -m shell -a "cat /etc/passwd | wc -l"
+
+6. adhoc command to check uptime?
+   ansible localhost -m command -a "uptime"
+
+7. If we dont pass any module,defult command module is taken.
+
+8. Difference between command and shell?
+   command: Run linux commands on vm.Does not process $HOME,<,>,!,|,"*"
+   shell: similar to command but supports all above.
+
+9. What is remote_src in copy:
+   It tells that src file should be kaen from target server instead of anisble controller.
+
+10. What is register?
+   stores the shell output.
+
+11. what is gather facts?
+   Captures system all information into json file name: ansible_facts
+
+12.

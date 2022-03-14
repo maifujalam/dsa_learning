@@ -1,0 +1,25 @@
+1. what is awk?
+   Its is a scripting language used to manipulate data.It is generally used for pattern scanning and processing.
+
+2. Print content of file?
+   awk '{print}' file.txt
+
+3. Print content of file matching text?
+   awk '/user_1/{print}' file.txt.backup
+
+4. Find and print matching line,containg user keyword.
+   awk '/user/{print}' file.txt
+
+5. Print the 2nd column of the output.
+    awk '{print $2}' file2.txt
+
+6. what are awk build in variables?
+   Reference: https://www.geeksforgeeks.org/awk-command-unixlinux-examples/?ref=lbp
+   NR: number of records i.e no if rows
+   NF: number of fields i.e no of columns
+
+7. Print all field clunts(column clunts) of all records (rows)?
+    awk '{print NR"-"NF}' file2.txt
+
+
+

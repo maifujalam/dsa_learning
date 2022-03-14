@@ -1,0 +1,15 @@
+1. Create folder with current date_time?
+   mkdir "$(date +%d-%m-%y_%H%M)"
+
+2. list folders with last modified?
+    ls -t
+
+3. Hard link vs soft link?
+
+4. Display file contenet without using cat?
+    sed '' file.txt,awk '{print}' file.txt
+
+5. Alternative to ls?
+   echo *
+6.
+

@@ -1,0 +1,26 @@
+Reference:- https://www.geeksforgeeks.org/sort-command-linuxunix-examples/?re
+1. What is sort command in linux?
+   Sort the content of file Line by line.
+
+2. sort and overide file.
+    sort states.txt -o states.txt
+
+3. Sort in reverse order?
+   sort -r states.txt -o states.txt
+
+4. It doesnt work with numeric,as it check cherater not the numeric number.So how to fix it.
+   sort -n numeric_data.txt
+
+5. Sort numeric in reverse.
+    sort -nr numeric_data.txt
+
+6. Sort on certian column 4th clumn contains numeric in ascending order?
+    sort -k 4 -n file2.txt
+
+7. Checkif given data is sorted or not?
+   sort -c sort.txt
+   sort: sort.txt:4: disorder: Arunachal Pradesh
+   Note:- so it prints the disorder line.
+
+8. Sort and remove duplicate?
+  sort -u sort.txt

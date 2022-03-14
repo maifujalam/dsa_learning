@@ -1,0 +1,20 @@
+1. wht is sed in linux?
+   Its a stream editor used to do crud on file or streaming output.
+
+   Create(Insert before line 1 i.e insert ):-  sed  '1i User Marks' file.txt
+   Create (Insert after line 1 i.e append):- sed '1a -----' file.txt (0 is not acceped as index starts from 1)
+   Read:- sed '' file.txt
+   Update (Find and insert before):-sed  '/user_2/i inserted' file.txt
+   Update (Find and insert after): sed  '/user_2/a inserted_after' file.txt
+   Update (Find and update):- sed  '/user_2/cabc' file.txt (/c is for change)
+   Delete (line no):- sed  '1d' file.txt
+   Delete (Find and delete) :- sed  '/user_2/d' file.txt
+
+2. Delete first line form file?
+    sed -i '1d' file.txt  (https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/)
+
+3. Delete last line from file?
+  sed '$d' file.txt
+
+4. what is -i in sed?
+   hare -i is inplace edit(i.e edit in original file).if we dont specify -i then,it will not edit original file and produce streaming output after editing.
