@@ -7,13 +7,13 @@
 3. find all empty file or directory?
    find . -empty
 
-4. Find and delete all empty directory?
+4. Find and delete all empty directory and file?
    find . -empty -delete
 
 5. Find only empty file and delete?
    find . -type f -empty -delete
 
-6. Find empty directory and delete?
+6. Find only empty directory and delete?
    find -type d -empty -delete
 
 7. Find file with permission?

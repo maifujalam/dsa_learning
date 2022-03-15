@@ -25,7 +25,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
    shell: similar to command but supports all above.
 
 9. What is remote_src in copy:
-   It tells that src file should be kaen from target server instead of anisble controller.
+   It tells that src file should be from target server instead of anisble controller.
 
 10. What is register?
    stores the shell output.
@@ -33,4 +33,6 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 11. what is gather facts?
    Captures system all information into json file name: ansible_facts
 
-12.
+12. How to set global evironment variable?
+
+13. What is vault?

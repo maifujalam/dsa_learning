@@ -75,6 +75,26 @@
 
 27. what is docker pause container?
 
+28. Multy stage build ?
+  FROM any_image:tag abc as base_image
+  FROM light_image:tag
+  COPY --from=0 /app/app /app
+
+29. How to screat base image?
+   FROM scratch
+   ADD hello
+   CMD ['hello']
+
+30. How to build without using cache?
+   docker build -t ss . --no-cache=true
+
+31. What is docker build kit?
+     It is an enhanced build process,by improving performance,storage management,security.It have mount secret feature.
+     It can be enabled throuh.In /etc/daemon.json { "features": { "buildkit": true } } . Or with environment variable export DOCKER_BUILDKIT=1
+
+
+
+
 
 
 

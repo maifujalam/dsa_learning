@@ -1,5 +1,44 @@
+Ref: https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index
+
 1. TAG:- Tag with key value or key.
    TAG a b
    TAG a
 
-2. FROM:- Take base image .Can be used multiple time fro
+2. FROM:- Take base image .Can be used multiple time from.Mandetory.Can be added with as base_image,for multi-stage build.FROM must be first statement.
+   So docker file must starts with FROM.
+   FROM python:3.8-alpine
+
+3. USER:- switch to different user.If not done deafult user is root and group is root.
+    USER user:group
+    USER user_id:group_id
+
+4. WORKDIR:-
+   Create workig directory at /WORKDIR.It used at default place for subsequest commands lik:- RUN,CMD,ADD,COPY,ENTRYPOINT.
+   If you dont specift it will be usder root directory.(/)
+   You can use multiple WORKDIR.
+
+5. ENV: Same as label but scope is the whole system environment.
+        Can be override with cli. docker run --env=foo=bar
+
+
+6. ARGS:
+   Pass when image is build.Docker build -build-arg <varname>=<value>.This args not shown in build history.
+
+7. ADD:
+   Copies new file,directory,url object to workspace.may break if link not vaild.
+
+8. COPY:
+   Copy file or folder to absolute path or workdirectory.
+
+9. STOPSIGNAL:
+   name of the stop signal to the container.Default is SIGTERM.
+
+10. ENDPOINT:
+    Path of the executable endpoint.
+
+11. USER:
+    switch user.
+
+
+
+
