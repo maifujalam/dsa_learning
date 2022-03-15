@@ -1,0 +1,5 @@
+1. TAG:- Tag with key value or key.
+   TAG a b
+   TAG a
+
+2. FROM:- Take base image .Can be used multiple time fro

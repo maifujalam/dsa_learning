@@ -11,5 +11,19 @@
 
 5. Alternative to ls?
    echo *
-6.
 
+6. List all users and groups?
+   cat /etc/passwd
+   cat /etc/group
+
+7. Creat a user with home directory?
+   useradd -d abc
+
+8. Change file ownership recursively?
+   chown -R USER:GROUP DIRECTORY
+
+9. Check the stat of file?
+   stat file.txt
+
+10. What is umask?What is it used for?
+   umask is used to get default permission for file & dire creation.

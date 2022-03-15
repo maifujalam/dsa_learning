@@ -1,0 +1,33 @@
+1. Find a file in directory?
+   find . -name 'a.txt'
+
+2. find all file with .txt extension?
+   find . -name '*.txt'
+
+3. find all empty file or directory?
+   find . -empty
+
+4. Find and delete all empty directory?
+   find . -empty -delete
+
+5. Find only empty file and delete?
+   find . -type f -empty -delete
+
+6. Find empty directory and delete?
+   find -type d -empty -delete
+
+7. Find file with permission?
+   find . -perm 777
+
+8. FInd and delete empty file with verbose?
+    find . -type d -empty -exec rmdir -v {} \;
+
+    It does remove empty file in one iteration.So after 1st iteration ,if any empty file is remaing then it does not delete it.
+
+9. Find and delete file with confirmation?
+   find . -name 'a3.txt' -type f -exec rm -i {} \;   (Note:- hare {} is to make find result into {},and \ is to metion end of exec }.
+
+10. Find all files containg text?
+    find . -name '*.txt' -exec grep 'alam' {} \;
+
+

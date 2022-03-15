@@ -1,0 +1,27 @@
+1. What is terraform?
+  Its an infrastructure as code(IaC) tool that lets you define both cloud and on-prem resources in human-readable configuration files.
+  This files  you can version, reuse, and share.
+  It manages your infrastructure through lifecycle.
+
+2. How terraform works?
+   Write(Infrastructure)=>Plan(Monitor changes)=>Apply(Create resources)=>Destroy(Delete resources).
+
+3. Similar tool to terraform?
+   Similar tools are:- AWS Cloud Formation,Vagrant
+
+4. What is null resource?
+   It implement stardard resource library but does not create any resources.It is mostly coupled with provisioners.
+
+5. What are provisioners?
+   Integration of terraform with other tools.Provisioners are:- 1.Local exec 2. remote exec 3. file provisioner 4. Chef 5. Puppet 6. Salt 7.habitat
+
+6. Destroy resource without destroy command?
+  terraform apply -destroy
+
+7. Save terraform plan?
+   terraform plan -out myplan
+
+8. Auto approve?
+   -autoapprove
+
+9.
