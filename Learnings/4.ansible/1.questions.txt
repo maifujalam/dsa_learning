@@ -36,3 +36,15 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 12. How to set global evironment variable?
 
 13. What is vault?
+
+14. How to create ansible role?
+    ansible-galaxy init role_name
+
+15. Role folder structure?
+
+16. Pass anible extra vars?
+
+17. Get ansible all inventory hosts?
+
+18 Use different config file.
+

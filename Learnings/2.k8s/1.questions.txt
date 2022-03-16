@@ -71,8 +71,9 @@
     kubectl proxy:- its creats a proxy tunnel between k8s cluster and the host running k8s.Alternative to LB.
 
 14. What is headless service?How it works?
-    Service with clusterIP: None .hare cluster ip is not allocated to service.You can use any other service discovery mechanism.Kubeproxy-does not handle this
-    traffic.Ti is of two types:- with selectors,without selectors.
+    Service with clusterIP: None .hare cluster ip is not allocated to service.You can use any other service discovery mechanism(eBGP by calico).
+    Kubeproxy-does not handle this traffic.Ti is of two types:- with selectors,without selectors.
+
     With Sectors:-
     It works by skipping proxy(i.e service discovery) and directly connecting to one of pods endpoint.
     Example:- nslookup normal-service => returns service ip (10.96.0.10),i.e A record
@@ -87,10 +88,13 @@
 16. What is traffic policy?
 
 17. how tls works in ingress?
-   tls contains host and secret name.Host should be valid as certificate CN.Secret should be consists of tls.crt and tls.key with base64 encoded values.
+   tls block in ingress, contains host and secret name.Host should be valid as certificate CN.Secret should be consists of tls.crt and tls.key with base64 encoded values.
    It basically tells ingress controller to pass the traffic from client to load balancer in https on port 443.
 
 18. what are probs in k8s?
+    Startup Probs:
+    Liveliness:
+    ReadiNess:
 
 19. What is terminationGracePeriodSeconds?
     After a delete command is passed to pod.k8s send a SIGTERM signal to all containers in pod.This tells all the containers in the pod that they are going to
@@ -110,7 +114,58 @@
      Deployment:- manual                 Deployent: s2i
      k8s=> Less secure,image pull.Running priviledge containers    ocp=>stroong security constrains.Cannot run container as root.
 
-22.
+22. What is node afinity?
+    Advance pod scheduling to node.It has more customization on labels and selectors.Two types of nodeafinity:-
+    1. requiredDuringSchedulingIgnoredDuringExecution:- strict
+    2. preferredDuringSchedulingIgnoredDuringExecution:- guarenteed.
+      Example:-
+      nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/memory
+                  operator: In
+                  values:
+                  - high
+                  - medium
+    ---
+23. Types of node sector for pod?
+    1. NodeName: worker1 ( exact node name)
+    2. NodeSelctor:  (any node having label memory=large)
+          memory: large
+    3. NodeAfinity: affinity:
+                        nodeAffinity:
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            nodeSelectorTerms:
+                            - matchExpressions:
+                              - key: kubernetes.io/e2e-az-name
+                                operator: In
+                                values:
+                                - e2e-az1
+    ---
+
+    4. AntiAfninity: same as Afinity but use NotIN (In operator)
+
+22. What are available affinity operators?
+    In, NotIn, Exists, DoesNotExist
+
+23. How to prevent pod to be scheduled on the same node if it already present?
+    Using Pod Afinity and Anti afinity.Same as node afinity.With the help of topology key and labels on pod.
+    It checks the label present on pods rather than label on nodes.
+    It checks the label that is topologyKey: topologyKey: zone  (topology key can be zone,rack,region,etc).
+    Mandetory:-every node in the cluster must have an appropriate label matching topologyKey.If its not done it may be unscheduled.
+    The topologyKey can be any legal label-key.
+    If omitted or empty, it defaults to the namespace of the pod where the affinity/anti-affinity definition appears.
+    Example:-
+       affinity:
+         podAffinity:
+           requiredDuringSchedulingIgnoredDuringExecution:
+           - labelSelector:
+               matchExpressions:
+               - key: security
+                 operator: In
+                 values:
+                 - S1
+             topologyKey: topology.kubernetes.io/zone
+    ---
 
 
 

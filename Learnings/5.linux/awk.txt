@@ -21,5 +21,13 @@
 7. Print all field clunts(column clunts) of all records (rows)?
     awk '{print NR"-"NF}' file2.txt
 
+8. Print 3rd record or 3rd row of a text file?
+   awk 'NR==1 {print}' file1.txt
+
+9. print 3rd row 5th column?
+   awk 'NR==1 {print $5}' file1.txt
+
+10. Print 2nd to 4th row?
+    awk 'NR==2,NR==4{print}' file1.txt
 
 

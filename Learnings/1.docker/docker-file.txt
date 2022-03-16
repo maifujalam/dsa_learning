@@ -8,7 +8,7 @@ Ref: https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Docume
    So docker file must starts with FROM.
    FROM python:3.8-alpine
 
-3. USER:- switch to different user.If not done deafult user is root and group is root.
+3. USER:- switch to different user.If not done default user is root and group is root.user has to be present from before.
     USER user:group
     USER user_id:group_id
 
@@ -18,11 +18,11 @@ Ref: https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Docume
    You can use multiple WORKDIR.
 
 5. ENV: Same as label but scope is the whole system environment.
-        Can be override with cli. docker run --env=foo=bar
+        Can be overridden with cli. docker run --env=foo=bar
 
 
 6. ARGS:
-   Pass when image is build.Docker build -build-arg <varname>=<value>.This args not shown in build history.
+   Pass when image is build.Docker build -build-arg <varname>=<value>.This args not shown in build history.more scope then ARGS.
 
 7. ADD:
    Copies new file,directory,url object to workspace.may break if link not vaild.
