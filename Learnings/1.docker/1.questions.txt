@@ -23,7 +23,7 @@
      nginx:latest
 
 9. What is docker compose?
-    its a yaml file which describle docker services,volumes,networks to spinn up whole stack of applicatoion at once.
+    its a yaml file which describle docker services,volumes,networks to spin up whole stack of applicatoion at once.
 10. What is difference between docker-compose v2 and v3?
     v3 supports docker-swam.I have use v 3.9.
 11. Docker default port?
@@ -53,7 +53,7 @@
     1. --volume is old style.-mmount is more verbose(i.e more parameters it support).
 
 20. What is docker mount?
-  docker run --mount type=bind,source=/data/myswl,dest=/data/mysql,readonly
+  docker run --mount type=bind,source=/data/myswl,dest=/data/mysql,readonly .Other types are:- volume,bind,tempfs.
 
 21. what is tempfs mount type?
    It creates temprary file system in container memory.Only exists in the lifespan of container. docker run --mount type=tmpfs,dest=/tmp
@@ -73,7 +73,7 @@
 26. What is docker dns server?
     docker resolves ip of a container through container name.Docker does it through dns server running on address 127.0.0.11.
 
-27. what is docker pause container?
+27. what is
 
 28. Multy stage build ?
   FROM any_image:tag abc as base_image
@@ -91,6 +91,29 @@
 31. What is docker build kit?
      It is an enhanced build process,by improving performance,storage management,security.It have mount secret feature.
      It can be enabled throuh.In /etc/daemon.json { "features": { "buildkit": true } } . Or with environment variable export DOCKER_BUILDKIT=1
+
+32.
+
+33. What is docker socket?
+   /var/run/docker.sock
+
+34. How to freeze docker conatner?
+   docker pause container_id.
+   docker unpause container_id
+
+35. What are docker restart policy?
+    --restart:
+    no: never automatically restart the container.(default)
+    on-failure: restart it,if failed due to any error,i.e fiailed with non-zero exit code.
+    always: Always restart if stopped. If manually stped,it restarts only when:- 1.manualy restarted or 2. demon restarted
+    unless-stopped: Similar to always.Difference is,it does not restarts after demon is restarted.
+
+    Rules:- A restart policy only apllyed after container started successfuly for 10 seconds.
+            If manually stoped a container then,its restart policy is ignored.Until demon is restart or container is restart.
+
+
+36.
+
 
 
 

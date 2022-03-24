@@ -1,3 +1,4 @@
+import math
 import sys
 
 sys.stdin = open("input.txt")
@@ -7,8 +8,10 @@ a = [int(i) for i in input().strip().split()]
 
 def merge(a):
     if len(a) > 1:
-        mid = len(a) // 2
+        mid = math.ceil(len(a) / 2)
+        print(mid)
         L = a[:mid]
+        print(L)
         R = a[mid:]
         merge(L)
         merge(R)
@@ -29,6 +32,7 @@ def merge(a):
             a[k] = R[j]
             j += 1
             k += 1
+        print("A"+''.join([str(i) for i in a]))
 
 
 merge(a)

@@ -28,6 +28,6 @@
    awk 'NR==1 {print $5}' file1.txt
 
 10. Print 2nd to 4th row?
-    awk 'NR==2,NR==4{print}' file1.txt
+    awk 'NR==2,NR==4 {print}' file1.txt
 
 

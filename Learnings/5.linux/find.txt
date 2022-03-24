@@ -27,7 +27,7 @@
 9. Find and delete file with confirmation?
    find . -name 'a3.txt' -type f -exec rm -i {} \;   (Note:- hare {} is to make find result into {},and \ is to metion end of exec }.
 
-10. Find all files containg text?
+10. Find all files containg text alam?
     find . -name '*.txt' -exec grep 'alam' {} \;
 
 

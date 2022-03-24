@@ -43,6 +43,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 15. Role folder structure?
 
 16. Pass anible extra vars?
+    ansible-playbook ddd.yaml --extra-vars "aaa=bbb"
 
 17. Get ansible all inventory hosts?
 

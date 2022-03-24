@@ -1,0 +1,28 @@
+1. What is cut?
+    Its command for cutting out section from each line of file and write result into stdout.
+
+2. How to cut 3rd letter of each row?
+    cut -b 3 file.txt  (hare -b is byte.)
+
+3. how to cut 3rd and 5th letter of each row?
+    cut -b 3,5 file.txt
+
+4. how to cut 2-6th letters of each row?
+   cut -b 2-6 file.txt
+
+5. How to cut 3rd byte to end of line?
+   cut -b 3- file.txt
+
+6. How to cut upto 3rd byte?
+     cut -b -3 file.txt
+
+7. Cut by character?
+  cut -c 1 file.txt.Quite Similar to byte.
+
+8. Cut with delemeter (seperator) ?Print 2nd column.
+   cut -d ' ' -f 1 file2.txt.If you dont specify delemeter (-d) then default delemter is tab.
+
+9. Cut upto 3d column ?
+   echo "$line" | cut -f -3
+
+10.

@@ -5,6 +5,17 @@
     ls -t
 
 3. Hard link vs soft link?
+    Soft=> 1. different inode number.
+            2. allowed for directories.
+            3. After original file delete, file not present.Link does not work.
+            4. Slow
+            5. ln -s file.txt soft_link.txt
+
+    Hard=> 1. same inode number.
+        2. not allowed for directories.
+        3. After original file delete, file present.Link work.
+        4. fast
+        5. ln file.txt hard_link.txt
 
 4. Display file contenet without using cat?
     sed '' file.txt,awk '{print}' file.txt
@@ -27,3 +38,20 @@
 
 10. What is umask?What is it used for?
    umask is used to get default permission for file & dire creation.
+
+11. What is Inode Number?
+   It is a index number.Its a uniq number assigned to all files and folders in linux.
+
+12. How to know default shell?
+     echo $SHELL.
+     chsh <user> -s /bin/sh
+
+13. How to get std output and std error at same time?
+    ls -he &> out.txt
+
+14. How to display filename and args in shell script?
+   $0(filename) $1 .. $n (for args)
+
+15. Print 2nd to 4th row for colum ?
+    cut -d ' ' -f 1-2 file2.txt
+

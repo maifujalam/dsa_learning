@@ -1,0 +1,5 @@
+1. What is unique?
+   print uniqe line from stdin.
+2. Print duplicate count?
+   uniq file2.txt -c
+3.
