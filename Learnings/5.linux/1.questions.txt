@@ -5,17 +5,23 @@
     ls -t
 
 3. Hard link vs soft link?
-    Soft=> 1. different inode number.
+    Soft ( Symbolic link)=>  A pointer (shortcut is created) to original file.
+            1. different inode number.
             2. allowed for directories.
-            3. After original file delete, file not present.Link does not work.
+            3. After original file delete, file not present error .Link does not work.Then sof link becomes dangling.
             4. Slow
             5. ln -s file.txt soft_link.txt
+            6. If original file name is updated then all links become dangling.
+            7. Low size.As it only contains path to original file not the contet of original file.
 
-    Hard=> 1. same inode number.
+    Hard=>
+        1. same inode number. So update in one file reelects in another file.
         2. not allowed for directories.
         3. After original file delete, file present.Link work.
         4. fast
         5. ln file.txt hard_link.txt
+        6. change file name works same
+        7. same size of files.
 
 4. Display file contenet without using cat?
     sed '' file.txt,awk '{print}' file.txt
@@ -28,7 +34,10 @@
    cat /etc/group
 
 7. Creat a user with home directory?
-   useradd -d abc
+   useradd -m abc
+
+8. Delete user with home directory?
+    userdel -r abc
 
 8. Change file ownership recursively?
    chown -R USER:GROUP DIRECTORY
@@ -52,6 +61,11 @@
 14. How to display filename and args in shell script?
    $0(filename) $1 .. $n (for args)
 
-15. Print 2nd to 4th row for colum ?
-    cut -d ' ' -f 1-2 file2.txt
+15. tr in linux?
+    delete all x: tr -d 'x'
+    all lower to upper: tr [a-z] [A-Z]
+    all lower dlete: td -d [a-z]
+    space to tab: echo " hi hello world" | tr [:space:] "\t"
+    tab to space: echo "      hi      hello   world   " | tr -s [:space:] ' '  .Hare -s is to remove sequential space
+
 

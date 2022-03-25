@@ -6,7 +6,7 @@
    Read:- sed '' file.txt
    Update (Find and insert before):-sed  '/user_2/i inserted' file.txt
    Update (Find and insert after): sed  '/user_2/a inserted_after' file.txt
-   Update (Find and update):- sed  '/user_2/cabc' file.txt (/c is for change)
+   Update (Find and update):- sed  '/user_2/cabc' file.txt (/c is for change in line)
    Delete (line no):- sed  '1d' file.txt
    Delete (Find and delete) :- sed  '/user_2/d' file.txt
 

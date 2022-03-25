@@ -1,0 +1,22 @@
+1. What is head?
+    print top n lines of a file.Default of n is 10.
+2. Print top 5 lines of file?
+   head -n 5 file2.txt   OR   head -5  file2.txt
+
+3. Print first 5 character of file?
+   head -c 5 file2.txt
+
+4. What is tail?
+  tail print last n lines of file.Default of n is 10.
+
+5. Print last 5 lines of file.
+   tail -n 5 file2.txt OR tail -5 file2.txt
+
+6. Print last 5 character of file?
+   tail -c 5 file2.txt
+
+7. List 5 files sort by name.
+   ls | head -n 5 | sort
+
+8. Print line between 10 to 15?
+   head -n 15 file2.txt | tail -n 5 (First print head of 15 then tail its last 5 lines) .Short:- head -15  file2.txt | tail -5

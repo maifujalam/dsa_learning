@@ -30,4 +30,9 @@
 10. Print 2nd to 4th row?
     awk 'NR==2,NR==4 {print}' file1.txt
 
+11. Find and print with line number?
+    awk '/50000/{print NR,$0}' file2.txt   (Hare NR= Number of records,$0 is whole context it searched and found).
+
+12.
+
 

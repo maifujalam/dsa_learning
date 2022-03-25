@@ -14,15 +14,17 @@
    cut -b 3- file.txt
 
 6. How to cut upto 3rd byte?
-     cut -b -3 file.txt
+   cut -b -3 file.txt
 
 7. Cut by character?
   cut -c 1 file.txt.Quite Similar to byte.
 
 8. Cut with delemeter (seperator) ?Print 2nd column.
-   cut -d ' ' -f 1 file2.txt.If you dont specify delemeter (-d) then default delemter is tab.
+   cut -d ' ' -f 1 file2.txt.If you dont specify delemeter (-d) then default delemter is tab.Hare -f is field.
 
 9. Cut upto 3d column ?
    echo "$line" | cut -f -3
 
-10.
+10. Print 2nd to 4th row for colum ?
+    cut -d ' ' -f 1-2 file2.txt
+
