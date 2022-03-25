@@ -24,3 +24,14 @@ Reference:- https://www.geeksforgeeks.org/sort-command-linuxunix-examples/?re
 
 8. Sort and remove duplicate?
   sort -u sort.txt
+
+9. What are sort fild seperator?
+  sort -f ' ' -k 3 .Hare -f is filed seperator
+
+10. Sort on 2nd column seperated by tab having numeric value.
+    sort -t $'\t' -n 2 -rk ( t: filed seperator, $ is ansi c quoting , n number, r reverse, k is column)
+
+11. Sort on 2nd column with '|' seperator in descending order?
+    sort -t '|' -k 2 -nr (don't append rest of the parameters with -k).
+
+12.
