@@ -13,8 +13,8 @@
 6. Difference between command and entrypoint.
     Entrypoint is for running executable of the container.CMD is for passing default parameters of the mentioned entrypoint.
 
-7. What is PORT is docker file.
-    It's for documentation,as it does not exposes any port in reality.
+7. What is EXPOSE is docker file.
+    It's for documentation,as it does not actually exposes any port in reality.
 
 8. Docker mount?
    docker run -d \
@@ -37,9 +37,6 @@
 14. What is docker namespace?
     It isolates between host howrkpace with networ,mount,process id,unix time sharing,etc.
 
-15. Where docker store its volume?
-    /var/lib/docker/volumes/<volume_name>
-
 16. how to Mount created volume?
     -v parameter.
 
@@ -50,7 +47,7 @@
     docker run -v /var/lib/sql:/var/lib/sql mysql .This is called bind mount.
 
 19. differene between --volume vs --mount?
-    1. --volume is old style.-mmount is more verbose(i.e more parameters it support).
+    1. --volume is old style.-mount is more verbose(i.e more parameters it support).
 
 20. What is docker mount?
   docker run --mount type=bind,source=/data/myswl,dest=/data/mysql,readonly .Other types are:- volume,bind,tempfs.
@@ -94,8 +91,17 @@
 
 32.
 
+37. Where docker daemon configuration stores?
+    /etc/docker/daemon.json
+
 33. What is docker socket?
    /var/run/docker.sock
+
+36. Where container stores the log?
+    /var/log/containers/container_name_id.log
+
+15. Where docker store its volume?
+    /var/lib/docker/volumes/<volume_name>
 
 34. How to freeze docker conatner?
    docker pause container_id.
@@ -112,7 +118,6 @@
             If manually stoped a container then,its restart policy is ignored.Until demon is restart or container is restart.
 
 
-36.
 
 
 

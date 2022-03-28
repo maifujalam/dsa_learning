@@ -244,7 +244,27 @@
 33.Verify authentication and authorization?
    kubectl auth can-i get,list pod -as new_user
 
-34.
+34. How to verify dns in k8s working?
+    exec into any pod having nslookup.
+    nslokup kubernetes  OR nslookup kubernetes.default
+
+35. What are stateful sets(sts)?
+    It is like deployment but maintain sticky identity for the pods.It is used to maintain stateful application,i.e apps need storage to write.
+    App which require below features,can use stateful sets.
+    1. stable ,unique network identifiers.
+    2. stable,unique persistent storage.
+    3. Ordering,graceful termination while app scaling pods.
+    4. Ordered and automated rolling updates.(?)
+
+    SS have below limitations:-
+    1. It requres storage calass or PV from before.
+    2. Scaling/Deleting SS does not deletes volume attached with it.
+    3. It requres Headless service.
+    4. When StS is deleted,then it does not guarentee pod deletion.Better scale down to 0 for graceful termination.Then delete StS.
+    5. When rolling updates it may get broken so need manual intervention.
+
+36.
+
 
 
 
