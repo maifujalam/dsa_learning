@@ -1,5 +1,16 @@
 1. What is unique?
-   print uniqe line from stdin.
+   print uniqe line from stdin.So,if next line have same data then it wll print blank over there.
+   It only detects unique in adjacent lines.So if it doesnt detect duplicate if its not adjacent.
+   To detect adjacent use:- sort -u file2.txt
+
 2. Print duplicate count?
-   uniq file2.txt -c
-3.
+   uniq -c file2.txt
+
+3. Only print lines which are adjacent repeted ( i.e upcoming line or next line is same?
+   uniq -d uniq_1.txt
+
+4. Print only uniq lines(i.e line whose above and below are different).
+    uniq -u uniq_1.txt
+
+5. Find uniq with ignoring case sensitive?
+    uniq -i uniq_1.txt

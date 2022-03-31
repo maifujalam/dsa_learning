@@ -263,7 +263,12 @@
     4. When StS is deleted,then it does not guarentee pod deletion.Better scale down to 0 for graceful termination.Then delete StS.
     5. When rolling updates it may get broken so need manual intervention.
 
-36.
+36. In local volume provisioning.
+    1. create storage path in each node: must required and true
+    2. One pvc per one pv
+    3. storage class required with provisioner.kubernetes.io/no-provisioner
+    4. After the pod is scheduled onto node then pvc will bound to pv.
+
 
 
 

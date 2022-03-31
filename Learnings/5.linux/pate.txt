@@ -1,0 +1,14 @@
+1. Combile 3 rows into one.
+   using paste it can be done.
+   paste sl_no.txt state.txt country.txt
+
+2. Paste 3 rows in serial?
+   paste -s sl_no.txt state.txt country.txt
+
+3. How to use semicolon as sperator instead of deaful tab delemeter?
+   paste -d ';' -s sl_no.txt state.txt country.txt
+
+4. Combine with 3 lines and paste instead of all in series?
+   cat file2.txt | paste  - - -
+
+5.
