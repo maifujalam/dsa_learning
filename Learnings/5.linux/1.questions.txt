@@ -64,7 +64,7 @@
 15. tr in linux?
     delete all x: tr -d 'x'
     all lower to upper: tr [a-z] [A-Z]
-    all lower dlete: td -d [a-z]
+    all lower delte: td -d [a-z]
     space to tab: echo " hi hello world" | tr [:space:] "\t"
     tab to space: echo "      hi      hello   world   " | tr -s [:space:] ' '  .Hare -s is to remove sequential space
 

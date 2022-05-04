@@ -24,4 +24,17 @@
 8. Auto approve?
    -autoapprove
 
-9.
+9. Difference between count and foreach?
+10. what is dynamic block and how it works?
+11. When an state file of 3c2 instance is deleted,then you apply again? what will happen?
+12. Hoe to import resource created outside terraform?
+    1. create resource_type resource_name block in main.tf. 2. do terraform import  resource_type.resource_name resource_unique id (from terraform docs) (check
+    import is successfuly in terminal) 3. Add resource mandetroy fields (matching actual resource). 4. terraform plan until no changes required.(and accepet
+    inplace update for minor changes). 5. Make sure when apply taht you dont destroy and recreate resource.
+13. Import resource when in module.
+14. What are the files present in root module and child modules?
+    child module:- main.tf, variables.tf,outputs.tf, README.md,datasource.tf,                ,            ,
+    root module:-  main.tf, variables.tf,outputs.tf, README.md,             ,terraform.tfvars, provider.tf,  versions.tf
+15. How to destroy only a single reource out of multiple reources in main.tf?
+    comment the resource and do terraform apply.
+16.

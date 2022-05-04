@@ -257,7 +257,7 @@
     4. Ordered and automated rolling updates.(?)
 
     SS have below limitations:-
-    1. It requres storage calass or PV from before.
+    1. It requres storage class or PV from before.
     2. Scaling/Deleting SS does not deletes volume attached with it.
     3. It requres Headless service.
     4. When StS is deleted,then it does not guarentee pod deletion.Better scale down to 0 for graceful termination.Then delete StS.
