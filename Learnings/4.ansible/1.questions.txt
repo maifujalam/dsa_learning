@@ -48,4 +48,23 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 17. Get ansible all inventory hosts?
 
 18 Use different config file.
+19. What are different types of anisble variabbles?
+    inventory variables:
+    playbook variables: in play book vars: .
+    system fact variable: using gather_facts.Found in json of ansible_facts.Example: ansible_facts["ipv4"]["address"].
+    register_variable: using register
+    extra vars: --extra-vars aa=bb or -e aa=bb.
+    vars_files: key value far file.Pathe to the yaml key value var file.
+    set_facts: using set_facts:  aa=bb.
+    vars_prompt:
+       vars_prompt:
+     - name: user_name
+       prompt: Enter your user name
+       private: no
+     - name: password
+       prompt: Enter your password
+       private: yes
+    Accessing variable: "{{var_name}}"
+
+
 

@@ -1,3 +1,6 @@
+Reference urls:-
+  https://www.golinuxcloud.com/kubernetes-privileged-pod-examples/
+
 1. How to get cluster domain name?
    a. ssh into any pod ( ex.nginx pod deployed in default ns)
    b. k -n kube-system exec -it nginx-deployment-845d4d9dff-dn7q2 sh
@@ -32,8 +35,8 @@
 5. What happens in background when we run kubectl command?
     1.loads kubeconfig for cluster authentication.(precedence => cli flag(--kubeconfig),environment variable(KUBECONFIG),path (~/.kube/config)
     2. goes to api server (with loaded client certificate)
-    3. API server matches CNAME and then ready to validate ertificate.
-    4. after authonticated ,it authorizes
+    3. API server matches Common Name and then ready to validate certificate.
+    4. after authonticated ,it authorizes(user or SA with roles cluster role)
     5. go to etcd cluster to get cluster data
     6. return
 6. connect pods in different namespace?
@@ -45,7 +48,7 @@
     kube-proxy- 10249
     kube-controller: 10257
     kube-scheduler:- 10259
-    etcd:- 2379-2380
+    etcd:- 2379-2381
 
 8. Different types of k8s services.
     a. clusterIP: default,Exposes the Service on a cluster-internal IP.Only resolve within cluster.
@@ -269,7 +272,45 @@
     3. storage class required with provisioner.kubernetes.io/no-provisioner
     4. After the pod is scheduled onto node then pvc will bound to pv.
 
+37. How to add taint and remove taint?
+    taint: k taint node worker2 abc:NoSchedule
+    untaint: k taint node worker2 abc:NoSchedule-
 
+38. What are c group in linux?
+    control groups.I allowes you to allocate resources like:- CPU time,memory,network bandwith,or combination of these.This c group run along with the users of the system.
+    cgroupfs,systemd.
+
+39. What are tolerations?
+    taint => applies on nodes.
+    tolerations => applies on pods.Pod have operators:- Equal,Exists.Effects can be  NoSchedule or NoExecute.
+        tolerations:
+        - key: "key1"
+          operator: "Equal"
+          value: "value1"
+          effect: "NoSchedule"
+
+
+40. What are security context in k8s?
+    It defines the priviledge and access control for a pod or container.Security context includes:-
+    a. permissions to access system object like file,based on user_id and group_id.
+    b. Run as priviledge or non priviledge container. [securityContext:
+                                                        runAsUser: 1000
+                                                        runAsGroup: 3000 ]
+    c. linux capabilities: give process some priviledge.    securityContext:   [like:- CHOWN,KILL,SETUID,SETGID]
+                                                              capabilities:
+                                                                add: ["NET_ADMIN", "SYS_TIME"]
+
+    d. SELinux options: securityContext:
+                        seLinuxOptions:
+                          level: "s0:c123,c456"
+
+41. How to run pod as root:
+    ...
+    securityContext:
+       privileged: true
+       allowPrivilegeEscalation: true
+
+42.
 
 
 
