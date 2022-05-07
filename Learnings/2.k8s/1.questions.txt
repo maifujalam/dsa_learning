@@ -310,7 +310,8 @@ Reference urls:-
        privileged: true
        allowPrivilegeEscalation: true
 
-42.
+42. Create nginx with expose.
+    k run nginx --image=nginx --expose --port 80 --dry-run=client -o yaml
 
 
 

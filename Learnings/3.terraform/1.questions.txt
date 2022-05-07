@@ -32,6 +32,7 @@
 
 10. what is dynamic block and how it works?
     It uses list,map,set datasets with for_each . Then it iterates over mentioned datasets (of map,list,sets) and assigned complex value(with dynamic block name)  to arguments.
+    We can also use lookup(dynamic_block_name.value,"key_to_look",default_value) inside dynamic block.
 
 11. When an state file of ec2 instance is deleted,then you apply again? what will happen?
     It will recreate as it supports multiple same instance name.But if its does only supportsglobal instance name then it will throw error with resource exist.
