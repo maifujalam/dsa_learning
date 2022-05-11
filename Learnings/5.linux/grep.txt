@@ -3,4 +3,17 @@
 2. Search with case sensitive " warning"?
     grep -i "error" lll.logs
 
-3.
+3. Print the match count?
+   grep -c varun file2.txt
+
+4. Print the match line with line number?
+   grep -n var file2.txt
+
+5. Print match line,line number,file name?
+   grep -n var file*
+
+6. Grep with exact match?
+  grep -w var file2.txt
+
+7
+
