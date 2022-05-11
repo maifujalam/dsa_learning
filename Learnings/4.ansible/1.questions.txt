@@ -41,30 +41,97 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
     ansible-galaxy init role_name
 
 15. Role folder structure?
+    It have 7 folders:- default(main.yaml contains default vars),file(enpty,have files),handlers(service handlers),meta(ansible controller),
+    tasks(main.yaml tasks),tests(inventory,test.yaml),vars(main.yaml) and 2 files:- README.md,.travis.yaml).
 
 16. Pass anible extra vars?
     ansible-playbook ddd.yaml --extra-vars "aaa=bbb"
 
 17. Get ansible all inventory hosts?
+    ansible all --list-hosts
 
 18 Use different config file.
+
 19. What are different types of anisble variabbles?
     inventory variables:
     playbook variables: in play book vars: .
-    system fact variable: using gather_facts.Found in json of ansible_facts.Example: ansible_facts["ipv4"]["address"].
+    system fact variable or ansible facts: using gather_facts.Found in json of ansible_facts.Example: ansible_facts["ipv4"]["address"].
     register_variable: using register
     extra vars: --extra-vars aa=bb or -e aa=bb.
-    vars_files: key value far file.Pathe to the yaml key value var file.
+    vars_files: key value far file.Pathe to the yaml key value var file.Ex:-  include_vars: ./global-vars.yaml
     set_facts: using set_facts:  aa=bb.
     vars_prompt:
        vars_prompt:
-     - name: user_name
-       prompt: Enter your user name
-       private: no
-     - name: password
-       prompt: Enter your password
-       private: yes
-    Accessing variable: "{{var_name}}"
+       - name: user_name
+         prompt: Enter your user name
+         private: no
+       - name: password
+         prompt: Enter your password
+         private: yes
+         Accessing variable: "{{var_name}}"
+
+20. adhoc command to run async task?
+    ansible all -B 3600 -P 0 -a "/usr/bin/long_running_operation --do-stuff"  (-B: async in background , -P : polling 0 which makes it ansynchronus).
+    [ when poll is 0 ,it will move to next task in playbook ]
+    Note:- if do tasks take more time then async then it will fail playbook with timeout.
 
 
+21. How to check async job status?
+    ansible web1.example.com -m async_status -a "jid=488359678239.2844"
+      - name: Check on an async task
+        async_status:
+          jid: "{{ register_name.ansible_job_id }}"
+        register: job_result
+        until: job_result.finished
+        retries: 100
+        delay: 10
 
+22. Run for 30 min and poll every 60 second?
+    ansible all -B 1800 -P 60 -a "/usr/bin/long_running_operation --do-stuff"
+
+23. Default group created by ansible?
+
+24. What i ansible meta module?
+    It a special kind of anisble module to run special tasks,i.e which interact with ansible and its working with state.
+    Meta to refresh inventory:-
+     - name: Refresh inventory to ensure new instances exist in inventory
+       meta: refresh_inventory     [meta: clear_inventory,clear_facts,reset_conection]
+
+25. What is ansible deligate_to or local_action module?
+    Both are same.run task on localhost.(127.0.0.1)
+
+26. How to get environment variables?
+    - name: Basic usage
+      debug:
+        msg: "'{{ lookup('env', 'HOME') }}' is the HOME environment variable."
+
+27.  Local plabok?
+     It run playbook on localhost without ssh connection.
+    - hosts: 127.0.0.1
+      connction: local
+
+28. What are raw module in ansible?
+    It run low level SSH dirty commands.It does not goes through module sub system.It mostly used to install python on target host,talk to system does not have
+    python instaled like:- riuters.
+    Whatever parameter is given in raw it runs as shell script.Line :- raw: yum install apache2 -y
+
+29. Difference between command,shell,raw?
+   command: Mostly used to start any script.Does not support complex commands which contains :- |,&,<,>.
+   shell: same as commands but fixes the above issues.
+   raw: it is mosty used to run on system which does not have python interpreted absent.
+
+30. Difference between inlclude_tasks and import_tasks?
+   inlclude_tasks: statements are processed as it encountered in the playbook.Dynamic.Uses when dealing with conditions or when.Does not support become.
+   import_tasks: Statements are pre processed as the time of playbook is parsed or triggered.Static.Uses when calling multiple playbooks in main.yaml.
+
+31. how to use conditions in ansible?
+    We can use when parameter.Like:-
+    when
+
+32. How to validate ansible playbook?
+    ansible-playbook main.yaml --syntax-check
+
+33. Use ansible filter?
+     ansible all -m setup -a "filter=ansible_*_mb"
+
+34.

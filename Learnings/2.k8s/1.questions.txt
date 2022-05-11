@@ -54,7 +54,7 @@ Reference urls:-
     a. clusterIP: default,Exposes the Service on a cluster-internal IP.Only resolve within cluster.
     b. Node port: range-30,000-32,767.Accessable from outside of cluster,with <node-ip>:<node-port>.CLuster ip is also created.
     c. Load Balancer:- depends upon cloud provider.Node port and cluster ip is also created.
-    e. External:- Forward the traffic to the externalName value set as CNAME record. like:- prod cluster.(ex;- service_of_other_custer.namespace.sec.cluster.local2)
+    e. External:- Forward the traffic to the externalName value set as CNAME record. like:- prod cluster.(ex;- service_of_other_custer.namespace.svc.cluster.local2)
 
 9. What is the default image pull policy of deployment?
    Always:- so it always pull image.But if that image is still present in machine,then also it run docker pull at backend.But if image name with tag is present

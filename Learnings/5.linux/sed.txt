@@ -18,3 +18,9 @@
 
 4. what is -i in sed?
    hare -i is inplace edit(i.e edit in original file).if we dont specify -i then,it will not edit original file and produce streaming output after editing.
+
+5. Insert at 1st line?
+   sed '1iabc' file2.txt
+
+6. MASTER FORMULA:-
+   sed '/varun/(i,a,c,d)'  (i:insert,a:append,c:change,d:delete on varun) [ -i change inplace,$ is for lsate line]

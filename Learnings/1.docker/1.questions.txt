@@ -4,7 +4,7 @@
     a.stop the container b. commit the container c. start the container with port attached .Because only start and create have option to pass -p as port.
 3. Copy file to container.OR copy file from container to host.
     a. docker cp src dest.Ex:- docker cp abc container_id:/,docker cp container_id:/ .
-4. Can we build docker image from different docker file.
+4. Can we build docker image from different docker file location?
     a. yes,it can be build using -f flag end with '.' .Ex:- docker build -t abc -f /path/to/any_docker_file_name .
 5. Can docker container run when daemon crashes.
     1. yes,if live restore is enabled only.It helps in docker update.Edit /etc/docker/daemon.json.Then add {
@@ -45,9 +45,13 @@
 
 18. how to mount host path with docker path(volume mount vs bind mount)?
     docker run -v /var/lib/sql:/var/lib/sql mysql .This is called bind mount.
+    docker run -v :/path/to/container  .Creates volume with random name.
 
 19. differene between --volume vs --mount?
-    1. --volume is old style.-mount is more verbose(i.e more parameters it support).
+    1. --volume : stores file at /var/lib/docker/volumes/.Can be used as docker create volume.Three fields name_of_volume:path_to_container_to_mount:read_only_(ro)
+    2. --mount : stores file at anywhere at host file system.Present from early stage.If file or path does not exist, then docker creats it.
+                It conatains multiple key value pairs:- type=(bind,volumen,tmpfs),src=(/path/of/mount/|_volume_name_),dest|target=/path/to/container,read_only_(ro).
+    3. --tempfs: stores data in memory.
 
 20. What is docker mount?
   docker run --mount type=bind,source=/data/myswl,dest=/data/mysql,readonly .Other types are:- volume,bind,tempfs.
@@ -57,6 +61,12 @@
 
 22. What are the different types of docker networks?
     bridge(default),host,overlay,none,iplan,macvlan
+    bridge:- default.Pllication run in standalone containers thet communicate with each other.
+    host:- uses host networking nsmaespace.Mostly host port.
+    overlay: used in docker swam to connect multiple docker daemon.
+    ipvlan: Provides VLAN give ipv4 and ipv6 addressing.
+    macvlan: Leagacy app or any app which required MAC id to operate.
+    none: If you want to diabl networking on container stack.Only loopback Interface is created.
 
 23. how to use docker host network.
     docker run  --network=host -name=abc nginx
@@ -119,12 +129,4 @@
 
 
 
-
-
-
-
-
-
-
-
-
+36. Docker file example: https://github.com/komljen/dockerfile-examples
