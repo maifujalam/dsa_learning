@@ -2,7 +2,7 @@ references:-
 adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands/#ex1
 
 1. Write adhoc command to list no of users.
-
+   CLI commands to quckly run a task without writing playbook.
 2. adhoc command to gather facts?
    ansible localhost -m setup
 

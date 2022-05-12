@@ -1,0 +1,38 @@
+1. What is ansible vault?
+   It a place to store ansible secrets like:- password,keys,any other sensitive values.
+2. Create a vault?
+  ansible-vault create abc
+  Enter and confirm password.
+
+3. read a vault?
+   ansible-vault view abc
+   Enter and confirm password.
+
+4. Decrypt vault?
+  ansible-vault decrypt abc
+  Enter and confirm password.
+5. Ansible vault encrypt?
+   ansible-vault encrypt abc
+   Enter and confirm password.
+
+6. Prompt vault password?
+   --ask-vault-password
+
+7. Pass vault password file?
+   --vault-password-file.
+
+8. How to add vault file in ansible playbook?
+   name: ansible tasks
+   vars_file:
+      - vault_pass.yaml
+   git:
+      repo: repo:{{password}}@git.com
+
+9. Hoe to pass passwoord with added vault in playbook?
+   ansible playbook main.yaml --ask-vault-pass
+
+10. If we dont pass vault password then?
+    It will give error with attempting to decrypt vault.
+
+
+

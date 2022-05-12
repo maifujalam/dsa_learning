@@ -59,7 +59,7 @@
     ls -he &> out.txt
 
 14. How to display filename and args in shell script?
-   $0(filename) $1 .. $n (for args)
+   $0(filename),$n (args name),$#(no of arguments),$*(all arguments in double quated),
 
 15. tr in linux?
     delete all x: tr -d 'x'
