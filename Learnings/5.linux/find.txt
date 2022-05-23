@@ -30,4 +30,7 @@
 10. Find all files containg text alam?
     find . -name '*.txt' -exec grep 'alam' {} \;  OR grep -n varun *.txt
 
+11. Find with case sensitive?
+    find . -type f -iname "*resume*"
+
 

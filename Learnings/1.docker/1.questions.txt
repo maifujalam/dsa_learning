@@ -35,7 +35,7 @@
     yes.with command, docker -H docker_daemon_address:2375 ps.
 
 14. What is docker namespace?
-    It isolates between host howrkpace with networ,mount,process id,unix time sharing,etc.
+    It isolates between host workspace with networ,mount,process id,unix time sharing,etc.
 
 16. how to Mount created volume?
     -v parameter.
@@ -80,7 +80,9 @@
 26. What is docker dns server?
     docker resolves ip of a container through container name.Docker does it through dns server running on address 127.0.0.11.
 
-27. what is
+27. what is the difference between docker run and docker create?
+    create: Creates the container bust doesnt start it.Same as run but doesnt start the container.Shares ssame parameters as run.
+    run: Creates and starts the container.
 
 28. Multy stage build ?
   FROM any_image:tag abc as base_image
@@ -130,3 +132,6 @@
 
 
 36. Docker file example: https://github.com/komljen/dockerfile-examples
+37. How to check the docker file commands of the docker image?
+    docker history docker_imae --no-trunc
+38.

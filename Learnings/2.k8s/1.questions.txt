@@ -277,7 +277,7 @@ Reference urls:-
     untaint: k taint node worker2 abc:NoSchedule-
 
 38. What are c group in linux?
-    control groups.I allowes you to allocate resources like:- CPU time,memory,network bandwith,or combination of these.This c group run along with the users of the system.
+    control groups.It allowes you to allocate resources like:- CPU time,memory,network bandwith,or combination of these.This c group run along with the users of the system.
     cgroupfs,systemd.
 
 39. What are tolerations?

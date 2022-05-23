@@ -34,8 +34,11 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
    Captures system all information into json file name: ansible_facts
 
 12. How to set global evironment variable?
+    set_facts:
+       aa: bb
 
 13. What is vault?
+    encrypt credentials in ansible.
 
 14. How to create ansible role?
     ansible-galaxy init role_name
@@ -49,6 +52,8 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 
 17. Get ansible all inventory hosts?
     ansible all --list-hosts
+    ansible-inventory --graph
+    ansible-inventory --list
 
 18 Use different config file.
 
@@ -91,7 +96,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 
 23. Default group created by ansible?
 
-24. What i ansible meta module?
+24. What is ansible meta module?
     It a special kind of anisble module to run special tasks,i.e which interact with ansible and its working with state.
     Meta to refresh inventory:-
      - name: Refresh inventory to ensure new instances exist in inventory
@@ -112,7 +117,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 
 28. What are raw module in ansible?
     It run low level SSH dirty commands.It does not goes through module sub system.It mostly used to install python on target host,talk to system does not have
-    python instaled like:- riuters.
+    python instaled like:- routers.
     Whatever parameter is given in raw it runs as shell script.Line :- raw: yum install apache2 -y
 
 29. Difference between command,shell,raw?
@@ -134,4 +139,36 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 33. Use ansible filter?
      ansible all -m setup -a "filter=ansible_*_mb"
 
-34.
+34. What is ansible fetch module?What is flat in it?
+    It is like anisble copy module but in reverse.
+    Copy file from target_host to controller.Ex: - fetch: "src=path dest=path "
+    flat: it will not prfix with host name if if flat is true.
+
+35. Difference between handlers and notify?
+    notify calls hander in terraform.
+
+36. what are ansible plugins?Examples?
+    Plugins are the pieces of code that works an ansible core functionality.Ansible comes wwith number of plugins and you can use your own also.
+    Vars plugin:- work with ansible variables.
+    inventory plugin: works for compiling inventory file.
+    cache plugin: cache the host facts.
+    connection plugin: It deals with how to connect with inventory hosts.
+
+37. How to do run check?
+    ansible playbook.yaml --check
+
+38 What are ansible dynamic inventory?
+   Ansible have following inventry.
+   static inventory: Target host ip or dns is preset as single enity or in group.
+   dynamic inventory: A script or plugin is run to select set of anoble hosts based on parmateres or tags.It resolves issues of static inventry like:-
+      a. host ip changed after reboot. b. Updating inventry for future target hosts.(add vm ip details in static invetry).
+
+39. What art gcp dynamic inventory contains?
+    plugin: gcp_compute
+    auth_kind: service account
+    group: group base on tags
+    key_group: group based on key value
+
+40.
+
+

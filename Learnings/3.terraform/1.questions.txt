@@ -7,7 +7,7 @@
    Write(Infrastructure)=>Plan(Monitor changes)=>Apply(Create resources)=>Destroy(Delete resources).
 
 3. Similar tool to terraform?
-   Similar tools are:- AWS Cloud Formation,Vagrant
+   Similar tools are:- AWS Cloud Formation,Vagrant,Cloud Deployment Manager(GCP)
 
 4. What is null resource?
    It implement stardard resource library but does not create any resources.It is mostly coupled with provisioners.
@@ -32,7 +32,17 @@
 
 10. what is dynamic block and how it works?
     It uses list,map,set datasets with for_each . Then it iterates over mentioned datasets (of map,list,sets) and assigned complex value(with dynamic block name)  to arguments.
-    We can also use lookup(dynamic_block_name.value,"key_to_look",default_value) inside dynamic block.
+    We can also use lookup(dynamic_block_name.value,"key_to_look",default_value) inside dynamic block.It iterates on key and value accessed inside dynamic_name.value.
+    It have content block inside dynamic block.
+      dynamic "ingress" {
+         for_each = local.ports
+          content {
+            from_port = ingress.value
+            to_port = ingress.value
+            protocol = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+            }
+            }
 
 11. When an state file of ec2 instance is deleted,then you apply again? what will happen?
     It will recreate as it supports multiple same instance name.But if its does only supportsglobal instance name then it will throw error with resource exist.
@@ -44,11 +54,12 @@
 13. Import resource when in module,count,for_each.
     module:- terraform import module.module_name.resource_type.resource_name resource_unique_identifier.
     count:-  terraform import 'resource_type.resource_name[0]' resource-identifier
-    for_each:- terraform_import 'resource_type.resource_name['resource_key'] resource-identifier.
+    for_each:- terraform_import 'resource_type.resource_name['resource_key']' resource-identifier.
 
 14. What are the files present in root module and child modules?
     child module:- main.tf, variables.tf,outputs.tf, README.md,datasource.tf,                ,            ,
     root module:-  main.tf, variables.tf,outputs.tf, README.md,             ,terraform.tfvars, provider.tf,  versions.tf
 15. How to destroy only a single reource out of multiple reources in main.tf?
     comment the resource and do terraform apply.
-16.
+16. Copy file to ec2 in /opt/any_file localtion.
+17.
