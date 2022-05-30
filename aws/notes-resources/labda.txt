@@ -1,0 +1,1 @@
+1. AWS Lambda: It lets you run code without provisioning or managing servers.You only pay for the compute time consumed.No charges when not used.

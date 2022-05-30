@@ -1,0 +1,2 @@
+1. EC2: Its used to provision vm serverless.So you no need to manage any datacenter for it.
+2.

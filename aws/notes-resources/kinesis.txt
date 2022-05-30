@@ -1,0 +1,1 @@
+1. Kinesis: AWs Kinesis is scalable real time data streaming servcice.It can continuously capture GB's/Second of data from 100 of 1000 sources.

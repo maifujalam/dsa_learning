@@ -1,0 +1,29 @@
+pg:- 613
+1. Accelerate dynamodb read from Miliseconds to Microseconds:- DynamoDB Accelarator - DAX (in memory cache).
+2. NoSQL databases are: mongodb and dynamodb.
+4. Scales horizontally.
+5. Made up of tables.Table have PRIMARY KEY(must be declared creation time).
+6. Each table have infinite items(rows).
+7. Each item  have attribution.(can be added later or null).
+I8. Primary key choosing while database creation?
+    Option-1(Partition Key): Partition key has to be unique throughout the table(ex:- user_id).
+    Option-2(Primari Key): Partition key + Sort key(Hash+Range):
+9. Table class:- Standard ,StandardIA
+10. Capacity Calculator:
+11. Capacity settings:-
+    Provisioned:-Create in advance.
+      A. Read Capacity: Autscaling present(minimum,maximum,target utilization-70%).
+      B. Write Capacity: Auto-scaling present(minimum,maximum,target utilization-70%).
+    Ondemand:-
+       A. Automatic:- pay on actual usage.Auto scale read write capaacity. No capacity planning required.Higer cost.
+    [Note: Mode switing can happen only after 24 hrs]
+12. Encryption at rest is default and free.
+13. Throughput can be exceeded temporarily through Burst Capacity.If burst capacity is also consumed then it will be ProvisionedThroughputExceededException.
+14. Write Capacity Unit(WCU):-
+    1. 1 WCU= 1 write/second for items upto 1KB size.
+    2. Examples:-  a. Write 10 items/second of size 2 KB. Then WCU is 10 * (2/1) = 20 WCU
+        b. Write 6 items / second with size 4.5 KB. Then 6*(5/1) = 30 WCU.
+        c. 120 items/minute with size 2 kb. 120/60 * 2/1 = 4 WCU.
+
+15. Strong Consistent Read:  If we just read after write we will get correct(non STALE) data but consume 2 * RCU. 
+    Eventually Consistent Read(Default):- Read data after just write.Its possible to get STALE data.

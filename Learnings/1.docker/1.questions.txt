@@ -134,4 +134,6 @@
 36. Docker file example: https://github.com/komljen/dockerfile-examples
 37. How to check the docker file commands of the docker image?
     docker history docker_imae --no-trunc
-38.
+38. How to copy multiple files in DOckerfile?
+    copy file1 file2 ./
+39.

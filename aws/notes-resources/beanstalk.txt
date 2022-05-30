@@ -1,0 +1,5 @@
+1. Create whole application stack based on the programming language(like:- python,docker,nodejs,etc) and the whole application architecture (like:- ec2,lb,
+   healthcheck, etc).
+2. Log running jons(like:- webserver nginx) are called services or workers.
+3. Application is running periodic task then define it in cron.yaml.
+4.
