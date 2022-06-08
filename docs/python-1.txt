@@ -1,8 +1,20 @@
 1. List slice
     a. a[start:end:diff]
     b. a[0:len(a):1] = a[::]
-
 2. read_tc and read_input
 3. a,b = map(int, input().strip().split())
 4. a=[int(i) for i in input().split()]
-5 Join list: ''.join([str(i) for i in a])
+5. Join list: ''.join([str(i) for i in a])
+6. Module:- a python file with .py extension contains methods,class and variables.
+   Package:- Collection of modules into a folder for better organization.It have __init__.py folder for package initialization.
+   Library:- Collection of packages or modules.Example:- requests,pytourch,pandas.
+   Framework:- Complex library.It contains basic flow or architecture for specific operation(or application).Ex:- django,flask,bottle.
+7. What is __init__ method in python?
+  a. It is similar to the constructor in c and c++.
+  b. It is to initialize data members of the class.
+  c. It have collection of statements which executed when object is being created.
+  d. It is run as soon as object of the class is instantiated.
+
+8. What is self in class?
+   It represents the instance of the class.
+   It always points to the current object where declared.
