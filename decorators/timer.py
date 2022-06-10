@@ -1,6 +1,6 @@
 import time
 
-def timer(fun):
+def decorator(fun):
     def wrapper(*args,**kwargs):
         print("Start")
         before=time.time()
@@ -9,7 +9,7 @@ def timer(fun):
         print("stop")
     return wrapper
 
-@timer
+@decorator
 def run(a):
     print("I am called")
     time.sleep(a)
