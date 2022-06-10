@@ -1,6 +1,6 @@
 import datetime
 import time
-
+import glog
 
 def loger(fun):
     def wrapper(*args, **kwargs):
@@ -11,6 +11,7 @@ def loger(fun):
             fun(*args, **kwargs)
             f.write("Ended Function:" + fun.__name__ + " at:" + str(datetime.datetime.now()) +
                     " took:" + str(round(time.time() - time_start, 3)) + " Seconds \n")
+            glog.info("completed")
 
     return wrapper
 
