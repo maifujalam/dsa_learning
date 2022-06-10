@@ -11,6 +11,8 @@ def timer(fun):
 
 @timer
 def run(a):
+    print("I am called")
     time.sleep(a)
+    print("I am called stopped")
 
 run(3)
