@@ -8,18 +8,17 @@ def loger(fun):
             time_start = time.time()
             f.write(
                 "Start Function:" + fun.__name__ + " at: " + str(datetime.datetime.now()) + "\n")
-            fun(*args, **kwargs)
+            res=fun(*args, **kwargs)
             f.write("Ended Function:" + fun.__name__ + " at:" + str(datetime.datetime.now()) +
                     " took:" + str(round(time.time() - time_start, 3)) + " Seconds \n")
-            glog.info("completed")
-
+            return res
     return wrapper
 
 
-@loger
-def run(a, b, c):
-    time.sleep(0.2)
-    print(a, b, c)
-
-
-run(1, 2, 3)
+# @loger
+# def run(a, b, c):
+#     time.sleep(0.2)
+#     print(a, b, c)
+#
+#
+# run(1, 2, 3)
