@@ -1,0 +1,19 @@
+1. SQS:- Standard Queue Service.Used for app decoupling.
+2. Provides unlimited throughput,unlimited messages.
+3. Retention period: 4 (default),14(max),1(min)
+4. Latency: <10ms
+5. Limitations: 1 - 256 KB per message send.
+6. Order of messages: Can have out of order messages.But tries to do best effort message order.
+7. Producer:-
+    a. Produces to SQS using send message SDK.(Send Message API).
+    b. Message is present is SQS until the consumer deletes it.
+    c.
+8. Consumer:
+    a. Consumer process messages and then deletes it.
+    b. Consumer can be :- ec2,
+    c. Consumer can be scaled using ASG on the basis of metric os queue i.e queue length.
+
+9. Encryption: inflight:- SSL(HTTPS) (provided by default) ,atrest: KMS, Client side encryption.
+10. Manage Large messages(>256KB): S3 with Amazon SQS Extended Client Library for JAVA
+11. You cannot control lagre messages using UI,AWS CLI,SQS HTTP API,or any other AWS SDK.
+12.
