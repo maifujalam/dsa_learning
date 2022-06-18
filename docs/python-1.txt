@@ -18,4 +18,6 @@
 8. What is self in class?
    It represents the instance of the class.
    It always points to the current object where declared.
-9. g=[a[i] for i in range(0,len(a))] OR k=[i for i in a]
+9. g=[a[i] for i in range(0,len(a))] OR k=[i for i in a] OR (i for i in range(len(a)))
+10. z=list(map(int, input().split()))
+11.

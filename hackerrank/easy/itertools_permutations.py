@@ -5,8 +5,15 @@ sys.stdin=open("input.txt","r")
 
 
 def string_permutation(a, b):
-    a=
-    ans=itertools.permutations(a,b)
+    k=[str(i) for i in a]
+    k.sort()
+    k=''.join(k)
+    ans=list(itertools.permutations(k,b))
+    for i in ans:
+        tmp=''
+        for j in i:
+            tmp+=j
+        print(tmp)
 
 
 if __name__ == '__main__':
