@@ -1,3 +1,8 @@
-2
-.*\+
-.*+
+7
+UK
+China
+USA
+France
+New Zealand
+UK
+France
