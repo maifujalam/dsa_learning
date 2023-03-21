@@ -61,8 +61,8 @@
 
 22. What are the different types of docker networks?
     bridge(default),host,overlay,none,iplan,macvlan
-    bridge:- default.Pllication run in standalone containers thet communicate with each other.
-    host:- uses host networking nsmaespace.Mostly host port.
+    bridge:- default.Application run in standalone containers thet communicate with each other.
+    host:- uses host networking namespace.Uses host port.
     overlay: used in docker swam to connect multiple docker daemon.
     ipvlan: Provides VLAN give ipv4 and ipv6 addressing.
     macvlan: Leagacy app or any app which required MAC id to operate.
@@ -101,7 +101,8 @@
      It is an enhanced build process,by improving performance,storage management,security.It have mount secret feature.
      It can be enabled throuh.In /etc/daemon.json { "features": { "buildkit": true } } . Or with environment variable export DOCKER_BUILDKIT=1
 
-32.
+32. Attach a detachh container:-
+    docker attach container_id
 
 37. Where docker daemon configuration stores?
     /etc/docker/daemon.json
@@ -136,4 +137,8 @@
     docker history docker_imae --no-trunc
 38. How to copy multiple files in DOckerfile?
     copy file1 file2 ./
-39.
+39. Different docker container states:- docker inspect container | grep state
+    a. created : wn we run docker create.
+    b. running: when do run docker or start docker .
+    c. restarted: Wnen container restart policy make to exited contaner restart.
+    d.

@@ -313,6 +313,25 @@ Reference urls:-
 42. Create nginx with expose.
     k run nginx --image=nginx --expose --port 80 --dry-run=client -o yaml
 
+43. What are kubernetes service account?
+    k8s uses concept of users for authenticationa & authorization.But from no-user,it can be done through SA.
+    There is a secret attached with each SA.This secret have CA and token.
+
+44. Create docker registry secret:
+    kubectl create secret docker-registry myregistrykey --docker-server=DUMMY_SERVER \
+        --docker-username=DUMMY_USERNAME --docker-password=DUMMY_DOCKER_PASSWORD \
+        --docker-email=DUMMY_DOCKER_EMAIL
+
+45. How to the service account are used from pod?
+    Created service account have secret associated with it.
+    Secret => long lived token.
+    This secret gets mounted as volume mount in pod.
+
+46. What is QoS in qosClass of pod spec?
+    It is Burstable is most of the cases.
+
+47. What is the difference between volume and
+
 
 
 

@@ -27,11 +27,11 @@
 9. Difference between count and foreach?
     count:- take number of instance.If list order changes then everything is re created.Adding new item result all recreation.Adding/Removing
               item anywhere in list does trigger resource recreation.
-    foreach:- take number of instance using length function.Only creates the added item from list.Adding/Removing item anywhere in list does not trigger
+    foreach:- take number of instance using length function.Only creates the added item from iterable.Adding/Removing item anywhere in list does not trigger
               resource recreation.Only the changed resource from list is updated.
 
 10. what is dynamic block and how it works?
-    It uses list,map,set datasets with for_each . Then it iterates over mentioned datasets (of map,list,sets) and assigned complex value(with dynamic block name)  to arguments.
+    It uses any collection or structure . Then it iterates over mentioned datasets (of map,list,sets) and assigned complex value(with dynamic block name)  to arguments.
     We can also use lookup(dynamic_block_name.value,"key_to_look",default_value) inside dynamic block.It iterates on key and value accessed inside dynamic_name.value.
     It have content block inside dynamic block.
       dynamic "ingress" {
@@ -62,4 +62,35 @@
 15. How to destroy only a single reource out of multiple reources in main.tf?
     comment the resource and do terraform apply.
 16. Copy file to ec2 in /opt/any_file localtion.
-17.
+17. What is lifecycle meta argument?
+    Its a meta ragument which prodide desorce life cycle begave where it is defined.
+    lifecycle {
+    create_before_destroy = true
+     }
+    prevent_destroy: true
+    ignore_changes: ignore resource drifft.
+18. What is provider?
+    Its a meta argument,
+    provider=google.europe
+
+19. What is count and for_each?
+    both are  meta argument.
+    Count= number (number of repeats)
+    resource a "aa" {
+        count=3
+        tag {
+        key=value-{count.index}
+        }
+    }
+    for_each=takes iterable as input.
+    Note:-
+    a. sensitive values are not preffered in for_each as it displays on screen.
+    b. for_each value cannot be dynamic,i.e value should be statically present when run.
+
+
+20. What is depends on?
+    Its meta argumet take list of depnds resources.
+    depends_on=[resource-a,resource-b]
+
+21. What is destroy time provisioner?
+    Execute provisioner when arhument dhen=destroy is provided.
