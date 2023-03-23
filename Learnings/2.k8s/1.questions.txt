@@ -313,7 +313,8 @@ Reference urls:-
 42. Create nginx with expose.
     k run nginx --image=nginx --expose --port 80 --dry-run=client -o yaml
 
-43. What are kubernetes service account?
+43. Kubernetes structure:- apiVersion,kind,metadata,spec.
+44. What are kubernetes service account?
     k8s uses concept of users for authenticationa & authorization.But from no-user,it can be done through SA.
     There is a secret attached with each SA.This secret have CA and token.
 
