@@ -93,4 +93,4 @@
     depends_on=[resource-a,resource-b]
 
 21. What is destroy time provisioner?
-    Execute provisioner when arhument dhen=destroy is provided.
+    Execute provisioner when argument when=destroy is provided.

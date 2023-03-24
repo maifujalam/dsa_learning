@@ -1,7 +1,8 @@
 1. build docker image.
     a. docker build -t abc .
 2. change port of a running container?
-    a.stop the container b. commit the container c. start the container with port attached .Because only start and create have option to pass -p as port.
+    a.stop the container b. commit the container(docker commit cont_id image:tag) c. start the container with port attached .
+    Because only start and create have option to pass -p as port.
 3. Copy file to container.OR copy file from container to host.
     a. docker cp src dest.Ex:- docker cp abc container_id:/,docker cp container_id:/ .
 4. Can we build docker image from different docker file location?
@@ -11,7 +12,13 @@
                                                                                                            "live-restore": true
                                                                                                            }
 6. Difference between command and entrypoint.
-    Entrypoint is for running executable of the container.CMD is for passing default parameters of the mentioned entrypoint.
+    Entrypoint is for running executable(and args) of the container.CMD is for passing default parameters of the mentioned entrypoint.
+    CMD:  It tells the default command/and or paramter for containaer executable.When executable is static.
+      ex:- CMD echo hello => run container_image =>echo hello | run container_image host =>echo host_id
+    ENTRYPOINT:- It tells the specific executable for container.When executable and params are static.
+         ex:- ENT.. echo hello => run container_image => hello, run container_image host => hello host_id.
+    Bith CMD and ENT..=> ENTRYPOINT ["echo","hello"] CMD ["world"].(If run with no paramter it will print hello world).
+        If run with paramter[run container_id alam] => It will print hello alam.
 
 7. What is EXPOSE is docker file.
     It's for documentation,as it does not actually exposes any port in reality.
@@ -101,7 +108,7 @@
      It is an enhanced build process,by improving performance,storage management,security.It have mount secret feature.
      It can be enabled throuh.In /etc/daemon.json { "features": { "buildkit": true } } . Or with environment variable export DOCKER_BUILDKIT=1
 
-32. Attach a detachh container:-
+32. Attach a detached container:-
     docker attach container_id
 
 37. Where docker daemon configuration stores?

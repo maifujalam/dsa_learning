@@ -34,7 +34,7 @@
    cat /etc/group
 
 7. Creat a user with home directory?
-   useradd -m abc
+   useradd -m abc,-M(without home)
 
 8. Delete user with home directory?
     userdel -r abc

@@ -21,7 +21,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 7. If we dont pass any module,defult command module is taken.
 
 8. Difference between command and shell?
-   command: Run linux commands on vm.Does not process $HOME,<,>,!,|,"*"
+   command: Run linux commands on vm.Does not process special characters, $HOME,<,>,!,|,"*"
    shell: similar to command but supports all above.
 
 9. What is remote_src in copy:
@@ -145,7 +145,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
     flat: it will not prfix with host name if if flat is true.
 
 35. Difference between handlers and notify?
-    notify calls hander in terraform.
+    notify calls hander in ansible.
 
 36. what are ansible plugins?Examples?
     Plugins are the pieces of code that works an ansible core functionality.Ansible comes wwith number of plugins and you can use your own also.
