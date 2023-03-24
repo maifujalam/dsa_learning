@@ -111,8 +111,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
         msg: "'{{ lookup('env', 'HOME') }}' is the HOME environment variable."
 
 27.  Local plabok?
-     It run playbook on localhost without ssh connection.
-    - hosts: 127.0.0.1
+     It run playbook on localhost without ssh connection.    - hosts: 127.0.0.1
       connction: local
 
 28. What are raw module in ansible?

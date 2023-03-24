@@ -331,7 +331,9 @@ Reference urls:-
 46. What is QoS in qosClass of pod spec?
     It is Burstable is most of the cases.
 
-47. What is the difference between volume and
+47. What is the difference between volume and volume_mount?
+    volume: in container spec define source of storage.
+    volume_mount: define where in container volume is mounted.
 
 
 
