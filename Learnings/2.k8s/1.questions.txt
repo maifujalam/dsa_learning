@@ -190,6 +190,7 @@ Reference urls:-
 
 24. what is pause container?
     Each k8s pod is created along with pause container.It has below features:-
+    0. its infra container used for initialization of primary container.
     a. It holds networking ,process namespace for pod.
     b. It bootstrap for container inside pods.
     c. It shares volumes for all container inside.
