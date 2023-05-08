@@ -168,6 +168,14 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
     group: group base on tags
     key_group: group based on key value
 
-40.
+40. How can we make ansible continue on certain tasks if it fails.
+    ignore_errors: true
+
+41. How to run one ansible task on two multiple host having different user and ssh port?
+    Edit inventory file of this hosts.Add ansible_user,ansible_port value in both of the lines of hosts.
+
+42. How to run ansible asks parallely?
+    Can be done using async and poll.
+
 
 

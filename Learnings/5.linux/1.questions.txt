@@ -12,10 +12,10 @@
             4. Slow
             5. ln -s file.txt soft_link.txt
             6. If original file name is updated then all links become dangling.
-            7. Low size.As it only contains path to original file not the contet of original file.
+            7. Low size.As it only contains path to original file not the content of original file.
 
     Hard=>
-        1. same inode number. So update in one file reelects in another file.
+        1. same inode number. So update in one file reflects in another file.
         2. not allowed for directories.
         3. After original file delete, file present.Link work.
         4. fast
