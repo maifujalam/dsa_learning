@@ -18,17 +18,17 @@ def alphabet_rangoli(n):
         else:
             x -= 1
             is_reversing = True
-        print("-"*2*(n-x),end="")
-        bx=[]
-        d=[]
+        print("-" * 2 * (n - x), end="")
+        bx = []
+        d = []
         for j in range(x):
-            bx.append(num_to_letter(n-j))
-        for k in range(x-1):
-           d.append(num_to_letter(n-k))
+            bx.append(num_to_letter(n - j))
+        for k in range(x - 1):
+            d.append(num_to_letter(n - k))
         d.reverse()
-        bx=bx+d
-        bx='-'.join(bx)
-        print(bx,end='')
+        bx = bx + d
+        bx = '-'.join(bx)
+        print(bx, end='')
         print('-' * (2 * (n - x)), end='')
         print('')
 

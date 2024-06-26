@@ -43,7 +43,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 14. How to create ansible role?
     ansible-galaxy init role_name
 
-15. Role folder structure?
+15. Role folder structure?[I]
     It have 7 folders:- default(main.yaml contains default vars),file(enpty,have files),handlers(service handlers),meta(ansible controller),
     tasks(main.yaml tasks),tests(inventory,test.yaml),vars(main.yaml) and 2 files:- README.md,.travis.yaml).
 
