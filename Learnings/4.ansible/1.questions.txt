@@ -141,7 +141,7 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 34. What is ansible fetch module?What is flat in it?
     It is like anisble copy module but in reverse.
     Copy file from target_host to controller.Ex: - fetch: "src=path dest=path "
-    flat: it will not prfix with host name if if flat is true.
+    flat: it will not prfix with host name if flat is true.
 
 35. Difference between handlers and notify?
     notify calls hander in ansible.

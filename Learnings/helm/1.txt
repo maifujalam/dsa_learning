@@ -1,0 +1,28 @@
+1. What files are present in helm chart?
+    a. templates [M]: _hekpers.tpl,_config.tpl and k8s templates.
+    b. values.yaml [M]: The default values for this chart.
+    c. Chart.yaml [M]: Information about helm chart.Like:- name,version,appVersion,description,maintainer,dependencies
+    d. .helmignore : helm package will ignore this file written in by matching regex.[like:- .txt,.gitignore
+    e. README.md : Human redable readme file
+    f. crds: custom resource definations
+    g. charts: contains all dependency charts in abc.tgz
+
+2. In chart.yaml what is the dependency?
+    name: name of the dependency chart
+    version: version of dependency chart
+    repository: http://jfrog.com
+    condition: boolean to enable or disable sub chart.
+3. How to add helm repo in your environment?
+   helm repo add my-repo-name https://charts.helm.sh/incubator
+
+4. How to call added repo in your helm chart?
+   dependencies:
+    - name: my-subchart
+      version: 1.2.3
+      repository: "@my-repo-name"
+
+   using @ at the repository field of dependency.
+5. How to downlaod all sub charts?
+   helm dependency update
+   above command will download all subcharts with <suchartname-version>.tgz inside charts folder.
+6.
