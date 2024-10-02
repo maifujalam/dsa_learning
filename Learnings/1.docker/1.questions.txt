@@ -158,3 +158,5 @@
 42. What happen to container logs/files when its recreated?
     logs: deleted
     files:
+43. Add unqualified registries: /etc/containers/registries.conf
+    unqualified-search-registries = ["registry.fedoraproject.org", "registry.access.redhat.com", "quay.io", "registry.redhat.io", "docker.io"]

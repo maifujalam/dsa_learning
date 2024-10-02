@@ -10,19 +10,29 @@
     c. git checkout: swith to another branch.
     d. git merge master: merge your current branch to master.
     e. git log: check git log, --oneline.
-1. Git pull --rebase.
-2. Revert or undo your commit:-
+3. Git pull --rebase.
+4. Revert or undo your commit:-
     a. Undo and keep history:- git revert commit_id
     b. Undo and keep no history and save files: git reset --soft HEAD~1
     c. Undo ,keep no history,no files(Danger):- git reset --heard HEAD~1
-3. To teporarily save git changes:-
+5. To teporarily save git changes:-
     a. teporarily save: git stash [ can be run multiple times]
     b. check all stash: git stash list
     b. show perticular stash: git stash show stash_id
     c. bring back from temp change: git stash pop stash_id
 
-4. What git rebase?
+6. What git rebase?
    a. Merge brach(mostly master) into another branch(to your working branch).
       It creates new merge commit.
       Its done by: git merge master(from your branch).
-4. Combile multiple commit to one:-
+7. Combile multiple commit to one:-
+8. Remove git repo size files> 100M:
+    a. git filter-repo --strip-blobs-bigger-than 100M
+    b. git push --force --all
+    c. git push --force --tags
+9. Remove all secret files:
+    a. git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ./secrets.txt" --prune-empty --tag-name-filter cat -- --all
+    b. git remote add origin https://github.com/maifujalam/k8s_vagrant.git
+    c. git push origin --tags --force
+10. Fir repo Size: git count-objects -vH  or du -sh (s: summery h: human).
+11.

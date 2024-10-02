@@ -25,4 +25,10 @@
 5. How to downlaod all sub charts?
    helm dependency update
    above command will download all subcharts with <suchartname-version>.tgz inside charts folder.
-6.
+6. Difference between dependency build and update?
+   build: Rebuild chart director based on chart.lock.If no chart.lock found then it do update.
+   update: Rebuild chart direcory based on chart.yaml and rebuild chart.lock.
+
+7. How to get all helm related env variables?
+    helm env
+8.

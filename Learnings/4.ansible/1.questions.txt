@@ -176,6 +176,17 @@ adhoc commands: https://www.middlewareinventory.com/blog/ansible-ad-hoc-commands
 
 42. How to run ansible asks parallely?
     Can be done using async and poll.
+43. Difference between incude_tasks vs import_tasks?
+    include_tasks: Dynamically include tasks at runtme(based on conditions) .Run time.
+    import_task: Staticlly include tasks file.
 
+44. Install connections:
+    a. ansible-galaxy collection install community.kubernetes
+    b. ansible-galaxy collection install -r requirements.yaml (create requirements.yaml first)
+    Sample of requirements.yaml:-
+    collections:
+      - name: community.kubernetes
+        version: 2.0.1  # Optional: specify version
+      - name: ansible.posix  # Install another collection
 
-
+45.
