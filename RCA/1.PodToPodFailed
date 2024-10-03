@@ -1,0 +1,15 @@
+Debug Pod to Pod Communication:-
+1. test the Endponts betwenn two node.For tha use pod of calico-api server.This in range 192.168.0.0./16.
+Master: curl -k https://192.168.219.66:5443/version
+Worker: curl -k https://192.168.171.69:5443/version
+Make sure that each endpoint gives successs form each node.
+
+After endpoint gives,200.We are sure that the backend service is working as expected.
+
+2. Now,test the cluster ip this is in range:-10.96.0.0/12.
+   Cluster ip of calico-api server: curl -k https://10.110.50.85:443/version
+   If the response is successful partually(1/number-of-nodes).Then its only able to successful to get 200
+   from itself and unable to get 200 from other nodes.
+
+3. RCA: In my case aws security group which connets to two VMs has only alllowd all TCP connectionbut not UDP.
+        So I allows all trrafic from all port to self.
