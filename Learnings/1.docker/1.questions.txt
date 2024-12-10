@@ -160,3 +160,16 @@
     files:
 43. Add unqualified registries: /etc/containers/registries.conf
     unqualified-search-registries = ["registry.fedoraproject.org", "registry.access.redhat.com", "quay.io", "registry.redhat.io", "docker.io"]
+
+44. Docker ADD vs Docker COPY Commands?
+    COPY:-
+    1.Its simply used for copying files.
+    2.It copies file from build context,or from multi stage build.
+    3. You have to use wget,tar command to fulfill requirement.And requires its binary.
+    4. It requires checksum validation.
+    5. File are present in each stape of build and present in final image.
+    ADD:-
+    1. Its used for downloading file from webserver,git,or tar file auto extraction from build context.
+    2. It have inbuild feature of wget and tar.And it does not requires its binary.
+    3. Inbuild checksum vaidation.(Need to pass checksum value in --checksum parameter).
+    4. File are cached and only available during the build and does not persist in the final image.
