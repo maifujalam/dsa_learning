@@ -1,0 +1,13 @@
+1. List kernal modules: lsmod
+2. Describe a module: modinfo tls
+   Description: transport layer security
+3. What is a kernal module?
+  - A device driver which provides support for new hardware.
+  - support file systems like NFS.
+4. Load module at runtime: modprob rfkill
+5. Unload a system module at runtime: modprob -r rfkill
+6. Load module at boot up: /etc/modules/module.d/load.conf
+    <module_name>
+7. lock a module: /etc/modules/modules.d/blacklist.conf
+    blacklist <MODULE_NAME_1>
+    install <MODULE_NAME_1> /bin/false

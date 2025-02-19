@@ -1,0 +1,73 @@
+1. lsblk: list available storage devices
+2. Mount a devise to a location: mount /dev/sad1 /mnt/data
+3. List full device path and usage: lsblk -pf [f:full UUID,) p:path /dev/sda1,/dev/sad2]
+4. Can we mount devide by UUID?
+   mount UUID="11..aa" /mnt/data1
+5. Where the USB is usually mounts? /run/media
+6. How to unmount? umount /mnt/data1 [ path where device is mounted]
+7. What is inode?
+  - inode is Index Node
+  - It stores the metadata of the file.
+  - stat <file_name>
+  - An inode does NOT store the file name or actual data, but it contains:
+    - file type (file,dir,link)
+    - timestamo (created,modified,accessed)
+    - size
+    - permission
+    - UID,GID
+8. how to find free inode number?
+  df -i [disk free]
+9. Find a file using inode number? find ~ -inum 72670210
+10. How to find the process which is using a given file system? lsof /mnt/dat1
+11. Cannot unmount a dir from that dir path.You have to go out of that dir first.
+12. What is MBR (Master Boot Record)partition scheme?
+  - Its a old partition scheme
+  - It present on the syatem that have BIOS firmware.
+  - It is slow and support upto 4 partition.
+  - It can have disk size of upto 2 TB.(32 bit partition side).
+
+13. What is GPT (GUID[Globally Unique Identifier ] Partition Table) partition scheme?
+  - It uses UEFI (Unified Exteded Firmware Interface)
+  - It provied max 128 partitions.
+  - Max size 8 ZiB (Zebibyte or 1024 TB).
+  - GPT partition is mostly ayt the first partition table and size os 100MB.Back at teh end(optional).
+13. Whats a firmware?
+   Its a piecle of software that stores at non volatile momory ROM of motherboard.USed to boot up os.
+
+14. How to edit a partition ? parted command
+15. partition new disk sdb ? parted /dev/sdb
+16. Difference between 1GB and 1 GiB? 1GB=1000MB 1GiB=1024 MiB
+17. How to partition a disk?
+    a. Distinguish the disk type MBR or GPT.
+       $ parted /dev/sdb mklabel gpt [or msdos for MBR]
+    b. Create new partition of 200 MiB: parted /dev/sdb mkpart primarty xfs 2048s 200MiB (parted /dev/sdb help mkpart)
+     [Important note: When you specify a filesystem type like xfs or ext4 in parted, it does not actually create
+     the filesystem.It only sets a partition type label. This label is just metadata and does not format the partition.
+    c. Format the new partition by creating a file system: mkfs.xfs /dev/sdb1 [ lsblk to get the new block name ]
+    d. Mount to fstab: /mnt/p1
+      - mkdir -pv /mnt/p1
+      - mount /dev/sdb1 /mnt/p1
+      - Verify if its mountes: mount | sdb1
+     e. Create permanent entry: UUID="uuid of /dev/sdb1" /mnt/p1 defaults 0 0
+     f. mount: mount -a [a:all]
+     g. check the status: du -hiT [h: human i: inodes T: Type]
+    [Note: to remeber it like: mk[label,part,fs]
+
+18. What is 2048s in partitioning?
+  Legacy MBR (Master Boot Record) reserves the first 512 bytes (sector 0) for the bootloader.
+  And GPT uses upto 1 MB.
+  We are allocating 2048 sectors (1 MB) for boot loader.
+  Most disks uses 512-byte as 1 sector size.So 2048s * 512-byte=1MiB
+
+19. Whats the usual size of boot loaders?
+  MBR: 446 bytes (inside the first 512 bytes of the disk)
+  GPT: Its 100MiB.Thats why 1 MB is resereved at 1st sector of boot device.
+
+20. How to delete a partition?
+   - Unmount the partition: umount /mnt/p1
+   - Delete the partition: parted /dev/sdb rm 1
+
+21. Create swap partition of 300MB on /dev/sdc with partition type GPT.
+  a. Label disk as GPT: parted /dev/sdc mklabel gpt [verify:  parted /dev/sdc print ]
+  b. Create swap partition: parted /dev/sdc mkpart primary linux-swap 2048s 300MiB
+  c. create

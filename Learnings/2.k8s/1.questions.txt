@@ -244,6 +244,7 @@ Reference urls:-
     Create role: kubectl create role foo --verb=get,list,watch --resource=pods,pods/status
     clusterrole: kubectl create clusterrole foo --verb=get,list,watch --resource=pods,pods/status
     rolebinding:  kubectl create rolebinding role_binding_name --role=admin --user=user1
+    Ref: https://aungzanbaw.medium.com/a-step-by-step-guide-to-creating-users-in-kubernetes-6a5a2cfd8c71
 
 33.Verify authentication and authorization?
    kubectl auth can-i get,list pod -as new_user
@@ -276,6 +277,7 @@ Reference urls:-
 37. How to add taint and remove taint?
     taint: k taint node worker2 abc:NoSchedule
     untaint: k taint node worker2 abc:NoSchedule-
+    taint: k taint node key1=value1:NoSchedule
 
 38. What are c group in linux?
     control groups.It allowes you to allocate resources like:- CPU time,memory,network bandwith,or combination of these.This c group run along with the users of the system.
@@ -283,11 +285,11 @@ Reference urls:-
 
 39. What are tolerations?
     taint => applies on nodes.
-    tolerations => applies on pods.Pod have operators:- Equal,Exists.Effects can be  NoSchedule or NoExecute.
+    tolerations => applies on pods.Pod have operators:- Equal,Exists.Effects can be NoSchedule or NoExecute.
         tolerations:
         - key: "key1"
-          operator: "Equal"
           value: "value1"
+          operator: "Equal"
           effect: "NoSchedule"
 
 
@@ -331,6 +333,8 @@ Reference urls:-
 
 46. What is QoS in qosClass of pod spec?
     It is Burstable is most of the cases.
+    The possible QoS classes are Guaranteed(3rd), Burstable(2nd), and BestEffort(1st evict).
+    When a Node runs out of resources, Kubernetes will first evict BestEffort Pods running on that Node, followed by Burstable and finally Guaranteed Pods
 
 47. What is the difference between volume and volume_mount?
     volume: in container spec define source of storage.

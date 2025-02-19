@@ -1,0 +1,16 @@
+1. What is selinux policies?
+  Security enhanced linux policies.It follows default deny all unless explicity allowed.
+2. Different selinux modes?
+  - enforcing: SELinux the loaded and enforce policies. (Default mode)
+  - permissive: SElinux load policies bit does not enforces it.It logs any access violation of policy.
+  - disabled: Turnoff selinux.
+3. Get current selinux status: getenforce
+4. SELinux config path: vi /etc/selinux/config
+   SELINUX=enforcing,permissive,disable
+
+5.  Set selinux: setenforce 1 [It doesnbt work on rhel 9]
+6. How to get selinux status:-
+    We ca use -Z with ps, ls, cp, and mkdir commands all use the -Z option
+
+7. How to chgange the file context:
+     chcon

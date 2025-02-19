@@ -1,0 +1,19 @@
+1. Create 3 files in one command:
+   # echo {1,2,3}.log [ # Root $user ]
+   1.log 2.log 3.log
+2. [user@host glob]$ echo file{a..c}.txt
+   filea.txt fileb.txt filec.txt
+   [user@host glob]$ echo file{a,b}{1,2}.txt
+   filea1.txt filea2.txt fileb1.txt fileb2.txt
+   [user@host glob]$ echo file{a{1,2},b,c}.txt
+   filea1.txt filea2.txt fileb.txt filec.txt
+
+3. Which pattern matches only file names that contain a number?
+   *[[:digit:]]*
+
+ 4. Which pattern matches only file names that begin with an uppercase letter?
+
+5. Check the content of all folders art once?
+  ls *
+
+6.

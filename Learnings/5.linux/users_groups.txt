@@ -1,0 +1,95 @@
+1. Every running process in a system runs as a particular user.
+2.The user that is associated with a running process determines the files and directories that are accessible to
+  that process.
+3. Different types of users:-
+  a. superuser (root,uid=0,gid=0)
+  b. system users ( non proviledged users used by process to manage its files and other resources(network,syscalls).
+     ex:- (nginx,shutdown)
+  c. regular users (vagrant)
+4. How to know the uid and gid of a user? id <user_name> .Like:- id vagrant
+5. List the owner of the current directory? ls -dl [d: directory l: long format]
+6. Why ps command shows only few process?
+  It only shoes process of the current shell.
+7. [vagrant@master vagrant]$ cat /etc/passwd | awk 'NR==1 {print}'
+   root:x:0:0:root:/root:/bin/bash
+   user_name:user_enc_password_which_used_to_store_here_before_now_a_place_holder:uid:gid:user_description:home_dir:shell
+8. cat /etc/group
+   root:x:0:
+   [ group_name: password_encrypted_place_holder:group_id]
+9. Add user to a group: usermod -aG <user> <group> . usermod -aG vagrant root
+10. If u ran a command as sudo and sudo blocks it,where the logs will be stored? /var/log/secure
+11. How to add user to sudo permission.
+   a. visudo
+   b. add line: alam ALL=(ALL:ALL)
+      [ 1st ALL [1st ALL: give access to any/all host in a multi host system.(LDAP)]
+      [ 2nd and 3fd ALL,(ALL:ALL) is (user:group) means alam can run command as any user or any group)
+      [ 4th ALL, can run any program]
+12. Make sure that alam2 can run only restart nginx :
+    alam2 ALL=(ALL:ALL) /usr/bin/systemctl restart nginx
+
+13. User in games group can run id command as operator user only.
+    %games ALL=(operator) id
+
+14. Run sudo command as ansible user without any password.
+    ansible ALL=(ALL:ALL)  NOPASSWD:ALL
+
+15. Switch to user user1:
+    $ su - user1
+
+16. Switch to sudo user: $ sudo su [ Does not start a login shell → Keeps the current environment intact].
+    $ echo $HOME => /home/vagrant
+17. Switch tp sudo user with full login shell: $ sudo su - [ start a full login shell and load roots environment
+    completely] .Example $ echo $HOME => /root
+18. Delete user and its home dir: userdel -r user1 [ r: delete all files in /home/user1]
+    If not done then this files becomes
+
+19. Find all file in the syste owned by no user and no group:
+    find /home -nouser  -nogroup
+20. What are the UID ranges:-
+    UID 0: root
+    UID 1-200: System account UIDs statically assigned to system process.
+    UID 201-999:UIDs assigned to system process dynamically from UID pool that do not own file in the system.
+    UID 1000>= : UID to unprivileged users.
+
+21. Update the description/comment for a perticular user?
+    usermod -c "new comment " user1
+
+22. Assign no login to a1:
+    usermod -s /sbin/nologin a1
+
+23. Whats in file  /etc/login.defs ?
+  Config file for system-wide settings for user account creation, password policies, and login behaviors.
+  Its used for groupadd,useradd,passwd policies.'
+24. File permission: https://phoenixnap.com/kb/linux-file-permissions
+25. Change file permission:
+    Symbolic mode: chmod u=rwx,g=rwx,o=rwx [file_name]
+    Absolute mode: chmod 777 file_name
+26. Set password management policy.
+    in a file at /etc/shadow
+    vagrant:$6$J9...F40:19732:0:99999:7:::
+    <username>:<encypted_password>:<19732: seconds_passed_since_epache_when_password_changed>:<0: The_Minimum_No_
+    od_days_to_pass_when_user_can_change_password_again>:<9999: days_to_expire_password>:<7:warn_no_ofdays_before_
+    the_password_expired_>:<Never(or_blank):the_no_od_days_since_epoche_to_expire_account:<last_empty_reserver_future>
+27. Create a password policy to:-
+    Min No of days to wait before password expired: 0
+    Maximum no of days a pass can go wothout change: 90
+    Warn before the password expires: 7
+    If password not changes in days after expiry the account will be disabled: 15
+    chage -m 0 -M 90 -W 7 -I 15 user
+
+28. Ask the user to change the password on next login:
+    change -d 0 user
+
+29. User left the company,lock its account:
+    usermod -L user
+    usermod -U user(unlock it)
+
+30. User will leave the company on 20/02/2026 ,lock it on this date?
+  usermod -l -e 20-02-2025 user
+
+31. Make user user no login:
+    usermod -s /sbin/nologin user
+
+32. Find the date after 180 days.
+  date -d "+180 days" +%F  [F:Fulldate T:Fulltime]
+

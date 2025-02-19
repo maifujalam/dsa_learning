@@ -1,0 +1,6 @@
+1. Create venv: python3 -m venv myvenv
+2. Activate: source myvenv/bin/activate
+3. deactivate venc: deactivate
+4. list all packages in venv: pip3 list
+5. Install package: pip3 install kubernetes ssh2-python
+6. Uninstall package: pip3 uninstall ssh2-python

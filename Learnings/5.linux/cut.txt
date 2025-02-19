@@ -28,3 +28,12 @@
 10. Print 2nd to 4th row for colum ?
     cut -d ' ' -f 1-2 file2.txt
 
+11. Cut the string deviding at specific point.
+  cut -d/ -f1 →  [ Cut and divite at point where / is present] [f: field 1:first field,2: second field]
+  -d/ → Uses / as the delimiter.
+  -f1 → Gets the first part (IP) before /.
+  Ex:- 192.168.1.100/24 | cut -d/ -f1
+       192.168.1.100
+
+12.
+

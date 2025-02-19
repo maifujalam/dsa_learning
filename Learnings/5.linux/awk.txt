@@ -33,6 +33,10 @@
 11. Find and print with line number?
     awk '/50000/{print NR,$0}' file2.txt   (Hare NR= Number of records,$0 is whole context it searched and found).
 
-12.
+12. Print the IP of the machine:-
+    ip a | grep inet | awk 'NR==3{print $2}' | cut -d/ -f1
+
+13. Print the ip address of kube-system pods:-
+     k -n kube-system get po -o wide | awk '{print $8}' | sed '1d' [ 1d: removes 1st row]
 
 

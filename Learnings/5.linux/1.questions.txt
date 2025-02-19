@@ -14,6 +14,7 @@
             6. If original file name is updated then all links become dangling.
             7. Low size.As it only contains path to original file not the content of original file.
 
+
     Hard=>
         1. same inode number. So update in one file reflects in another file.
         2. not allowed for directories.
@@ -22,6 +23,7 @@
         5. ln file.txt hard_link.txt
         6. change file name works same
         7. same size of files.
+        8. Has to be on the same file system.(lsblock)
 
 4. Display file contenet without using cat?
     sed '' file.txt,awk '{print}' file.txt
@@ -57,6 +59,15 @@
 
 13. How to get std output and std error at same time?
     ls -he &> out.txt
+    https://phoenixnap.com/kb/bash-redirect-stderr-to-stdout
+    https://www.redhat.com/en/blog/redirect-shell-command-script-output
+    0:Input 1:Output 2: Error
+
+13.1 What is a file descriptor?
+   is a non negative no(0,1,2) assigned by OS to an open file resource.
+   Its used to access and manage resources like:- file,sockets,pipes and other input output operations.
+   Syscall involves:- open(),create(),read(),write(),close().
+
 
 14. How to display filename and args in shell script?
    $0(filename),$n (args name),$#(no of arguments),$*(all arguments in double quated),
@@ -68,4 +79,16 @@
     space to tab: echo " hi hello world" | tr [:space:] "\t"
     tab to space: echo "      hi      hello   world   " | tr -s [:space:] ' '  .Hare -s is to remove sequential space
 
+16. Difference between yum and dnf?
+     DNF fast and yum is slow.
+     DNF uses low memory usage and yum uses high.
+     DNF better handles dependencies.Sometimes yum cannot.
+     DNF uses python3 yum uses python2.
 
+17. How to list installed software with dnf?
+     dnf list python3*
+
+18. How to search package? dnf search nginx*
+19. Install packahe: dnf -i aa.rpm
+20 how to rollback a package install: dnf history && dnf undo <sl_no> [6: 6th step installed]
+21.

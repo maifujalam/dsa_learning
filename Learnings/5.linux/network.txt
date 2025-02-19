@@ -1,0 +1,44 @@
+1. Which process uses what port?
+    netstat -nltp [n: numeric l: listening t: tcp p: process_name/id]
+2. Aletrname of above command?
+    ss -nltp
+
+3. Whats difference in dig and nslook up?
+  dig: jenkins.maifuj.com
+    ; <<>> DiG 9.16.23-RH <<>> jenkins.maifuj.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 64480
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+    ;; QUESTION SECTION:
+    ;jenkins.maifuj.com.            IN      A
+
+    ;; ANSWER SECTION:
+    jenkins.maifuj.com.     3       IN      A       43.204.44.159
+
+    ;; Query time: 16 msec
+    ;; SERVER: 10.0.2.3#53(10.0.2.3)
+    ;; WHEN: Wed Feb 19 08:55:03 +05 2025
+    ;; MSG SIZE  rcvd: 52
+
+  nslookup:  nslookup jenkins.maifuj.com
+
+    Server:         10.0.2.3
+    Address:        10.0.2.3#53
+
+    Non-authoritative answer:
+    Name:   jenkins.maifuj.com
+    Address: 43.204.44.159
+
+    Dig:
+      - Detailed view (Recort type,location)
+      - Best for scripting
+4.How many CPU present? lscpu
+5.How to set process priority?
+  - Process priority is set using,process nice value.
+  - Process nice value is from -20 to 19.Low value is high priority.Default 0.
+  - top command show NI(Nice value)
+  - Slect the process -> press r to reassign nice value.
+
+6.

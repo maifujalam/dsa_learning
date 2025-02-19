@@ -1,0 +1,26 @@
+1. What are different process signals and its numbers?
+  Sig Name  Def
+  1  HUP   HangUP This signal is sent when:- terminal of the process closes,process config reload without restart.
+  2  INT Interuption: It cuases program termination.This signal sent from keyboard ctrl+c.
+  9  KILL Causes abrupt program termination. It cannot be blocked, ignored, or handled; consistently fatal.Ungraceful.
+  15 TERM (Default)  Causes program termination.it can be blocked, ignored, or handled.Its graceful termination.
+  18 CONT Continue:  Sent to a process to resume if stopped
+  19 STOP Suspends the process. It cannot be blocked or handled.
+
+Red Hat recommends to send SIGTERM first, and then to try SIGINT; and only if both fail, to try again with SIGKILL.
+  15[gracefull terminate]->2[keyboard interupt]->9[kill]
+
+2. List current process and its cpu/meory utilization wuth user and group id?
+    ps -eo pid,user,uid,group,gid,%cpu,%mem,cmd --sort=-%cpu | head -n 20
+3. Kill a process.
+ kill -SIGTERM 5205;
+4. What is ps -aux? [a:show all process, u:User who own the process,x:Include process which not attached to terminal]
+5. Kill a process by its executer/binary name? pkill sleep
+6. List process and its process name for user root? pgrep -u root -l
+7. Show all process in sorted memory order:
+   ps -eo pid,user,ni,comm,%cpu,%mem --sort=-%cpu [ e: show all process,o=output]
+   ps -eo pid,command,ni,user,%cpu,%mem --sort=-%mem [sort mem decending]
+8. How to update the nice value?
+    sudo renice -n 10 6097 [ 6097: process id]
+9. How to start process with its nice value? $ nice -n 11 sleep 500 &
+10.

@@ -1,0 +1,47 @@
+1.What are linux file permissions:
+  standard: rwx
+  special: Special file permissions:-
+    a. set uid: u+s
+    b. set giu: g+s
+    c. set sticky bit:o+t
+    [usgsot] -> sst
+
+2. What is SUID[u+s]?
+  - When a file with SUID is executed, it runs with the owner's privileges instead of the user's.
+  - Example:- /bin/passwd, where a normal user can change their password, but the file runs as root.
+  [root@master vagrant]# ls /bin/passwd -al
+  -rwsr-xr-x. 1 root root 32648 Aug 10  2021 /bin/passwd
+  - Example to set uuid: chmod u+s /path/to/file [ to remove u-s ]
+
+3. What is GUID[g+s]?
+  - If set on a file, it runs with the group's privileges.Example: chmod g+s /path/to/file
+  - If set on a directory, all new files created inside inherit the group ownership.
+  - Example: Shared folder.
+    mkdir shared
+    chmod g+s shared
+
+4. What is sticky bit?
+   - If set on a directory, only the owner of a file inside that directory can delete or modify it.
+   - Commonly used in /tmp, where multiple users have access, but they cannot delete each other's files.
+
+5. How to update special permission?
+  Setting Special Permissions
+  • Symbolic : setuid = u+s; setgid = g+s; sticky = o+t
+  • Octal : In the added fourth preceding digit; setuid = 4; setgid = 2; sticky = 1
+
+6. What is umask?
+   The default file permission filter bits used when nee file/folder is created.
+   Example: $umask => 0002 [ 0: special 0:owner o: group 2:others].It removes write permission from users
+                            new file and folder both].
+
+7. Where to update the umask: /etc/login.defs
+8. What is init file permission?
+   Permission of a file before umask filter is applied?
+   file: 0666
+   folder: 0777
+
+9. Whats the default umask value?
+  file: 0022 [022]
+  folder: 0700
+
+10.

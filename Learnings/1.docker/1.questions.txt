@@ -23,7 +23,7 @@
         Entrypoint can be used to use non default shell.(bash,sh,zsh).
 
 7. What is EXPOSE is docker file.
-    It's for documentation,as it does not actually exposes any port in reality.
+    It's for documentation, as it does not actually expose any port in reality.
 
 8. Docker mount?
    docker run -d \
@@ -32,7 +32,7 @@
      nginx:latest
 
 9. What is docker compose?
-    its a yaml file which describle docker services,volumes,networks to spin up whole stack of applicatoion at once.
+    its a yaml file which describe docker services,volumes,networks to spin up whole stack of applicatoion at once.
 10. What is difference between docker-compose v2 and v3?
     v3 supports docker-swam.I have use v 3.9.
 11. Docker default port?
@@ -143,7 +143,7 @@
 
 36. Docker file example: https://github.com/komljen/dockerfile-examples
 37. How to check the docker file commands of the docker image?
-    docker history docker_imae --no-trunc
+    docker history docker_image --no-trunc
 38. How to copy multiple files in DOckerfile?
     copy file1 file2 ./
 39. Different docker container states:- docker inspect container | grep state

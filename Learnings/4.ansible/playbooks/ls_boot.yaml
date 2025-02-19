@@ -1,0 +1,11 @@
+- name: Ls boot
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Ls on shell
+      shell: ls /boot
+      registry: r1
+
+    - debug:
+        msg: "{{r1}}"
