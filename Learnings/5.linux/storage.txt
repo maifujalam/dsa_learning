@@ -70,4 +70,7 @@
 21. Create swap partition of 300MB on /dev/sdc with partition type GPT.
   a. Label disk as GPT: parted /dev/sdc mklabel gpt [verify:  parted /dev/sdc print ]
   b. Create swap partition: parted /dev/sdc mkpart primary linux-swap 2048s 300MiB
-  c. create
+  c. Format a swap: mkswap /dev/sdc1
+  d. Mount a swap partition:
+    UUID="" swap swap defaults 0 0
+  e. Reload daemon: systemctl daemon reload

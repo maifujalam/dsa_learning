@@ -41,4 +41,77 @@
   - top command show NI(Nice value)
   - Slect the process -> press r to reassign nice value.
 
-6.
+6. Show the live statistics of number of transaction sent and recived by interface eth1?
+  ip -s link show eth1
+
+  3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+      link/ether 08:00:27:16:e3:f7 brd ff:ff:ff:ff:ff:ff
+      RX:  bytes packets errors dropped  missed   mcast
+         4292470   59865      0       0       0      24
+      TX:  bytes packets errors dropped carrier collsns
+         7734231   62271      0       0       0       0
+      altname enp0s8
+
+  TR: Transferred Packets.TR: Received packets.
+
+7. How to check the route table?
+  ip route
+
+  [root@server1 vagrant]# ip route
+  default via 10.0.2.2 dev eth0 proto dhcp src 10.0.2.15 metric 100 (Rule-3)
+  10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 metric 100  (Rule-2)
+  192.168.56.0/24 dev eth1 proto kernel scope link src 192.168.56.11 metric 101 (Rule-1)
+
+  Rule-1
+  All packets that are destined for network 192.168.56.0 are sent directly through ethernet eth1 gateway 192.168.56.11
+  as its directly connected to that network.
+
+  Rule-2:
+  All packets that are destined for network 10.0.2.0/24 are sent through gateway 10.0.2.15 of ethernet eth0 as its
+  directly connected to this network.
+
+  Rule-3:
+  All other packets are sent to default gateway 10.0.2.15 through eth0.As its a nat gateway its doing SNAT to intenet.
+
+8. How to trace the hops?
+   tracepath jenkins.maifuj.com
+   ubuntu@bastion:~$ tracepath jenkins.maifuj.com
+    1?: [LOCALHOST]                      pmtu 9001
+    1:  ip-172-31-0-1.ap-south-1.compute.internal             0.220ms pmtu 1500
+    1:  no reply
+    2:  ec2-43-204-44-159.ap-south-1.compute.amazonaws.com    1.681ms reached
+    [ here serial no 2 means 2nd hop its resolved]
+
+9. Check port associated with service?
+    sudo netstat -nltp [n: numeric.l=listening,t:tcp,p:process]
+    sudo ss -tap [t: tcp a:all p:process]
+
+10. How to use cli to configure network?
+    a. check device status: nmcli dev status
+    b. add new connection:
+    sudo nmcli connection add con-name sip type ethernet ifname eth1 ipv4.addresses 192.168.56.20 ipv4.gateway 192.168.56.11
+    here remember the order: connection name,connection type,interface,ipv4 address,ipv4 gateway,autoconenct yes (optional)
+    c. modify a connection:
+     - nmcli connection show
+     - add connection property: nmcli connection modify sip +ipv4.dns 1.1.1.1
+       delete connection property: sudo nmcli connection modify sip connection.autoconnect no
+       Override connection property: sudo nmcli connection modify sip ipv4.addresses 192.168.56.21
+    d. delete ca connection: nmcli connection delete sip
+    e. Config file path: sudo vi /etc/NetworkManager/system-connections/sip.nmconnection [then do nmcli conne reload]
+    f. restart interface: nmcli connection down eth1 && nmcli connection up eth1
+
+11. Set hostname :  hostnamectl set-hostname abc (
+12. get hostname: hostnamectl
+13. What are the diffferent types of hostname:-
+    transient hostname: Assiged by DHCP which changes dynamically.Many not persist after reboot.
+    static hostname: Assigned by user and its permanent.Its stored in /etc/hostname
+14. what does "nslookup google.com 10.0.2.3" means?
+    It means resilve google.com using DNS resolver 10.0.2.3 [ here 10.0.2.3 is the dns resolver for Virtual box NAT]
+
+15. What is host command?
+  Its simple command to resolve dns to IP.Similer to nslook up.
+
+16.
+
+
+

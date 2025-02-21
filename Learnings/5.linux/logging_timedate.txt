@@ -1,0 +1,12 @@
+1. How to preserve systemd-journal?
+  - Add Storage=persistent at /etc/systemd/journald.conf
+  - restart it: systemctl restart systemd-journald.service
+2. Check the last boot: journalctl -b o [--list-boots].This will print serial order of boots.
+3.
+
+Date-Time
+1. timedatectl: check clock sync status
+2. timezons: timedatectl list-timezone
+3. set timexone: timedatectl set-timezone Asia/Kolkata
+4. set time: timedatectl set-time 12:12 (It will say failed with error as automatic time sync is enabled]
+5. disbale NTP: timedatectl set-ntp false

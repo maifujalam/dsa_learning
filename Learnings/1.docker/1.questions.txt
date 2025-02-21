@@ -3,6 +3,8 @@
 2. change port of a running container?
     a.stop the container b. commit the container(docker commit cont_id image:tag) c. start the container with port attached .
     Because only start and create have option to pass -p as port.
+    d. Share a docker to frind: docker save -o custom_image.tar my_custom_image
+    e. Load the tar to image: docker load -i custom_image.tar
 3. Copy file to container.OR copy file from container to host.
     a. docker cp src dest.Ex:- docker cp abc container_id:/,docker cp container_id:/ .
 4. Can we build docker image from different docker file location?
@@ -75,7 +77,7 @@
     overlay: used in docker swam to connect multiple docker daemon.
     ipvlan: Provides VLAN give ipv4 and ipv6 addressing.
     macvlan: Leagacy app or any app which required MAC id to operate.
-    none: If you want to diabl networking on container stack.Only loopback Interface is created.
+    none: If you want to disable networking on container stack.Only loopback Interface is created.
 
 23. how to use docker host network.
     docker run  --network=host -name=abc nginx
@@ -117,7 +119,7 @@
     /etc/docker/daemon.json
 
 33. What is docker socket?
-   /var/run/docker.sock
+   /var/run/docker.sock  For containerd: ZAazSxszaxw cDQ/var/run/containerd/containerd.sock
 
 36. Where container stores the log?
     /var/log/containers/container_name_id.log
@@ -157,7 +159,7 @@
     file: presist
 42. What happen to container logs/files when its recreated?
     logs: deleted
-    files:
+    files: present (check it)
 43. Add unqualified registries: /etc/containers/registries.conf
     unqualified-search-registries = ["registry.fedoraproject.org", "registry.access.redhat.com", "quay.io", "registry.redhat.io", "docker.io"]
 

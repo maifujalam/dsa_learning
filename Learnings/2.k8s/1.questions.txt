@@ -340,6 +340,8 @@ Reference urls:-
     volume: in container spec define source of storage.
     volume_mount: define where in container volume is mounted.
 
+48.  k explain pod --recursive  | grep -A 3 -B 3 command
+
 
 
 

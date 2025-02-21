@@ -23,4 +23,5 @@ Red Hat recommends to send SIGTERM first, and then to try SIGINT; and only if bo
 8. How to update the nice value?
     sudo renice -n 10 6097 [ 6097: process id]
 9. How to start process with its nice value? $ nice -n 11 sleep 500 &
-10.
+10. System call tracing:-
+  - trace syscall for process: strace

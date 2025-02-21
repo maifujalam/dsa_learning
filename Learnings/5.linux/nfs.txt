@@ -1,0 +1,5 @@
+NFS(Network File System)
+1. Difference between NFS3 and NFS4?
+  - NFS3 uses both TCP and UDP but nfs v4 uses only TCP.
+2. # dnf install nfs-utils
+3.
