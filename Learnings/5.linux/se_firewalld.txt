@@ -1,0 +1,6 @@
+1. how to check SE Alert?
+2. How to check firewall default node?
+  # firewall-cmd --get-default-zone
+    public
+3. Set to a different zone: sudo firewall-cmd --set-default-zone public
+4. How to manage selinux? sudo semanage port -a -t http_port_t -p tcp 10001

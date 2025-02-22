@@ -93,3 +93,6 @@
 32. Find the date after 180 days.
   date -d "+180 days" +%F  [F:Fulldate T:Fulltime]
 
+33. Run a code as diffrent user?
+   change to no root user run as that user: su <differnt_non_rrot_user> -c "shell_command"
+   change to root user: sudo su <differnt_non_rrot_user> -c "shell_command"

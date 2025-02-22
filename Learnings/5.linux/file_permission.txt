@@ -12,10 +12,14 @@
   [root@master vagrant]# ls /bin/passwd -al
   -rwsr-xr-x. 1 root root 32648 Aug 10  2021 /bin/passwd
   - Example to set uuid: chmod u+s /path/to/file [ to remove u-s ]
+  - when only uid is set and no exec permision is there then it shows as S.
+  - when uid and exec is set thn permission is shown as s
 
 3. What is GUID[g+s]?
   - If set on a file, it runs with the group's privileges.Example: chmod g+s /path/to/file
   - If set on a directory, all new files created inside inherit the group ownership.
+  - when only gid is set and no exec permision is there then it shows as S.
+  - when gid and exec is set thn permission is shown as s
   - Example: Shared folder.
     mkdir shared
     chmod g+s shared
@@ -23,6 +27,8 @@
 4. What is sticky bit?
    - If set on a directory, only the owner of a file inside that directory can delete or modify it.
    - Commonly used in /tmp, where multiple users have access, but they cannot delete each other's files.
+   - when no exec permission is set with others type.and we apply sticky bit its shown as T.
+   - when exec permission set and sticky bit is set it shows as t.
 
 5. How to update special permission?
   Setting Special Permissions

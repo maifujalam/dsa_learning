@@ -25,3 +25,9 @@ Red Hat recommends to send SIGTERM first, and then to try SIGINT; and only if bo
 9. How to start process with its nice value? $ nice -n 11 sleep 500 &
 10. System call tracing:-
   - trace syscall for process: strace
+
+11.How to get the max limit of open file in a system?
+  ulimit
+  current open file descriptor throughout system: lsof | wc -l
+
+12.
