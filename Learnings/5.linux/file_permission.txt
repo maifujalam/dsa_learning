@@ -1,5 +1,5 @@
 1.What are linux file permissions:
-  standard: rwx
+  standard: rwx (421)
   special: Special file permissions:-
     a. set uid: u+s
     b. set giu: g+s

@@ -28,9 +28,9 @@
 
 13. What is GPT (GUID[Globally Unique Identifier ] Partition Table) partition scheme?
   - It uses UEFI (Unified Exteded Firmware Interface)
-  - It provied max 128 partitions.
+  - It provides max 128 partitions.
   - Max size 8 ZiB (Zebibyte or 1024 TB).
-  - GPT partition is mostly ayt the first partition table and size os 100MB.Back at teh end(optional).
+  - GPT partition is mostly at the first partition table and size os 100MB.Backup at the end(optional).
 13. Whats a firmware?
    Its a piecle of software that stores at non volatile momory ROM of motherboard.USed to boot up os.
 

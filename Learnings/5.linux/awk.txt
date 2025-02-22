@@ -39,4 +39,10 @@
 13. Print the ip address of kube-system pods:-
      k -n kube-system get po -o wide | awk '{print $8}' | sed '1d' [ 1d: removes 1st row]
 
+14. Print the length of each pod name.
+   k get po  | awk 'NR >1 {print $1}' | awk '{print length}'
+15.Pritn 5 to 7th row with line number?
+  k get po | awk 'NR==5,NR==7 {print NR "  "$0}'
+
+
 
