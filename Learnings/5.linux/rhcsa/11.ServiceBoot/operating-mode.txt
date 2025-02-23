@@ -1,0 +1,10 @@
+1. Different types of trargets are:- graphical.target,multi-user.target,emergency.target,rescue.target(root shell)
+2. Get current target: systemctl get-default
+3. Change to multi user target: sudo systemctl set-default multi-user.target [ set for default boot target]
+4. Chage to graphical without boot:- sudo systemctl isolate graphical.target [ Switch to target immediately,it moves
+    to top in the target tree,anything that is not called by target_name is stopped]
+5. See kernel boot parameters:  cat /proc/cmdline
+6. To edit the target at boot time:
+    a. Lood into boot loader ,e.e grub2
+    b. press e to go to edit mode.
+    c. After line of linux...:512M ,add systemd.unit=graphical.target |  rescue.target

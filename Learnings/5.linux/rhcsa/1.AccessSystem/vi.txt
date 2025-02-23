@@ -1,0 +1,44 @@
+1. When vim opens its default is Command mode.
+2. Write file in new location:
+    a. got to command mode.
+    b. :w /var/tmp/file.txt
+3. Quite vm:   :q [Enter]
+4. Copy entire line: yy
+5. Repeat a command:
+    a. press repeat times:  5
+    b. Command to repeat: p  [for ecample paste 5 times]
+6. Note:- In pycharm terminal u need to press ctrl+c to switch back to command mode from insert mode.
+7. Delete/Cut entire line: dd
+8. Delete character ur cursor on top of: x
+9. Delete word: dw
+10. Chnage word: cw [after delete switch to insert mode]
+11. Delete current cursor position to end of the line: d$
+12. Switch to visual mode:  shift+v  [i.e V]
+13. Higlight the text in visual mode:
+    a. x to delete it.
+    b. uSe greate the sign > .To shift to right the hilighted portion.
+14. Open up a new line in insert mode: o
+15. Important: When changes are done to a readonly file,we can save those changes by writing it into /temp file.
+    a. :w /var/tmp/fstab [enter]
+16. Quite: q ,Quite and override: q!
+17. Save and quite:  :wq!   or ZZ [shift zz]
+18. VIM global config file: /etc/vimrc
+19. vim rc some configs:-
+    colo desert    [This sets theme]
+    set nu         [This sets line number]
+
+    colo desert
+    syntax on
+19. Go to line nmber:
+    a. :40 [got to line 40]
+    b. End of line: :$  [shift+d]
+20. Open vim interactive tutor: vimtutor
+21. Append at the end of line: A
+22. Set line number on the go:
+    :set nu   :set nonu
+23. Append line at the end of file:
+    1. :$
+24. Run previous command: !!
+    a. run previous command with additional param: !! --param1
+25. Use nano: echo export EDITOR=/usr/bin/nano >> ~/.bashrc  . Echo $EDITOR
+26. grep -n ^[^#] /etc/tmpfiles.d/tmp.conf

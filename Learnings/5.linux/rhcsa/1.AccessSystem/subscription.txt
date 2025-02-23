@@ -1,0 +1,8 @@
+
+**RHEL DEVELOPER SUBSCRIPTION**
+1. subscription-manager register --username sk.maifuj***@gmail.com --password N***@
+2. subscription-manager attach --auto
+3. subscription-manager unregister --username=name
+4. subscription-manager list
+5. Unregister:- subscription-manager remove --all , subscription-manager unregister , subscription-manager clean
+6. 

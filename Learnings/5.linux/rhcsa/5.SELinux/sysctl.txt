@@ -1,0 +1,9 @@
+1. sysctl -a
+2. sysctl -w net.ipv6.conf.default.disable_ipv6=1 [ does not tolerate reboot]
+3.Get value parameter: systctl net.ipv6.conf.default.disable_ipv6
+4. Get systemd daemon details: man sysctl.d
+5. Edit sysctl value to permanent:-
+    a. edit /etc/sysctl.conf
+    b. sysctl -a | grep parameter_toc_check
+    c. sysctl -p
+6.

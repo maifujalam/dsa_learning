@@ -1,0 +1,8 @@
+Q1. Configure network and set the static hostname.
+    IP ADDRESS = 172.25.X.11
+    NETMASK = 255.255.255.0
+    GATEWAY = 172.25.X.254
+    DNS = 172.25.254.254
+    Hostname = serverX.lab.example.com
+Q2. Add additional ip address.
+Q3. Enable autocinnect after reboot.

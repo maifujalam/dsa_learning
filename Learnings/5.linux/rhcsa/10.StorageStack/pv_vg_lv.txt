@@ -1,0 +1,45 @@
+1. chaecl all physical volume:  cat /etc/lvm/devices/system.devices
+2. pvdisplay
+3. After disks are connected to machine: pvcreate /dev/vdb /dev/vdc [only when its visible as lsblk]
+4. vgcreate vg_db /dev/sdb /dev/sdc
+5. pvs: physical volumes,lvs: logical volumes,vgs:- volume groups.
+6. vgdisplay,(it shows physical extend size as well:PE 4MB)
+7(IP). Logical Volume: lvcreate -n lv_name -L 1GB vg_name
+8. Make file system: mkfs -t xfs /dev/sda1
+9. Populate /var/mount1 with block of 100 MB(zeros) to 20 times .dd if=/dev/zero of=/var/mount count=20
+10. Change LV Size:-
+    a. set LV size: lvresize -r -L 2G /dev/sdb/sdb2 (set length L,-r resizefs)
+    b. Decrease by 2 GB: lvresize -r -L -2G /dev/sdb/sdb2 [ Size reduse not supported]
+    c. Increase by 2 GB: lvresize -r -L +2G /dev/sdb/sdb2
+12. Extend volume group: vgextend xvg /dev/sdd
+13. Move one physical volume data to another available PV: pvmove /dev/vdd1 /dev/sdd2 (If 2nd part not provided,it randomly moves)
+14. Remove volume group: vgreduce dvg_db /dev/vd2.Now we can safely remove the physical volume: pvremove /dev/vd2
+15. Non interactive partition creating using parted:
+    1. create gpt abel at vdb: parted /dev/sdb mklabel gpt(label cannot be any name)  (or use fdisk)
+    2. create disk partition: parted /dev/sdb mkpart part_name 1MiB 258MiB [ part_name: primary],it creates sdb1.
+    3. set 1st partition for lvm: parted /dev/sdb set 1 lvm on
+    4. Same do with second partition
+    5. run: udevadm settle
+    6. Create physical volume: pvcreate /dev/sdb /dev/sdc
+    7. Volume group create: vgcreate servera_group /dev/sdv /dev/sdc
+    8. LV create: lvcreate -n mylv -L 100M servera_group
+    9. Create file system on logical volume: mkfs.ext4 /dev/serva_group/mylv
+    10. Create mount point at fstab: /dev/sera_vg/mylv /mnt/mnt1 ext4 defaults 0 0
+    11. mount -av
+    12. copy all file with extention .config: cp -a /etc/*.conf /mnt [a: archve]
+    13.
+16. Extend lv 2nd method: lvextend -L 800M /dev/vol_goup/logical_vol
+    After LV is extended,we need to grow file syste: xfs_growfs /data
+    This above two commands provides similar resut to lvresize -r command.
+18. LV extend vs lvresize: ? extend: only extend it,and resize: can both incre and decres.
+19. WARNING:- CREATING PV,VG,LV Size may not work,need to master it.
+              And always use MiB as unit.
+              Expected size should be same as shown in lsblk command.
+              In parted size shown is wrong,512 MB is shown as 537MB.
+              Always create new partition with strt+2MiB end+2MiB(514,1026 MiB).
+              Always use udevadm settle after partition changes.
+20. Use lvextend for increase,and lvresize to decrese.
+21. vgcreate datastore /dev/sdc2 --physicalextentsize 16MiB
+22.
+
+

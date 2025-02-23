@@ -1,0 +1,11 @@
+[BaseOS]
+Name=BaseOS
+baseurl=https://example.com
+enabled=1
+gpgcheck=0
+
+[AppStream]
+Name=AppStream
+baseurl=http:
+enabled=1
+gpgcheck=0

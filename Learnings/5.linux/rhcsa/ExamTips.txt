@@ -1,0 +1,6 @@
+1. Check if users of group have admin access:-
+    a. login to one of group user,then ls /root and sudo ls /root.
+2. To give all users of group with root permission.Edit /etc/sudoers.d/groupname.conf.The conteent validation will
+   be done from visudo.Validation :- first write permission in visudo.If its saved successfully,then move it to dropin.
+3. To zoom in(ctrl + shift + +).To zoom out (ctrl + shift + -).
+4.

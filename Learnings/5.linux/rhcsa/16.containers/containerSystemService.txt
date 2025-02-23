@@ -1,0 +1,10 @@
+1. Systemd => systemd unit files => container
+2. systemctl --user alam enable --now nginx
+3. Manage running contaner as systemd unit file:-
+    a. Create ~/.config/systemd/user
+    b. Change into that directory: cd ~/.config/systemd/user
+    c. generate config: podman generate systemd --name container_name --files --new [name: pod name,files:- pwd for
+       cofig file generation,new: starts up fresh container]
+    d. the result will be generated container-container_name.service file.We can rename it.
+4. Reload system daemon as another user: systemctl --user daemon-reloa  [ hare -user takes the current looged in user]
+5.  Start webapp container through systemd: systmctl --user enable --now container-webapp

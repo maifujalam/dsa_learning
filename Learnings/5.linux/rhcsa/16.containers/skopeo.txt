@@ -1,0 +1,4 @@
+1. yum install skopeo
+2. yum install container-tools.noarch
+3. Podman generated systemctl config file which servives reboot.
+4.

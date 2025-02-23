@@ -1,0 +1,4 @@
+1. yum install words
+2. matching the pattern “bac” from file /usr/share/dict/words to /bacwords.
+3.  cat /usr/share/dict/words
+4.

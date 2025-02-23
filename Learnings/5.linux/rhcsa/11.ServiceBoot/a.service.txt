@@ -1,0 +1,24 @@
+1. systemctl list-units
+2. systemctl list-units --type
+automount  device     mount      path       scope      service    slice      socket     swap       target     timer
+3. systemctl list-units --type service | less => using less help to search with /
+4. systemctl enable --now nginx
+5. Install with no stdout: sudo yum install -y nginx &> /dev/null
+6. Instead of creating /usr/lib/systemd/system/nginx.service , create a directory at /etc/systemd/system/nginx.service.d
+    Hare directory with service_name.d specifyies that it is drop in directory.It is created under systemd/system.
+    And the files uses lexicographical order i,e 99-custom-name.conf.[its always 2 digit,lower is process first]
+7. Changes apply: systemctl daemon-reload
+8. Wnen additional dropin file is created at /etc/systemd/system/service_name.d/nn-service_details.conf ,it will be
+  visible under systemctl status service_name.
+    All the customizations of dropin in directory are un-effected from service upgrade(config upgrade).
+9. systemctl:
+    a. is-active chronyd: tells if process is active/running
+    b. is-enabled: tells if is eabled.
+10. systemctl list-unit-files  --type service
+11. In systemctl reload service:- Process main pid remains same,in restart it changes.Can be noted with pidof process_name.
+12. Try reload if not work restart: systemctl reload-or-restart nginx.
+13. Check service dependency:-
+    a. systemctl list-dependency nginx  [--reverse will provide whois depended on it]
+14. Mask service from being enabled/start manually using systemctl: systemctl mask service_name
+    when masking a service it's symling points to /dev/null
+15.

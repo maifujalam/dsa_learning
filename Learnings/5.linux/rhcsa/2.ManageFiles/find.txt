@@ -1,0 +1,27 @@
+1. Find all files with .jpeg extension on /share: find /share -name '*.jpeg'
+2. find all files with greater then 10MB: find /share -size +10M  [+ for greater then 10 M,for kb (k),for byte(c)] [for less then use -]
+3. Find /got_to_path -search_parameter
+4. find with only search_parameter: Looks on current directory
+5. find with case insensitive: find -iname file_name
+6. find all files starts with g: find -name 'g*'
+7. Find Modified Minute: find -mmin [Minute].
+    a. Find file modified exactly 5 min ago.Example when I run at 12:06 then,it list files modified at only 12:01:- find -mmin 5
+    b. Find files modified since 5 min:- find -mmin -5
+    c. Find files modified before 5 mins:- find -mmin +5
+8. Find file modified days[Modified Time] in period of 24hrs:
+    a. Past 24hrs: find -mtime 0
+    b. Past 24hrs to 48hrs: find -mtime 1
+9. Find files with metadata (permission,etc) change in minutes:-
+    a. check cheange permission in last five minutes: find -cmin -5
+10. FInd files with combined parameters called expression:-
+    a. find files starts with f and exactly 512k size:- find path_to_dir -name 'f*' -size 512k  [ AND operation]
+    b. find files starts with f ot exactly 512k size:- find path_to_dir -name 'f*' -o -size 512k  [ OR operation]
+    c. Find files do not began with f: find path -not 'f*' OR find path \! 'f*'  [Back slash to escape !]
+    d. Find files with permission 664: find path -perm 644  OR find path u=rw,g=rw,o=r
+    e. Find files with minimum permission 664: find path -perm -644 OR find path -u=rw,g=rw,o=r  [- minimum]
+    f. Find file with any one match [user,group,other] with 664: find path -perm /644 OR find path /u=rw,g=rw,o=r
+    g. Find file atleast owner can execute: find -perm -100
+    h. Find files which other users cannot read:- find \!-perm -o=r
+    i. Find files which can either user,group or other can read: find -perm /u=r,g=r,o=5
+    k. Find files with size range(greater ten 1KB and less then 100M): find /bin/ -size +1k -size -100M
+    l. Find file with size range and user special permission have(guid): find /bin/ -size +1k -size -100M -perm /u=s

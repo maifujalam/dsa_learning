@@ -1,0 +1,10 @@
+1. Soft-link: ln -s source dest
+2. See soft link: ls -al
+3. Read complete softlink:- readlink softlink_name
+4. Softlink path types:- 1. Absolute path(when source content deleted then link breaks) 2. Relative path(when when source content is moved then softlink also
+    ets updated)
+5. List groups the current user belongs to: groups
+6. Change group: chgrp group_name file_name.txt
+7. Change ownership of file: sudo chown owner_name file_name.txt [Only root user can change user owner]
+8. Change both user and group: sudo chown user_name:group_name file_name.txt
+9. 

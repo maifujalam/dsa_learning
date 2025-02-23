@@ -1,0 +1,1 @@
+1. docker images | grep bcd | awk '{printf "%s:%s\n",$1,$2}'| xargs docker rmi

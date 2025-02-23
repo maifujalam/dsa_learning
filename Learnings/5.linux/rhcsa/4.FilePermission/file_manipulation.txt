@@ -1,0 +1,45 @@
+1. Last 20 line streaming of file: tail -n 20 -f file.log
+2. First 20 lines of file: head -n 20 file.txt
+3. Stream editor (sed):
+    a. sed 's/canda/canada/g' file.txt [ s:substitute i,e. search and replace.g is global i.e all string matched]
+    b. To make inline changes: sed -i
+4. to extract column form file use cut: cut -d ',' -f 1 countries_file.txt
+5. Find unique word in a column: unique countries.txt [this will remove unique adjacent to each other]
+    To solve above sort this and then find unique. sort countries.txt | unique
+6. Find difference between file: diff file.txt file2/txt
+    a. diff -c file1 file2
+
+7, Vi find with case-insensitive: /search_work\c
+8. Find work by case-insensitive: find -i centos /etc/os-release
+9. > Overrides.>> Appends to file redirection.
+10. stdin < ,stdout 1>(or > as it is default) ,stderr 2>.
+11. /dev/null is call blackhole of linux.What ever send to it,it simply discards.Ex. grep -r '^The' /etc 2>/dev/null
+12. Save both output and error.  grep -r '^The' /etc 1>>output.txt 2>>error.txt
+13. As the terminal prints both the error and success message but redirecting with > only saves the success result.So,
+    to save both the success result and error result.  grep -r '^The' /etc > all.txt 2>&1
+14. When passing input> send mail alam@gmail.com < standard_input_as_body
+15. rsync: sync two folders of two systems:-  rsync -a /picture remote_user@192.168.56.1:/home/aaron/pictures
+16. Backup of whole partition [ before backup unmount it first]:
+    a. For backup: sudo dd if=/dev/vda of=diskimage.raw bs=1M status=progress [ip=input file or partition name,of=output
+     file or path where to store .raw file,bs=block size]
+    b. For Restore(reverse if and of): sudo dd if=diskimage.raw of=/dev/vda bs=1M status=progress [dont try on VMachine]
+17. scp(secure copy):
+    a. scp source dest => scp /home/alam/file alam@1.2.3.4:/home/abc.file
+    b. scp can be done between two remote machines like:scp alam@1.2.3.4:/home/abc.file  alam@5.6.7.8:/home/abc.file
+18. sftp [simple file transfer protocol]:
+    a. sftp arron@1.2.3.4  => sftp> help [run commands on remote machine]
+    b. Append 'l' before each command in scp terminal to run that command in local machine like:- lcd /var/
+    c. copy from remote to local: get family_pic.jpeg [download to cwd,-r for recursive]
+    d. Copy from local to remote machine: put archive.tgz [Upload to remote]
+    e. to exit: bye
+19. Give permission to:-
+    a. user: chmod u+x a.sh
+    b. to all(u,g,o):- chmod +x a.sh
+    c. Run script: full path (/home/path/to_script.sh) or current script folder(./script.sh) so hare . replaced by cwd.
+20. change permission for everyone:
+    a. Remove all exec permission: chmod -R a-x data/
+    b. Change file permission of execution to only to directory and except its content files: chmod -R a=rwX /data
+
+
+
+

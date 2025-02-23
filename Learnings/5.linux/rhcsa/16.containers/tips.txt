@@ -1,0 +1,27 @@
+1. podman login registry.lab.example.com --tls-verify=false
+2. skopeo inspect docker://registry.lab.example.com/ubi8/python-38 --tls-verify=false
+3. CMD ["/bin/bash", "-c", "sleep infinity"]
+4. Change storage ownership for podman mount: podman unshare chown 27:27 /home/student/database/ [hare 27:27 is uid:gid
+    got from previous pod run and do ssh,cat /etc/passwd].
+5. podman run --name,-d [detach],-p [port],-v volume [:Z for SELINUX],-e ENCV1:env1.
+6. mkdir ~/.config/systemd/user [ for overiding container setting over /etc]
+    a. podman generate systemd --name podname --new --files
+    b. systemctl --user start contaer-webserver.service
+    c. systemctl --user daemon-reload
+7. Enable container service at boot:
+    a. loginctl show-user vagrant
+    b. loginctl enable-linger
+    c. loginctl show-user vagrant
+8. Manage container as root:-
+A   a. put service file in /etc/systemd/service instead of ~/.config/systemd/user
+    b. run all commands without --user
+9. Put registry file:-
+    a. ~/config/container/registries.conf
+10. When user created for podman activity.DO NOT SWITCH USER.USE SSH LOGIN.
+11. SURVIVE BOOT:
+    a. run container successfully
+    b. generate service file
+    c. remove container
+    d. start and enable service
+    d. Enable linger: container-inventorydb.service i,e:- loginctl enable-linger [don't pass user hare]
+    e. loginctl show-user podsvc.reboot

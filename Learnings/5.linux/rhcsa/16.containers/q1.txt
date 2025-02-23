@@ -1,0 +1,2 @@
+Q. Start nginx at boot time with service file and curl give hostname with reboot servival.
+a.

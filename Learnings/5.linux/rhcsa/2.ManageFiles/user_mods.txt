@@ -1,0 +1,4 @@
+1. systemctl get-default
+2. sudo systemctl set-default multi-user.target   [ graphical.target]
+3. Switch to graphical mode: sudo systemctl isolate graphical.target
+4. https://servera:9090/system

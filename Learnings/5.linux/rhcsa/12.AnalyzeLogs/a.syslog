@@ -1,0 +1,5 @@
+a. vi /etc/rsyslog.conf
+b. Logs ghave facility and priority:-
+    a. facility: all(*),mail,authority,cron
+    b. Priority: *,info
+c. -/var/log/maillog => hare - is for

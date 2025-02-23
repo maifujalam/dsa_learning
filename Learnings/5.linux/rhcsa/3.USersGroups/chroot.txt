@@ -1,0 +1,5 @@
+1. chroot: This command is used to change the root directory.
+2. Every process/command in linux/unix have current working directory called root directory.
+3. So,this command is used to change the current working directory of process and its child process.
+4. This result to process/program cannot modify files outside this directory.
+5. It is used for creating environment,recover password,reinstall bootloader.

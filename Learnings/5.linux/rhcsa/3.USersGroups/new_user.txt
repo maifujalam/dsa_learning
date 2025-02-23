@@ -1,0 +1,2 @@
+1. /etc/skel/: When new user is created all files from this folder are copied to new user home directory.
+2.

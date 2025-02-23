@@ -1,0 +1,2 @@
+1. go to grub edit mode.
+2. after quiet selinux=0  OR enforcing=0  OR autorelabel=1

@@ -1,0 +1,1 @@
+1. Physical block device=>physical volume=> volume group=> logical volume => assigne fs type

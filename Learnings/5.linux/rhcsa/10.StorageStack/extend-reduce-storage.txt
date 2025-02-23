@@ -1,0 +1,15 @@
+1. lvextend /dev/vg1/lv1 -L +8MB /dev/sdd2
+2. lvextend -L +10M /dev/vg1/lv1 /dev/sdd2
+3. lvextend -L +10M -r /dev/vg1/lv1 /dev/sdd2 [ -r is for resizinf the file system]
+    if no -r then do manual resize:- xfs_growfs /mnt/data
+    Note: xfs can only grow and ext4 can resize.
+4. Extend swap as LV:-
+    a. swapoff -v /dev/vg01/swap
+    b. lvextend -L +100M /dev/vg01/swap
+    c. mkswap /dev/vg01/swap
+ 5. Reduce volume group:-
+    a. move pv data to another pv: pvmove /dev/sdd3
+    b. Remove the VG from PV: vgreduce vg01 /dev/sdd3
+ 6. Remove VG:-
+    a. after
+ 7. If after udevadm settle,lsblk giving wrong update.Then refresh it with systemctl-daemon reload.

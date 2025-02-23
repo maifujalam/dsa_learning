@@ -1,0 +1,45 @@
+========Reset password for RHEL8  THIS IS IN REDHAT PORTAL =========
+1. Interrupt with e
+2. after quiet add rd.break after quite
+3. ctrl+x to save and resume
+4. Then it comes into emergency mode shell
+===============
+1. On above.after boot of rd.break=> root is mounted on /sysroot as RO
+2. Remount root with read write:- mount -o remount,rw /sysroot
+3. change root directory: chroot /sysroot
+4. now change root password: passwd root [must bbe of 8 char] or echo redhat | passwd --stdin root
+5. Update sys linux policy: touch /.autorelabel  OR do=> load_policy -i =>restorecon -FvR  /etc/shadow
+6. Exit from root: exit.
+7. reboot
+8. Now watch relabeling of selinux is happening.Chane to root user with su.And with updated password.
+--------------------------------------------------------------------------------
+
+========Reset password for RHEL9 =========
+1. Reboot and press e to enter into grub editor.
+2. go to first line end at:  linux ($root) ... /dev/mapper/rhel-root ro [before crashkernel=]
+3. Replace ro with rw
+4. After quite add, init=/bin/bash [ if quite not found then append at the end of line]
+5. ctrl+x
+6. It will land to bash root terminal.
+7. Update root passwd with:- passwd => 8 character passwd
+8. Fix selinux context: touch /.autorelabel
+9. Now ,no need to reboot.Just finish the rest of the boot with executing init process:- exec /sbin/init
+
+IMPORTANT:- TO Enter into grub config:-
+    a. reboot
+    b. click mouse on console to focus back.
+    c. press e multiple times until grub edit comes.
+
+Reset RHEL-8= If no option for /rhel-root ro (then its requires passwd reset by rd.break)
+              So its a 5 step preocess:-
+                rb.break
+                mount -o remount,rw /sysroot
+                chroot /sysroot
+                passwd root
+                touch /.autorelabel (exit with ctrl+D)
+To open emergency shell in boot: ctrl+alt+del.
+IMPORTANT:- If stuck at boot:-
+            a. Send ctrl+alt+del from UI.
+            b. enter into rescue mood.
+            c. check fstab entry. [ To make changes in fstab we require root password,if not there reset it]
+

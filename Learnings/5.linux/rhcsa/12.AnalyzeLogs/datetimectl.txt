@@ -1,0 +1,25 @@
+1. timedatectl
+2. timedatectl list-timezones
+3. timedatectl set-timezone Asia/Kolkata
+4. To set time manuaaly:
+    a. off ntp: timedatectl set-ntp false
+    b. timedatectl set-time 1:11
+5. time ntp service: chronyd
+6. vi /etc/chrony.conf
+    a. hare multiple ntp server pools are defined for HA.
+    b. chronyc sources [-v for verbosity]
+7. Select timezone: tzselect
+8. Find date 30 mins ago: date -d '-30 min'
+
+==========Set timezone based on city========
+1.tzselect => select continent
+2. select city [this will print timezone]
+3. timedatectl set-timezone time_zone
+4. timedatectl [to verify it]
+
+===== Set local server as source ===
+1. vi /etc/chrony.conf
+2. add:    server server.xample.com iburst
+3. restart chronyd.service
+4. Verify: chronyc source  | systemctl status chronyc
+5. Enable ntp: timedatctl set-ntp true

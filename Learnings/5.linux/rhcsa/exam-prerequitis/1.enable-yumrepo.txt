@@ -1,0 +1,18 @@
+1. Configure your machine such that you are able to download exam software from :-
+    http://content.example.com/rhel8.2/x86_64/dvd/AppStream
+    http://content.example.com/rhel8.2/x86_64/dvd/BaseOS
+    For DVD: mount -t iso -o loop /vagrant/RHEL_ISO/rhel-baseos-9.0-x86_64-dvd-old.iso /mnt/rhel_iso/
+    Create file at /etc/yum.repo.d/RHEL.repo
+    [BaseOS]
+    name=BaseOS
+    baseurl=https://example.com
+    enabled=1
+    gpgcheck=0
+
+    [AppStream]
+    name=AppStream
+    baseurl=http:
+    enabled=1
+    gpgcheck=0
+2. Clean: yum clean all,yum repolist
+3. Install packages:- httpd.

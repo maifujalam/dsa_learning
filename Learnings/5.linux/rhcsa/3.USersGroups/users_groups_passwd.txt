@@ -1,0 +1,68 @@
+1. Find details of a user: id username
+2. Check if user exist:
+    1. id username
+    2. grep username /etc/passed
+3. Find last command exit code: echo $?
+4. Check if user exist or not(user may be exist in Microsoft AD)? getent passwd user_name
+5. When a user is created then its defaults and properties are defined at /etc/login.defs.
+6. Match all lines that does not starts with #. grep ^[^#] /etc/login.defs
+7. add user: useradd abc
+8. find user details: id abc
+9. grep alam /etc/passwd
+    alam:x:1001:1001::/home/alam:/bin/bash
+    username:password:uid:gid:comment:home_path:shell
+10. Change user parameters: usermod -c 'comment' abc
+    1. change primary group: usermod -g primary_group abc
+    2. Change suplemntary/secondary group: usermod -G wheel abc
+    3. Append seconday group: usermod -aG seconday_group abc (a: add,G Seconday group)
+11. Delete user: userdel abc
+    1. -r: delete its home directory also.Recursively delete all data of user.
+    2. After user is deleted with userdel.Its home directory present with uid:gid as this ids are not resolvable.
+    3. Deleting user is not preferrable.As after user is deleted home directory is present.With dangling uid,gid.Then
+        when new user is created this dangling uid,gid is assigned resulting into new user have old user name,group_name
+    4. To fix above user are not deleteed instead they are locked. usermod -L abc
+12. Find all files with dangling uid,gid:
+    1. find / -nouser -nogroup 2>/dev/null
+    2. Delete all this dangling files:  find / -nouser -o -nogroup 2>/dev/null [ -o is or condition]
+13. Password:
+    1. passwd -S alam [It prints if passwd is locked,with LK]
+    2. Change passwd: passwd abc
+    3. Root user can set other users password with maintaing other user password policy.
+14. Add group:
+    1. groupadd g1
+    2. Add systemgroup: groupadd -r admins
+    3. Get group deails: getent group admins
+15. Switch primary group: newgrp any_group  [if group does not exist then switch to deafult primary group]
+16. Change group id: groupmod -g 2000 developers
+17. Print current group: groups
+18. /etc/groups contains group and its associated users.Get all group users:- getent group group_name
+19. Let admin user can do anything: echo "%admin ALL=(ALL) ALL" >> /etc/sudoers.d/admin
+    "%admin[all members of admin group] ALL[logged in from anywhere]=(ALL)[Run command as all users] ALL[Can run all commands]"
+20. Check password status:
+    0. alam:!!:19304:0:99999:7:5:y:z [username:login key algo:epoch time since the last password changed:0 (have to wait no any number of days
+    before changing passwd:password expires in 99999 days,7 days before time start worning,for extra 5 days user can login with expired password:
+    the account expires at y(epoche) days:z not used]
+    1. passwd -S abc   alam LK 2022-11-08 0 99999 7 -1 (Password locked.)  [LK:-locked,password creation date,how many days
+       have to wait before password expire,no of days to expire password,warning bfore expire,how many days atter passwd expire
+       can user login].
+    2. Set reset passwd on next login: chage user passwd expiry date.
+        chage -d 0 alam [force user to change passwrd on next login]
+    3. Add application passwd: adduser -c 'u1 com' -s /sbin/nologin u1
+21. Lock & Unlock user:
+    1. lock: sudo usermod -L user1
+    2. Unlock: sudo usermod -U user1
+22. Maximum age of password of user1 is 90 days: chage +M 90 user1
+23. List password property of user:  chage --list alam
+24. Immediatley reset password after login: chage -d 0 user1
+25. Set pasword expiry: chage --expiredate 2022-12-30 user1
+26. Check password expiry: chage --list user1
+27. Indide sudoers file:
+    1. ls /etc/sudoers/vagrant
+28. su - => It runs the shell login script for root and updates the $PATH bariable.
+    su   => It adjust do plain login,It does not update $ PATH variable or env variable.
+29. Set password expiry after 180 days:-
+    1. get date after 180 days: date -d "180 days" +%F
+    2. chage -E 2025-06-06 operator1
+30. Set password expiry of all upcoming users to 180 days:
+    1. vi /etc/login.defs
+    2. set PASS_MAX_DAYS to 180 from 9999.

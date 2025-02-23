@@ -1,0 +1,17 @@
+0. RHCSA Exam objective: https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam?section=objectives
+1. Create user user1 with primary group g1 and secondary group G!,G2.When the user login it shoud land in /home/user1/a1.
+2. Add users user1 with sudo capabilities.And when user logins will need to reset password.
+3. Make passsword 8 char and contains alpha numeric.
+4. Reset root password
+5. Boot from wrong fstab.
+6. Edit grupb to wait for 6 seconds in boot.
+7. The requirements: The Additional group of the two users: harry, Natasha is the admin group. The user: tom's login shell should be non-interactive
+8. Change password policy for :- change every 90 days,
+9. start httpd on port 88.
+10. Use grep and find command to list all ip.
+10. Important:- create autofs and make it mount when done cd.
+11. Edit network configuration.
+12. Add repository baseos and appstream.[make sure repo samples will not be provided]
+13. Create swap partion with 735MB and persit on boot with priority 5.
+14. Compress file with gz.
+15.

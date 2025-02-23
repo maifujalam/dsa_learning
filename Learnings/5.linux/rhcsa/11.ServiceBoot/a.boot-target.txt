@@ -1,0 +1,11 @@
+1. Power on->   https://zindagitech.com/understanding-the-boot-process-of-centos-rhel/
+    BIOS=>POST(poweron Self Test)=> It run the firmware,Firmware can be UEFI(Modern)/EFI(Legacy).UEFI=>Unified Extensible
+        Firmware Interface,EFI:-Extensible Firmware Interface.
+    Load Boot Device
+    Initialize boot loader from boot device.Bootloader in RHEL is GRUB-2 (Grand Unified Boot Loader V2)
+    Now Boot loader i,e. Grub-2 Entry 2 refernce components:- 1.kernel 2.initram-fs file.
+    init-ramfs=> contain system drivers,initialization scripts
+
+1. When System starts:-
+    a.
+2. MBR:- Master Boot record,GPT:- Guided Partition table

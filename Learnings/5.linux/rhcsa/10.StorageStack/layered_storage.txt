@@ -1,0 +1,18 @@
+1. dnf install stratis-cli stratisd
+2. stratis:
+    pool list: list pool
+    b. pool create: pool create pool_name /dev/vdb /dev/vdc
+    c. Extend pool with another pv: stratis pool add-data db(existing pool_name) /dev/vdc(existing new pv).
+    d. list block devices of pool: stratus blockdev list db
+    e. Create file system: stratis filesystem create db maria
+    f. stratis file system list: stratis pool list,
+    g. List block dev of pool: strtis blockdev list stratis_poolname
+    h. desroy file system: stratis filesystem destroy stratispool1 stratis-filesystem-1
+
+3. Add below entry in fstab to make stratis work at boot:-
+    UUID=c7b57190-8fba-463e-8ec8-29c80703d45e /dir1 xfs defaults,x-
+   systemd.requires=stratisd.service 0 0
+4. get stratis pool UUID: lsblk --output=UUID /dev/stratis/stratispool1/stratis-filesystem
+8. dd if=/dev/urandom of=/stratisvol/f1 count=1000 bs=1M
+9. Check how much disk is used: stratis filesystem list
+10. Two important commands:- stratis pool,filesystem

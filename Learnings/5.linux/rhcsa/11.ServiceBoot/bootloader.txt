@@ -1,0 +1,27 @@
+1. GRUB: Grand Unified Boot Loader
+2. Rescue a linux:-
+    a. Use Extrnal rhel media and boot from it.
+    b. goto Troubleshooting
+    c. Choose option 1 ,i.e continue
+    d. Enter into shell and chroot /mnt/sysroot
+    e. Generate Grub config****:-
+        a. On RHEL9 UEFI:- grub2-mkconfig -o /boot/grub2/grub.cfg
+        b. on Centos EFI: grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+3. When computer boots ,it looks for bootloader on very beginning of disk.
+4. So GRUB needs to be installed on first sector of disk.
+5. Find the boot disk with lsblk command.The disk have /,/boot is the boot disk.
+6. On UEFI:- So this identified dis the place where we install grub: grub2-install /dev/sda [as sda have /boot]
+7. On EFI:- on shell do:- dnf reinstall (on video resinstall i.e wrong) grub2-efi grub2-efi-modules shim.
+8. Exit root.Exit rescue environment.
+-----------------------------------
+
+==++++Edit Grub ============
+1. sudo vi /etc/default/grub
+2. After grub file is edited we need to generate grub.cfg file.
+    a. On UEFI:- sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    b. On EFI:- sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+    c. run: find /boot -name grub* .So -o will be the path of /boot/..../grub.cfg
+3. If unable to enter grub config,then increse grub timeout to 3 second and make grub changes.After all then reset to 0.
+4. Press ctrl+d to continue boot after rescue done.
+
+Note:- Press e for rescue.Only Select rescue version on grub.

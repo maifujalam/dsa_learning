@@ -1,0 +1,19 @@
+1. dnf install -y autofs
+2. Auto fs[Indirect mount] : mount when requested only OR accessed only.After it is used,it is unmounted and
+    mount path is deleted.
+3. Mount nfs: mount -t nfs -o rw,sync serverb.example.com:/shared/dir/ext /mnt
+4. Create a Master Map:
+    a. vi /etc/auto.master.d/demo.autofs OR vi /etc/auto.master
+    b. Add: /mount-pont /etc/auto.demo      /home /etc/auto.home [ starting with auto only,and full path of Direct/Indirect map]
+5. Create In-Direct Map:
+    a. vi /etc/auto.demo
+    b. Add for basic indirect map: 2nd_level_folder_name OR mount-pont-level2 [Note that,its not starting with /,rather it
+     will be created after /mount-point/2nd_level_foler_name]   -rw,sync nfs_server_ip:/nfs_export_path
+    c. For Wildcard: * -rw,sync nfs_server:/export_path/&
+    d. Hare mount point is relative path.
+6. For direct map:
+     a. vi /etc/auto.demo
+     b. In Master Map:- /- /etc/auto.direct
+     c. In /etc/auto.direct: /mnt/docs  -rw,sync nfs_server:/export_path
+     d. Hare,mount point is Absolute path.
+7. After share file restart autofs.

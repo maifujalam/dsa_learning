@@ -1,0 +1,25 @@
+1. Identifiers:-process by ProcesssID(PID),Users by UserID(UID),Groups GroupID(GID),Files are Index Nodes(INods).
+2. Inode:- Hodes metadata about file.
+3. INode is created for every file with 512 Byte contains:- permission,ownership,date timestamp.It does not keep
+    track of the name of the file.
+4. File name is the responsibilty of File Allocation table.
+5. File allocation table(FAT) contains file name maped with Inode of that file.
+6. To display file inode:-  ls -li
+    8583 -rw-r--r--. 1 vagrant vagrant 0 Nov 10 06:57 hello_world   [ Hare 8583 is file INode.Hare 1 means no of link
+     count.So link count tells how many names are associated with that INode]
+7.If two files have same INode then they have same metadata.
+8. Create hard link:-
+    ln hello_word rl
+    ln dir1 dir2 [hard link in directory does not work]
+9. ls -althri:-
+    8583 -rw-r--r--. 2 vagrant vagrant 3 Nov 10 09:20 hello_world
+    8583 -rw-r--r--. 2 vagrant vagrant 3 Nov 10 09:20 rl
+    Hare having same INode number,and 2 specifies it have two name with same INode.
+10. If removed the original file:-
+    a. For hard link:- Is not broken and persist data.
+    b. For softlink:- Its becomes broken link.Files conenets are also missing.
+11. If you touch the hard link file then :-
+    a. It does not over ride the file.
+    b. Its(hard link files) meatada like:- date time is updated.
+    c. Also actual file's metadata is updated.
+12.

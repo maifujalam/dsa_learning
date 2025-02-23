@@ -1,0 +1,2 @@
+1. Disable and stop firewalld. [Note: If any question ask to enable firewalld then on that system enable it]
+2. Enable selinux from /etc/selinux/config to permissive.

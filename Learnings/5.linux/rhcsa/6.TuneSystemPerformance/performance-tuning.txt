@@ -1,0 +1,14 @@
+1.  systemcrl status tuned
+2. sudo tuned-adm list: list all available and selected tuning profile
+3. tuned-adm active: present profile
+4. tuned-adm verify.
+4.5 Tuned-adm profile recommend.
+4.5.1. tuned-adm auto_profile
+5. Tuned config can be found at:  ls /usr/lib/tuned/
+6. Edit existing profile: vi /usr/lib/tuned/network-throughput/tuned.conf
+7. grep ^vm\.
+8. tuned-adm profile_info
+9. Tuned profiles are present at: /usr/lib/tuned
+10. sysctl vm.dirty_ratio.
+11. ps all, ps -o pid,comm,nice
+12. Check profile info: sudo tune-adm profile_info

@@ -1,0 +1,25 @@
+1. recent journalctl logs: journalctl -r
+2. Journalctl with priority: journalctl -p warn
+3. journalctl _PID=1
+4. journalctl --since "-10min"
+5. journalctl _SYSTEMD_UNIT=sshd.service
+6. Journal is volatile.It stores temporarily at /run/log/journal.
+7. man journald.conf
+8.[ip] Persist Journal:-
+    vi /etc/systemd/journald.conf
+    Add:- [Journal]
+        Storage=persistent
+        Audit=
+    Systemctl restart systemd-journald
+    So,/var/log/journal [is persistence storage],/run/log/journal [Non persistence]
+    If you check /var/log/journal,after restarting systemd-journal.service, THERE WILL BE NO folder.Restart system work.
+9. journalctl --list-boots
+10. Load current boot log: journalctl -b or -b boot_id [for previous boot]
+11. Find log between time: sudo journalctl --since '03:20:25' --until '03:47:25' [ find date with date -d '-30 min']
+12. Make persistent error lof of auth
+    cat  /etc/rsyslog.d/auth-error.conf
+    authpriv.alert /var/log/auth-error
+    restart rsyslog
+13. Get all the logger gins: logger -p  [ press tab]
+14.Create log message: logger -p auth.debug abc [after -p press tap]
+15.

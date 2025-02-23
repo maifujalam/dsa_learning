@@ -1,0 +1,39 @@
+1. Chec process: ps -ef | grep dd [ e: see all process,similar to a(only to logged in user) or A(all) ,f: full name]
+2. Print process id with name match dd: pgrep dd [It returns all process nmames with dd]
+3. pidof dd:. It reurns all process id of command dd.
+4. List all kill options: kill -l
+5. Kill SSH to only load config without fully killing sshd: kill -1 sshd_pid
+6. To  kill a process from top:
+    a. k (it deault to select most cpu cosuming pid) but you can change it to other pid .Then press enter.
+    b. Now send signal (15 is default for SIGTERM).
+7, Kill proces:-
+        a. pkill: whatis pkill,
+        b. killall: kill process by name
+        c. killall:
+8. LIST ALL PROCESS BY STUDENT USER:
+    A. pgrep -l -u student
+    b. List all logins by student user: w -u student
+    c. pkill -t pts/22 -SIGKILL [ kill terminal pts22 ]
+    d. pstree -p student [list student preocess tree]
+9. Process nice value(priority of process in cpu):-
+    1. -20(highest priority) to +19.,i.e 40 nice values..Default i s0.
+    b. Renice process with top: r (r: renice process).
+    c. renyce -n -15 2155(pid)  OR renice -n -15 2304
+    d, Syart a process with nice value: nice -n -18 dd if=/dev/zero of=/dev/null
+    e. kill all dd command: killall dd
+10. Edit systemd : vi /etc/systemd/system
+11. Restart systemd daemon after editing /etc/systemd/system.
+12. Check system jobs: jobs
+13. Check sha1sum jobs:
+    a. for i in {1..4};do sha1sum /dev/zero & done
+    b. ps u $(pgrep sha1sum)
+    c. https://explainshell.com/explain?cmd=ps+-u
+    d. pkill sha1sum
+14. renice -n 10 pid1 pid2
+15[IP]. ps -p 755 (procees id) to know process name | ps -elf
+16. kill -SIGTERM %2.Hare %2 refers to 2nd job in job list.
+17. Process list: ps u, ps l
+18. Show custom output with process name: ps -o pid,pcpu,nice,comm $(pgrep sha1sum)
+19. renice : sudo renice -n 5 pid
+
+

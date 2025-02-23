@@ -1,0 +1,13 @@
+1. nmcli device: list devices
+2. nmcli connection show:
+3. Question to make IP static:-
+    a. use nmcli to edit connection.
+    c. nmcli connection up
+    b. To verify:-
+        a. ifconfig [check ip address,netmask]
+        b. cat /etc/resolve.conf [check DNS ]
+        c. route -n [check gateway]
+        d. ping repo.example.com [make sue response is comming]
+        e. Check
+    c. reboot host
+    d. re-verify with step-b.

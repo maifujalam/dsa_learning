@@ -1,0 +1,29 @@
+1. ssh-keygen -N '' -f ~/.ssh/key
+2. Fingerprint of the remote server are formed by combination of public and private key stored at ls /etc/ssh/*key* -l
+   So to prevent host fingerprint change error,backup this keys before server resets.
+3. So the known_hosts file is created contans remote servers multiple Fingerprint of each key pair(i.e ssh-rsa,
+   ssh-ed25519,ecdsa-sha2-nistp256).
+4. Change timezone:-
+    a. System time status: timedatectl
+    b. Get timezone name: timedatectl list-timezones | grep -i kolkata
+    c. Set to IST: timedatectl set-timezone Asia/Kolkata
+5. Who is logged in to system what are they doing: w  AND w -f [to frint from]
+6. Copy public key to different server for key based authentication.
+    a. ssh-copy-id -i alam.pub server2 [hare -i is for choosing different public key othrt then default]
+    b. So,on remote server public key is added to the authorized_keys.
+7. To connec to remote server:
+    a. ssh server2
+8. To sell ssh client to use particular private key for particular host.Do following:-
+    a. creat config file at ~/.ssh/config: touch ~/.ssh/config
+    b. append below lines,with target host and its particular private key.
+    Host server2
+        IdentityFile ~/.ssh/alam
+9. SSH using password: ssh -o PreferredAuthentications=password server2
+10. Server alive interval: ssh -o ServerAliveInterval=5 server2
+11. SSH verbode: ssh server2 -v  OR ssh -v operator1@servera hostname
+12. ssh and pass command: ssh operator1@server1 hostname
+13. SSH Agent: Solves the problem to repeatevely entery ssh private key passphrase by storing it.To start it:-
+    a. Start or load agent: eval $(ssh-agent)  [ strictly use this command, as command ssh-agent will not start agent]
+    b. ssh-add ~/.ssh/key2
+    c. When u logout of session then u need to start ssh agent again (option a) AND ssh-add again (option b).
+14. Finish lab: lab finish ssh-configure

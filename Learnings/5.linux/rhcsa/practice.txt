@@ -1,0 +1,18 @@
+1. Boot fix: systemd.unit=emergency.target
+2. Reset passwd rhel 8:
+    a. rb.break
+    b. mount -o remount,rw /sysroot
+    c. chroot /sysroot
+    d. passwd root
+    e. cd / , ls , touch /.autorelabel ,ls -al
+    f. exit
+3. reset rhel 9:
+    a. edit ro to rw in /rhel-root , init=/bin/bash
+    b. passwd root
+    c. touch /.autorelabel
+    d. exec=/sbin/init
+
+4. After stratis added in fstab: add in defaults,x-systemd.requires=stratic.service
+5. Chage boot mode: systemctl get-target,systemctl set-target multi-user.target.
+6. logger -p cuth.warning
+7.

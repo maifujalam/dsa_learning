@@ -1,0 +1,34 @@
+1. Permissions:-
+    a. regular:- 3(rwx)
+    b. special:- 3(setuid,setgid,stickybit)
+        1. sticy(Only directory 1):- applicable only on directory,only owning user(owner of directory) can delete a file,chmod o+t,
+            chmod 1NNN(chmod 1777),t:- stickbit+execute,T:-Only sticky bit no execution.(drwxrwxrwt)
+        2. setgid(file+directory 2):- applicable file+dir,It sets newly created files primary group to file owners \
+            primary group name.It targets on group part.chmod 2770 /data(drwxrws---), chmod g+s /dir or /file
+            s:- gid is set + execute,S:- gid set only.
+            Note:- hare chmod g+S does not work.
+            chmod 3777 [3=1(stickybit)+2(setgid bit)]
+        3. setuid(only file 4):- executable run only with the  permission of the owning user(owner of file) not the
+             executer permission,chmod u+s,chmod 4NNN file_name,
+             Example:- chmod 4NNN /usr/bin/tail
+                        user1# tail 1 /etc/shadow (it shows output as tail is created by root,and now we are running tail
+                         as root).
+        4. Remove special permission:- chmod u-s example,chmod g-s,chmod o-t,chmod 00770 (hare extra 0 is used when
+            removing special permission using octal number method).
+        5. To enter into directory we need atleast execute permission.So chmod 2760 may not work as group have no
+            execute permission.To Enter into the group dir,we need to do 2770.
+
+2. Default permission:-
+    a. folder: 777
+    b. file: 666
+3. After file is created it have wider permission,so to narrow it down we use umask.umask is used by both file and folder.
+    a. Example: umask of 007 on file is 777-007=700 and file is 666-007=600 as negative value not allowed on file.
+    b. But umask cotains special permission also(XNNN): Example:-0777.
+    c. umask: 0022 (means when new folder is created it will have 0777-0022=0755 and file is 0666-0022=0644).
+    d. Default umask on vanilla linux is 0000.
+    e. Change default umask: umask 0000
+    f. Umask value only persist on default session.If ssh breaks umask sets back to 0022.
+4. Global login script for the system is /etc/bashrc.So thange default umask value,make change in bashrc.
+5. Check the permission of directory: ls -ld /tmp/shared
+6, get members of group: getent group techdocs
+7. user:u,group:g,others:o,all:a

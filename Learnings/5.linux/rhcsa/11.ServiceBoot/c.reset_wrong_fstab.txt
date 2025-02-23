@@ -1,0 +1,3 @@
+1. If it stuck at boot,reboot it with ctrl+alt+del.
+2. When os boot menu comes=> edit with e
+3. Go to line begin with linux  and ends 1ith 512M , append systemd.unit=emergency

@@ -1,0 +1,7 @@
+1. lab start support-portal
+2. From workstation,ssh to servera.
+3. systemctl start cockpit.socket
+4. systemctl status cockpit.socker
+5. From workstation UI open: servera.lab.example.com with root user.
+6. Create and download diagonestic report.
+7. lab finish suport-portal

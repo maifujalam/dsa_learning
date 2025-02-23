@@ -1,0 +1,56 @@
+1. Get SELInux status:
+    a. getenforce
+    b.  grep ^[^#] /etc/selinux/config
+2. Set selinux to disable:
+    a. setenforce 0
+    b. enable: senenforce 1
+3. Modes:- Enforcing(Rulesa re applied).Permissive(Rules are present and not applied),Disabled(SELinux is OFF)
+4. To disable selinus:-
+    1. Edit /etc/selinux/config and set status diable
+    2. Run command to edit boot loader to disable selinux.
+    3. setenforce 0
+5. SELinux database:- filesystem(fcontext) ends with _t,ports(port),boolean(boolean)
+6. Start or Stop service with enable or disable:-
+    1. systemctl enable --now nginx [Enable and start]
+7. Add firewall rule for nginx:-
+    1. sudo firewall-cmd --list-all
+    2. sudo firewall-cmd --add-service=httpd --permanent
+8. Add content to nginx:
+    1. echo hello > /usr/share/nginx/html/index.html
+    2. curl localhost
+9. Check selinux on directrory: ls -dlZ /usr/lib/  [ Z: print security context label].Returls user,role,type,level
+10. When nginx is forbidden,its mostly blocked by selinux.
+11. Change security linux context of http nginx: chcon -R -t httpd_sys_content_t /website/ -v
+12. Change in selinux context:-
+    a. will survive reboot BUT
+    b. If there is selinux relabel,then it will not work(as selinux will be reset to default context).SO
+    c. Add this rules to SELinux database,i.e, context mapping is correctly set in selinux database.
+13. SEManage(Security Enhanced Manage i,e SELinux database) command(Not Testeed in vagrant):-
+    1. semanage list:  semanage fcontext -l
+    2. Add fcontext: semanage -a -t httpd_sys_context /website'(/.*)?'  (It maches all files & folders,? make it optionl)
+    3. Apply(to Deatabaase rules) segment : restorecon -FvR /website/ [F: Force,v: verbose,R Recursive]
+    4. Show only local selinux customizatio: semanage fcontext -l -c
+    5. Add fcontext on file: semanage fcontext -a -t https_sys_context_t '/custom(/.*)?' [a: add,t: type]
+14. SELinux policy with boolean:
+    1. By default all boolean vaues are false.
+    2. semanage -l boolean | grep httpd_use
+    3. getsebool -a
+    4. setsebool httpd_use_nfs 1 -P [ 1 on,-p persistence]
+    5. getsebool httpd_use_nfs
+    6. semanage boolean -l | grep httpd_use_nfs
+    7. See local customization: semanage -l -C
+15. SELInux denies log to audit: tail -f /var/log/audit
+16. summery of audit sent to messages: tail -v /var/log/message
+17. SEAlert: sealert -l [alert] from /var/log/message lof.
+18. ps, ls, cp, and mkdir commands all use the -Z option
+19. MAIN COMMANDS:-
+    a. Temporarily change content: chcon -t httpd_sys_content_t /virtual
+    b. Add context rule: semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+    c. Restore content based on rules: restorecon -RvF /custom
+    d. Permanent boolean: setsebool -P httpd_enable_homedirs on
+    e. List boolean: semanage -l bool
+20. Diffent types of sys contents are:- httpd_sys_content_t,
+21. add selinux port rule:-
+    a. semanage port --add -t http_port_t -p tcp 82 [ semanage port -l | grep http]
+22. semanage user -l
+23.

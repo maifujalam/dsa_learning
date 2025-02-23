@@ -1,0 +1,2 @@
+1. lvcreate --type vdo --name vdo-lv01 --size 5G vg01 [ in type vdo:its used for compression,thin provisiong]
+2.

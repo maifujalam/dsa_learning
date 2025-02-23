@@ -1,0 +1,8 @@
+1. systemctl reboot
+2. systemctl poweroff
+3. systemctl poweroff --force
+4. systemctl reboot --force --force
+5. sudo shutdown 02:00
+6. Shutdown after 15 mins: shutdown +15
+7. reboot after 15 mins: shutdown -r +15
+8. Shutdown with message after 1 mins: shutdown -r +1 "shutdown message"

@@ -1,0 +1,20 @@
+1. Create user with primary(users) and secondary(whell..) group: sudo useradd -g users -G wheel,developers username
+2. Create alam user with group wheel:  sudo useradd -G wheel alam
+3. Switch to user alam: sudo su alam  OR  sudo su - alam (swith with home directory )
+4. Get user details: id
+5. Update user passwd: echo abc | passwd alam --stdin
+6. sudo yum install tree -y.
+    a. tree /
+    b. tree -L 1 /
+7. /etc=> Extended text Configuration
+8. /root=> home directory for root user
+9. /tmp=> shot span,fast(load at boot as some boot script uses it,many system clean /tmp very often).
+10. /var/tmp= > many times mounted with physical disk,long span,
+11. /var=> variable file.So this file.Hare file contains vary/changes in nature.
+12. /usr => user bin,sys bin,installed program,librarys,etc
+13. /dev=> system files to acess hardware.
+14. /run => non persistent process runtime data.
+15. Create filderw with date,
+    a. backup normal: cp file{,.backup}
+    b. Full datetime:  mkdir file-$(date +%y%m%d_%H%M%S)
+16.

@@ -1,0 +1,4 @@
+1. Configure your machine such that you are able to download exam software from :-
+    http://content.example.com/rhel8.2/x86_64/dvd/AppStream
+    http://content.example.com/rhel8.2/x86_64/dvd/BaseOS
+2.

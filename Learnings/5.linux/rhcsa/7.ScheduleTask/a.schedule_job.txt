@@ -1,0 +1,28 @@
+1. Jobs are 2 types:- 1. one off(once) by atd using at command 2. recurring(repetative) by crond using crontab.
+2. Cron time: minute(0-59),hour(0-23),day of month(0-31),month(0-12),day of week(0-7), command
+    a. /bin/true or true: command executed with return code 0
+    b. false command executed with rc 1.
+    d. 0 and 7 are sunday.*/10 mean 60/10=0,10,20,30,40,50
+    c. Examples:-
+        1. At 02:00 on day-of-month 13 and on Sunday in June . 00 14 13 06 0 /bin/true
+     d. Always run cronjob binary with full path
+3. crontab:
+    a. systemctl status crond
+    b. list cron jobs: crontab -l
+    c. crontab of specific user remove: crontab -r -u student [list cron jabs of user student]
+    d. Remove crontab: crontal -r -u root [r:remove jobs of root]
+4. Each cronjob is created at:-
+    a. ls /var/spool/cron/root
+    b. cat /var/spool/cron/root => */10 * * * * /bin/true
+5. cat /etc/crontab
+6. On system crontab have user field but user cron tab have not. The 6th field is for user (1-5 date-time, 6th user,7th command).
+7. Cron job files are present on /etc/cron.d
+8. For run hourly,put executable at /etc/cron.d/hourly.For daily /etc/cron.daily/(irrespective to whever time to execute),
+    /etc/cron.weekly{monthly}.
+9.  vi /etc/anacrontab change default cron time.
+10.  find /etc/ -type f -name *cron*
+11. systemctl list-units -t timer
+12. cat /usr/lib/systemd/system/logrotate.timer
+13. Do no modilfy files under /usr/lib/systemd/system instead copy it ito /etc/systemd/system/
+14.  cat > /etc/tmpfiles.d/momentary.conf
+    d /tmp/momentary 700 root root 30s    ctrl+D [ d: directory,pat,permission,user,group,time after delete]

@@ -1,0 +1,3 @@
+1. yum list all
+2. yum clean all
+3. yum repolist

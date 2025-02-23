@@ -1,0 +1,11 @@
+[AppStreamLocal]
+name=AppStreamLocal
+baseurl=file:///mnt/rhel_iso/AppStream
+enabled=1
+gpgcheck=0
+
+[BaseOSLocal]
+name=BaseOSLocal
+baseurl=file:///mnt/rhel_iso/BaseOS
+enabled=1
+gpgcheck=0

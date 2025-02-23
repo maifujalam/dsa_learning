@@ -1,0 +1,9 @@
+1. sudo dnf install chrony
+2. systemctl status chronyd
+3. chronyc sources
+4. vi /etc/chrony.conf
+    a. Add server : server workstation iburst
+    b. disable all other servers.[hare # pool]
+    b. systemctl restart chrony
+    c. systemctl status chronyd
+5. chronyc source

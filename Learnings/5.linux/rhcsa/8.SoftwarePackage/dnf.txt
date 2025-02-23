@@ -1,0 +1,29 @@
+1. it is upgraded of yum+rpm package manager.
+2. dnf:- list 'nodejs*', seach 'web server',search 'web server': it search package name & info,search all 'web server'
+        is seaarch package name,information,and description.dnf info package_name [ is search and info about package
+        even it is not installed].
+        dnf provides: seach file creator package name even package is not installed
+        install: dnf install -y nginx [ it resolves dependency tree comapred to old rpm]
+        remove: dnf remove nginx
+        In case of dependency ,if not used by others only then uninstall.
+        grouplisty: install packages in groups instead of one by one.
+        dnf group info 'groupname': list detals of group packages.
+        history: dnf history
+        log: tail -f /var/log/dnf.rpm.log
+        undo 10th commad from history: dnf history undo 10
+        repository: dnf repolist .DNF have 2 default repos:- a. appstream,baseOS(it provdes core part of os).
+        download: mkdir package,dnf download --resolve tree
+3. dnf install -y createrepo
+    a. cd downloaded_packages b. createrepo .
+4. Rename all files wit .repo to .backup:- rename -v .repo .backup /etc/yum.repos.d/*
+5. dnf config-manager --add-repo='repo name'
+6. cat /etc/yum.repos.d/repo.repo
+    name=
+    baseurl=
+    enable=1
+    gpgcheck=0
+7. Import GPG key: rpm --import gpg_key
+8. Disbale repo: dnf configmanager --disable rh-repo
+9. descripr package : dnf list repo_name
+10. install rpm : dnf localinstall any_rpm.rpm
+11.

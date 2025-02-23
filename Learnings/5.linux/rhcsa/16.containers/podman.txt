@@ -1,0 +1,23 @@
+1. vi ~/.config/containers/registries
+    unqualified-search-registries=[
+2. podman info | grep registry.
+3. Login to registry: podman login -u admin -p redhat321 resgistry.redhat.com/
+4. Search for all: podman search --list-tags registry.lab.example.com/  [trailing search prints all images in registry]
+5. Image management tool: skopeo inspect registry.redhat.com/uf8/python38 | grep description
+6. Build: podman build -t abc .
+7. In case of Docker: Dockerfile .In case of podman:- Containerfile
+8. Docker run : podman run --name container -p 8081:8080 container_image
+9(IP). Docker run with volume: mkdir -pv web2;podman run -d --name abc -p 8082:8080 -v /tmp/v1:/var/www/html:Z i,age_name
+    Hare Z is used for applying container file SE Linux context(container_file_t) on /tmp/v1 folder.
+    Make sure image is the last argument.
+10. Change podmant storage permission:-
+    a. mkdir -pv apps_db
+    b. podman unshare chown 27:27 apps_db [hare pod user and group id is 27]
+11. Passs environment variable: -e DB_PASS=pass
+12. When the container stoppedn and removed,al the data associated with it gets deleted.
+13. when container stps,it moves to archive state.To permanently remove it ,run podman rm container_name
+14. network ls:  podman network ls
+15. create network: podman network create --gateway 10.91.91.1 --subnet 10.91.91.0/24 network_name
+16. connect pod with network: podman network connect network_name pod_name
+17. exec in container: podman exec -it db_client ping -c4 db_01 [podman does name resolve]
+18. RUN NGINX: podman run -d --name web -e ABC=abc -p 8080:80 docker.io/library/nginx

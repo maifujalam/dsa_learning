@@ -1,0 +1,28 @@
+1. When system have no swap partition,if memory full.It goes to out of memory(oom) killer or drop inactive page.
+2.  for i in {1..2};do blkid /dev/sda$i;done   for i in 1 2; do blkid /dev/sda$i;done
+3. create swap space: mkswap /dev/vdd1
+4. for i in 1 2; do mkswap /dev/sda$i;done
+    add entry in fstab
+    UUID=123 swap(path will be without /) swap(file system) defaults(rw,suid,dev,exec,auto,nouser,asyn)
+    0(0,1 should the file system be dumped?) 0(should do fs check?defaults 0,only for root is 1,for all other 2).
+5. when mount -av ,it ignores swap.
+6. See swapon summery: swapon -s,
+    turn on all swap of fstab: swapon -a
+    turn of all swap of fstab: swapoff -a
+7. Default swap sape priority:
+        a. is -2
+        b. to change priority: edit fstab and add pri=100 on 4th fied(higher value is greater priority of swap)
+        c. to make changes on priority do swapoff and swapon
+8. Create swap space:
+    a. parted /dev/sda print
+    b. parted /dev/vdb mkpart myswap linuxswap 1001MB 1501MB (myswap: partition name,linuxswap partition name)
+    c. parted /dev/vdb print
+    d. udevadm settele
+    e. mkswap /dev/sdb
+9. Delete SWAP Space:
+10. Change swap priority:-
+    a. edit swap priority: repalace 4th field default with prio=12
+    b. swapoff -a
+    c. swapon -a
+    d. swapon -s
+11. swapon --show=NAME,TYPE,PRIO,SIZE

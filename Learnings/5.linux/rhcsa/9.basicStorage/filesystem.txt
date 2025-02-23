@@ -1,0 +1,32 @@
+1. lsblk -f
+2. find file blkid:blkid /dev/vdb or /dev/sdb
+3. Disk free: df -h /
+4. Find mount points: findmnt
+5. FInd disk usage by folder: du -hs /tmp [ h: human,s: summery]
+6. dv vs du:
+    df: finds the usage of mount point whose path is provided.
+    du: finds the actual usage of disk
+7. It is possible to format whole block and use its complete space instead of creating partition.
+8. To confirm a partitiona as a partition by getting PARTUUID.blkid /dev/sdd1
+9. mount /partiton mount_point_path ,ex:- mount /dev/sdd /data
+10. Make file syste:- mkfs.ext4 /dev/vdc1
+11. Unmount filesystem: umount /data
+12. While unmount if its busy: umount /share. then lsof /share
+13. Mouning file system with block name is not good idea,so mount it based on UUID.mount UUID=123.11 /mnt/part1
+14. GPT disk partition tool: gdisk,fdisk
+15.Verify fstab edit: mount -av, findmnt --verify.
+16. parted /dev/sda print
+17. Cretate partition with gdisk:-
+    a. gdisk
+    b. new part: n
+    c. part no : Enter
+    d. First Sector: Enter
+    e. last sector: +2G (size)
+    f. current type: Enter
+    g. Hexicode or HUID: enter
+    h. c to change name:
+    i. enter name: new disk
+    j. write changes: w
+18. If kernel is using old partition table,then creating partition will not take effect.TO do so run: partprob
+19. Uses the MiB, GiB, TiB, MB, GB, or TB suffixes.
+

@@ -1,0 +1,16 @@
+1. dnf install -y nfs-utils | tail -4
+2. firewall-cmd --add-service nfs [--permanent to make it boot safe]
+3. On nfs server: systemctl  enable --now nfs-server
+4, Export NFS storage from server:-
+    a. mkdir -pv /image
+    b. echo "/image *(rw)" > /etc/exports.d/images.exports
+    c. exportfs -r
+    c. showmount -e
+5. Mount NFS storage:-
+    a. mkdir /mnt/images
+    b. Edit /etc/fstab with:- serverb:/images /mnt/images nfs,sync defaults 0 0 [hare sync is for persistent mount]
+    c. mount -av
+    d. verify with: ls /mnt/images
+6. Manual mount nfs: mount -t nfs serverb.lab.example.com:/share/public /mnt/nfs.Ls /nfs
+7. Search for mounted nfs: mount | gre[p nfs
+8. nfs server check: exportfs -avr

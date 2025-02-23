@@ -1,0 +1,20 @@
+1. Configure the network as follows:
+   The IP address of your system should be: 172.25.250.10  , 172.25.251.10
+   Subnet Mask: 255.255.255.0
+   Name server: 172.25.250.254
+   Gateway: 172.25.250.254
+A1. sudo nmcli connection modify System\ eth2 ipv4.method manual ipv4.addresses 172.25.250.10/24 ipv4.dns 172.25.250.254 ipv4.gateway 172.25.250.254 autoconnect yes
+   nmcli connection up System\ eth2  ,reboot and verify
+A2. Use nmtui as sudo to edit connection and then activate it.Reboot to verify.
+2. Add secondary address 10.0.0.11 and make connection persistent.
+
+3. Edit network config:-
+    A1. vim /etc/sysconfig/network-scripts/ifcfg-eth1
+        ONBOOT=yes
+        IPADDR1=192.168.56.50
+        IPADDR2=192.168.56.11
+        NETMASK=255.255.255.0
+        GATEWAY=192.168.56.1
+        DNS1=192.168.56.250
+        DEVICE=eth1
+4.

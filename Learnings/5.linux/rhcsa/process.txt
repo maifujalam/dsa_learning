@@ -1,0 +1,4 @@
+1. ps aux (a:- all,u:- memory&cpu usage, x:- process without controlling ttys)
+2. continuously watch process: top
+3. Process start by user aron: ps -U aron
+4.

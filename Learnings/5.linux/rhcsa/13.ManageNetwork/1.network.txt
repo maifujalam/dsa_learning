@@ -1,0 +1,45 @@
+1. trace route: tracepath example.com
+2. My trace Route(mtr): mtr example.com
+3. Get socket statistics: ss
+4. Get socket statistics of basic: ss -plunt [p: process of opend port,l: listening,u: udp,n: number,t: tcp]
+5. nmap to scan port and os: nmap -sS host_ip
+6. list network interface: ip link show
+7. ip addresses: ip address show
+8. ip link
+9. netstat -peanut.
+10. ip a s (address,show)
+11. connection show:
+    a. nmcli c s (c: connection s: show)
+    b.  cat /etc/NetworkManager/system-connections/eth0.nmconnection
+12. Add new network connection:-
+    a. nmcli con add con-name "RHCSA" type ethernet ifname eth1 ipv.method manual ipv4.address 10.0.0.10/24 ipv4.dns
+      1.1.1.2 connection.autoconnect yes
+    b. Add values to existing config: nmcli connection mod con-name "con1" type ethernet ipv4.method manual
+        +ipv4.addresses 10.0.0.11/24 +ipv4.gateway 8.8.8.9
+     c. Hare + is append,no + then it overrides value.,- is to remove value.
+     d. nmcli con up profile_name
+13. Show devices: nmcli device show eth1
+14. Connection can be also manually edited at: /etc/NetworkManager/system-connections/con1.nmconnection
+    a. Reload connection after edit: nmcli con reload uuid
+    b. nmcli con reload
+    c nmcli con up "weird con1"
+15. Hostname:
+    1. systemctl status systemd-hostnamed.service
+    2. Get dns resolution priority: grep ^[^#] /etc/nsswitch.conf
+    3. Check if hostname is resolved by /etc/hosts: getent hosts www.example.com
+    4. hostnamectl hostname new_hostname  [?]
+        a. Get hostname, hostnamectl hostname.
+        b. Vrify:- cat /etc/hostname,hostnamectl,nmtui
+16. We can have upto 3 dns servers at /etc/resolve.conf:-
+17. Find ip of hostname: host example.com
+18. get ent hosts server1
+19. Modify connection:-
+    a. nmcli connection modify new connection.autoconnect yes +ipv4.addresses 10.1.2.1/24
+    b. nmcli connection reload
+    c. nmcli connection down eth2 && nmcli connection up eth2
+    d. Verify-1: ip a [verify new ip]
+    e. Verify-2: cat /etc/NetworkManager/systemconnect/new
+    f. Verify-2: nmcli deviece status
+    g. Verify-4: ping new-ip and ping another-ip
+    h. Restart pc and do all verify again.
+20.

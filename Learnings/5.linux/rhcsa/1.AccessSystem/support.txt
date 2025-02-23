@@ -1,0 +1,11 @@
+1. access.redhat.com
+2. Create new case: https://access.redhat.com/support
+3. dnf install -y sos
+4. vi /etc/sos/sos.conf
+5. In sos,it follows plugin based architecture.To list which plugins are available:-
+    a. List enabled plugin : sos report -l | less
+    b. generate report with enabled plugin: sos report
+    c. generate report and upload to ur register account: sos report --upload
+    d. Generate report with skip plugin: sos report -n kvm,amd  [ not persistent ]
+    e. Generate report with including plugin: sos report -e kvm,amd [ not persistent ]
+    f. To enable or disable with persistent: vi /etc/soc/sos.conf

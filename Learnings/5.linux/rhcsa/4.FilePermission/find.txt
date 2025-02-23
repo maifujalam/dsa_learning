@@ -1,0 +1,5 @@
+1. find / -type f -user eric -exec ls {} -althr \; [Note \; at end]
+2. find /usr -type f -size +20M -exec ls {} -al \;
+3. find /usr/ -type f -size +20M -exec cp -vf {} /tmp/largefile/ \;
+4. find /vagrant/ -type f -user vagrant ;
+5.
