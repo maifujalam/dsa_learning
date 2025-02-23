@@ -16,7 +16,7 @@
     - permission
     - UID,GID
 8. how to find free inode number?
-  df -i [disk free]
+  df -hiT [disk free]
 9. Find a file using inode number? find ~ -inum 72670210
 10. How to find the process which is using a given file system? lsof /mnt/dat1
 11. Cannot unmount a dir from that dir path.You have to go out of that dir first.
@@ -55,13 +55,13 @@
 
 18. What is 2048s in partitioning?
   Legacy MBR (Master Boot Record) reserves the first 512 bytes (sector 0) for the bootloader.
-  And GPT uses upto 1 MB.
+  And GPT uses 100 Mi.
   We are allocating 2048 sectors (1 MB) for boot loader.
   Most disks uses 512-byte as 1 sector size.So 2048s * 512-byte=1MiB
 
 19. Whats the usual size of boot loaders?
   MBR: 446 bytes (inside the first 512 bytes of the disk)
-  GPT: Its 100MiB.Thats why 1 MB is resereved at 1st sector of boot device.
+  GPT: Its 100MiB.Thats why 100 MB is resereved at 1st sector of boot device.
 
 20. How to delete a partition?
    - Unmount the partition: umount /mnt/p1

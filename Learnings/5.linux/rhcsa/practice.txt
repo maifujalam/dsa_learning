@@ -1,11 +1,12 @@
 1. Boot fix: systemd.unit=emergency.target
-2. Reset passwd rhel 8:
-    a. rb.break
-    b. mount -o remount,rw /sysroot
-    c. chroot /sysroot
-    d. passwd root
-    e. cd / , ls , touch /.autorelabel ,ls -al
-    f. exit
+2. Reset passwd rhel 8 & 9:
+    a. rd.break in the kernel parameter of resume mode [ breaks the boot process before kernel loads the initramfs]
+    b. mount -o remount,rw /sysroot [ remount /sysroot as readwrite]
+    c. chroot /sysroot  [ here /sysroot becmoes / as my new root]
+    d. passwd root [reset the password]
+    e. cd / , ls , touch /.autorelabel ,ls -al [reinitilize the selinux with auto relabel]
+    f. exit [exit the /sysroot]
+    g. exit [exit the ram disk interuption ]
 3. reset rhel 9:
     a. edit ro to rw in /rhel-root , init=/bin/bash
     b. passwd root

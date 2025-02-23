@@ -1,4 +1,4 @@
-1. chaecl all physical volume:  cat /etc/lvm/devices/system.devices
+1. chaecl all physical volume: lshw [search for disk-0,1,2] or lsblk and type is disk
 2. pvdisplay
 3. After disks are connected to machine: pvcreate /dev/vdb /dev/vdc [only when its visible as lsblk]
 4. vgcreate vg_db /dev/sdb /dev/sdc
@@ -20,7 +20,7 @@
     3. set 1st partition for lvm: parted /dev/sdb set 1 lvm on
     4. Same do with second partition
     5. run: udevadm settle
-    6. Create physical volume: pvcreate /dev/sdb /dev/sdc
+    6. Create physical volume: pvcreate /dev/sdb /dev/sdc [if shows error partition present clear it using wipefs -a ]
     7. Volume group create: vgcreate servera_group /dev/sdv /dev/sdc
     8. LV create: lvcreate -n mylv -L 100M servera_group
     9. Create file system on logical volume: mkfs.ext4 /dev/serva_group/mylv
@@ -40,6 +40,6 @@
               Always use udevadm settle after partition changes.
 20. Use lvextend for increase,and lvresize to decrese.
 21. vgcreate datastore /dev/sdc2 --physicalextentsize 16MiB
-22.
+22. Wipe a disk: wipefs -a /dev/sdc
 
 
