@@ -1,0 +1,14 @@
+1. System Unable to boot due to wrong entry at /etc/fstab.
+
+
+2. Root password forgot.
+
+
+3. Extend the Storage.
+
+
+4. Debug high cpu memory.
+
+
+
+5. Analyze the log.

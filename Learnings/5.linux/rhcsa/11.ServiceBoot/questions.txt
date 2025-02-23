@@ -1,4 +1,4 @@
 1. Reset root password
 2. Boot from wrong fstab.
-3. Set operating mode to muti user.
+3. Set operating mode to multi user.
 4.

@@ -1,0 +1,21 @@
+1. findmont: shows mount target,source,filesystem,mount option
+2. lsblk -pf: Shows disks,partitions,size,mountpoints.
+3. du -h: shows disk usage
+4. df -hiT: shows disk free
+5. lsof <path> [to check if mount partition is busy]: shows the process which uses that path
+6. mount /dev/sdd <dir>: mount file system partition to a <dir> path
+7. umount <dir>: unmount device
+8. parted: create partition
+9. mkfx.<file-system_type> [Example: mkfs.ext4,mkfs.xfs]: format file system
+10. parted /dev/sdc mklabel gpt: make a disk partition table to be used as GPT. [for MBR its msdos]
+11. parted /dev/sdc mkpart swap1 linux-swap 2048s 200MiB: create linux swap partition with size of 20MiB
+12. mkswap /dev/sdc1 : Format swap file system.
+13. free: check ram and swap area
+14. swapon /dev/sdc1: Activate the swap
+15. /etc/fstab: set swap permanently by adding: UUID=39e2667a-9458-42fe-9665-c5c854605881 swap swap defaults,pri=4 0 0
+16. systemctl daemon-reload: after editing fstab
+17. swapoff /dev/sdc1 [ -a: for all]:  Disable a linux swap partition
+18. swapon [ -a to making all swap from fstab to be on] : It shows the current active swap.
+19. swapon --summaryor or cat /proc/swaps : show swap priority.High number high priority.Default -2.To make effect on
+    priority do.Swapoff and swapon.
+20.

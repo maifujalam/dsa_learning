@@ -40,7 +40,7 @@
 17. How to partition a disk?
     a. Distinguish the disk type MBR or GPT.
        $ parted /dev/sdb mklabel gpt [or msdos for MBR]
-    b. Create new partition of 200 MiB: parted /dev/sdb mkpart primarty xfs 2048s 200MiB (parted /dev/sdb help mkpart)
+    b. Create new partition of 200 MiB: parted /dev/sdb mkpart primary xfs 2048s 200MiB (parted /dev/sdb help mkpart)
      [Important note: When you specify a filesystem type like xfs or ext4 in parted, it does not actually create
      the filesystem.It only sets a partition type label. This label is just metadata and does not format the partition.
     c. Format the new partition by creating a file system: mkfs.xfs /dev/sdb1 [ lsblk to get the new block name ]

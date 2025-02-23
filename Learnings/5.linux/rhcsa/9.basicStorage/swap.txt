@@ -15,6 +15,7 @@
         c. to make changes on priority do swapoff and swapon
 8. Create swap space:
     a. parted /dev/sda print
+    b. parted /dev/sdc mklabel gpt
     b. parted /dev/vdb mkpart myswap linuxswap 1001MB 1501MB (myswap: partition name,linuxswap partition name)
     c. parted /dev/vdb print
     d. udevadm settele

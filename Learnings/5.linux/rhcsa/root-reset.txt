@@ -1,6 +1,9 @@
-0. Inerrupt boot from boot mentu,type e on boot screen.
-1.  After root=/dev/mapper/rhel-root ro  => rw
-2. Afetr quit=> init=/bin/bash
+[
+1. Interrupt the boot process by pressing Esc or F2.
+2. Choose the rescuse mode of RHEL and press e to edit the selected boot loader option.
+3. After root=/dev/mapper/rhel-root ro  => rw
+2. Afetr quit=> init=/bin/bash [if no quit is present then add init=/bin/bash]
 3. Change password with : passwd
 4. # touch /.autorelabel
-5. # exec /sbin/init
+5. # exec /sbin/init or /usr/sbin/init
+6. It will be restarting the system.Then login with new passwd.

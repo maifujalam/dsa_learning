@@ -1,12 +1,12 @@
 ========Reset password for RHEL8  THIS IS IN REDHAT PORTAL =========
 1. Interrupt with e
-2. after quiet add rd.break after quite
+2. after quiet add rd.break after quite.This is basically editing the kernel command line.
 3. ctrl+x to save and resume
 4. Then it comes into emergency mode shell
 ===============
 1. On above.after boot of rd.break=> root is mounted on /sysroot as RO
 2. Remount root with read write:- mount -o remount,rw /sysroot
-3. change root directory: chroot /sysroot
+3. change root directory: chroot /sysroot [ change the current process root from /sysroot to / ]
 4. now change root password: passwd root [must bbe of 8 char] or echo redhat | passwd --stdin root
 5. Update sys linux policy: touch /.autorelabel  OR do=> load_policy -i =>restorecon -FvR  /etc/shadow
 6. Exit from root: exit.
