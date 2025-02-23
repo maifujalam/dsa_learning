@@ -1,0 +1,30 @@
+1. wipefs -a /dev/sdc: Format a disk by erasing all the partitions.[a: all partition erase]
+2. pvdisplay: list all physical volumes
+3. pvcreate /dev/sdc : create physical volume.[Note:If it shows that it has partition ,then remove partition/wipe_full]
+4. pvdisplay: show all physcial volumes
+5. pvcreate /dev/sdc: create a new physical volume.[creating physical volume can be full of portion of partial partition]
+6. pvs: shows all available pvs in a line
+7. vgdisplay: shows all volume group
+8. vgcreate my_vol_group /dev/sdc : The vgcreate command builds one or more physical volumes into a volume group
+9. vgs: show all volume groups
+10. lvdisplay: show all logical volumes
+11. lvcreate -n my_lv -L 50MiB my_vol_group : create a Logical volume name my_lv in volume group my_vol_group.
+    It rounds to 52MiB.
+12. lvs: show all logical volumes
+13. PVS->VGS->LVS
+14. Make FS (File System) on LV:  mkfs.ext4 /dev/mapper/my_vol_group-my_lv [ sometimes /dev/mapper or /dev/sdc]
+15. Extend storage:-
+  a. Attach or extend physical volume: From server configuration.
+  b. Extend Volume group: vgextend my_vol_group /dev/<new_physical_volume>
+  c. Extend the logical volume: lvextend -L 8MiB /dev/my_vol_group/my_lv (only increase) [-r: to skip FS resize]
+  d. Reduce the Logical volume: lvresize -L -4MiB /dev/my_vol_group/my_lv  (increase and decrease)
+  e. Extend the File System: resize2fs /dev/my_vol_group/my_lv (for ext4)
+      xfs_growfs /mnt/data/ [ grow the xfs file system]
+
+16. Move the volume group from one PV to other PV(other pv is automatically detected based on avail]: pvmove /dev/vdb3
+17. Remove PV from VG: vgreduce vg01 /dev/vdb3 [ remove /dev/vdb3 from vg01 volume group]
+18. Remove the LV: lvremove /dev/vg01/lv01 [ after unmounting the VG]
+19. Remove the VG: vgremove vg01
+20. Remove the PV: pvremove /dev/vdb1 /dev/vdb2
+21. Install stratis storage pool: dnf install stratis-cli stratisd
+22. Create and manage pool: stratis pool create pool1 /dev/vdb
