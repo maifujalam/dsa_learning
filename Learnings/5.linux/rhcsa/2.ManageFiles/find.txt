@@ -25,3 +25,9 @@
     i. Find files which can either user,group or other can read: find -perm /u=r,g=r,o=5
     k. Find files with size range(greater ten 1KB and less then 100M): find /bin/ -size +1k -size -100M
     l. Find file with size range and user special permission have(guid): find /bin/ -size +1k -size -100M -perm /u=s
+
+10. find all empty files and delete it: find / -type d --empty --delete
+11. find all sh files ans show its size: find / -type f -name '*.sh' -exec ls -al {} + [ +: its used to append all the
+    find result and pass it to ls command by appending it.Ex:- ls -al aa bb cc ]
+
+12.

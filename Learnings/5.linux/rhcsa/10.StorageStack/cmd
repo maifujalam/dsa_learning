@@ -28,3 +28,6 @@
 20. Remove the PV: pvremove /dev/vdb1 /dev/vdb2
 21. Install stratis storage pool: dnf install stratis-cli stratisd
 22. Create and manage pool: stratis pool create pool1 /dev/vdb
+23. AWS increase instance disk: sudo growpart /dev/nvme0n1 1 [1: first partition]
+    ext4: resize2fs /dev/nvme0n1
+    xfs: sudo xfs_growfs -d /  [-d: possible to be grown to the largest size, /: mount path]

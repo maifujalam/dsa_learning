@@ -35,5 +35,6 @@
 17. Process list: ps u, ps l
 18. Show custom output with process name: ps -o pid,pcpu,nice,comm $(pgrep sha1sum)
 19. renice : sudo renice -n 5 pid
-
+20. mpstat: Process related statistics
+21. iostat: IO related issues
 

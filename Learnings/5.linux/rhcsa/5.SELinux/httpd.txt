@@ -10,4 +10,4 @@
 10. Search log with AU Search:-
     a. ausearch -m AVC | audit2allow -M my-httpd [ m: message search , M: Module generate for install]
     b. semodule -X 300 -i my-httpd.pp [ X: set priority betwee 1-999,i: install]
-11.
+11. journalctl --boot 0
