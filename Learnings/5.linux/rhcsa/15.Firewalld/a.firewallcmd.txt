@@ -4,5 +4,5 @@
 4. Default zone config:- /usr/lib/firewalld/zones/public.xml.Dont modify this,
 5. Modify instead: /etc/firewalld/zones/public.xml.It will be only populated when rules are added with --permanent,
 6. Activate primary rules: firewall-cmd --reload.
-7. Add current rules to permanent: firewall-cmd --runtime-permanent
+7. Add current rules to permanent: firewall-cmd --runtime-to-permanent
 8.

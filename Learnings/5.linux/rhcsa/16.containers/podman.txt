@@ -15,7 +15,7 @@
     b. podman unshare chown 27:27 apps_db [hare pod user and group id is 27]
 11. Passs environment variable: -e DB_PASS=pass
 12. When the container stoppedn and removed,al the data associated with it gets deleted.
-13. when container stps,it moves to archive state.To permanently remove it ,run podman rm container_name
+13. when container stops,it moves to archive state.To permanently remove it ,run podman rm container_name
 14. network ls:  podman network ls
 15. create network: podman network create --gateway 10.91.91.1 --subnet 10.91.91.0/24 network_name
 16. connect pod with network: podman network connect network_name pod_name

@@ -2,4 +2,11 @@
 2. Set system timezone to your timezone and make sure NTP is enabled.
     a. timedatectl set-timezone "Asia/Kolkata"
     b. timedatectl  set-ntp true
-3.
+3. Difference between sysctl and systemctl?
+  systecl:-
+  - Used for maaging kernel parameters at runtime
+  - permanent change at: /etc/systctl.conf
+  - Example:- sysctl -w net.ipv4.ip_forward=1
+  systemctl:-
+  - used for managing services
+  - Example: systemctl restart https

@@ -18,4 +18,6 @@
 18. swapon [ -a to making all swap from fstab to be on] : It shows the current active swap.
 19. swapon --summaryor or cat /proc/swaps : show swap priority.High number high priority.Default -2.To make effect on
     priority do.Swapoff and swapon.
-20.
+20. Show the current disk state: logger -p
+21. Monitor cpu,mem,disk: vmstate [vmstate 1 to monitor every 1 sec]
+22.

@@ -4,6 +4,6 @@
 4. Get systemd daemon details: man sysctl.d
 5. Edit sysctl value to permanent:-
     a. edit /etc/sysctl.conf
-    b. sysctl -a | grep parameter_toc_check
+    b. sysctl -a | grep parameter_to_check
     c. sysctl -p
 6.

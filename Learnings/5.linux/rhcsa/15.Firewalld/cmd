@@ -1,0 +1,1 @@
+1.  firewall-cmd --add-port=80/tcp --permanent : add port 80 to allow list

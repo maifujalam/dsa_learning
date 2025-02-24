@@ -21,7 +21,8 @@
   systemctl is-active | is-enabled  sshd.service
 
 5. Whats the difference between service restarts and serviec reload?
-  - Restarte: Stops and run the process after reloading the new service file. PID changes
+  - Restarte: Stops and run the process
+  after reloading the new service file. PID changes
   - Reload: Some services can reload their configuration files without requiring a restart. PID same.
    systemctl reload | restart | reload-or-restart sshd.service
 
