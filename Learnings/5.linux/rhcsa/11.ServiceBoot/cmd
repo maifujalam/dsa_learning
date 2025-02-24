@@ -1,0 +1,5 @@
+1. systemctl list-units --type=service: list all the service type units
+2. systemctl get-default: Get the system user targets
+3. systemctl list-dependencies sshd.service: list service dependencies
+4. systemctl mask sendmail.service : prevent mail service to accidently start by creating link to /dev/null [umask ]
+5.

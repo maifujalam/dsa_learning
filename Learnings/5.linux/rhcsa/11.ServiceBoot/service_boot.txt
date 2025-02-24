@@ -7,10 +7,10 @@
    - It requires no other dependent service to start.
    - Automatic service dependency management.Example:- if starting a servie requires requires network service to
      be available,then it starts the dependency first.
-   -
+   - It is launched by is symlink called /sbin/init
 
 2. What is a daemon?
-  - Daemons are process which runs ins the background.
+  - Daemons are process which runs in the background.
   - Daemons startes automatically at boot time and continue untils shut down if not manually stopped.
   - Demon services have service name appended with d like(chronyd,firewalld,sshd).
 
