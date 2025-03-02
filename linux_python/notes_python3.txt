@@ -1,0 +1,2 @@
+1. Study index reference: https://docs.python.org/3/library/index.html
+2. GFG: https://www.geeksforgeeks.org/python-programming-language-tutorial/

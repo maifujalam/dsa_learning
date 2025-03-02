@@ -1,0 +1,20 @@
+# Basic Patterns
+Hello World
+Hello Python
+Hello Regex
+
+# Email Addresses
+alice@example.com
+bob@abc.com
+charlie@xyz.net
+
+# Phone Numbers
+123-456-7890
+098-765-4321
+
+# URLs
+https://www.example.com
+http://www.google.com
+
+# Special Characters
+!@#$%^&*()
