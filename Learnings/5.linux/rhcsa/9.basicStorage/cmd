@@ -1,7 +1,7 @@
-1. findmont: shows mount target,source,filesystem,mount option
-2. lsblk -pf: Shows disks,partitions,size,mountpoints.
-3. du -h: shows disk usage
-4. df -hiT: shows disk free
+1. findmnt: shows mount target,source,filesystem,mount option
+2. lsblk -fps: [ f: filesystem, p:paths in full , s: size]: shows block devices
+3. du -sh: [ s:summary, h:human readable]: shows disk usage
+4. df -hiT: [ h:human readable, i:inode, T:filesystem type]: shows disk free space
 5. lsof <path> [to check if mount partition is busy]: shows the process which uses that path
 6. mount /dev/sdd <dir>: mount file system partition to a <dir> path
 7. umount <dir>: unmount device

@@ -74,3 +74,37 @@
   d. Mount a swap partition:
     UUID="" swap swap defaults 0 0
   e. Reload daemon: systemctl daemon reload
+
+
+1. Create a new partition on /dev/sdb of size 500MiB with GPT partition type and format it as ext4 file system. Then mount it to /mnt/data permanently.
+   a. parted /dev/sdb mklabel gpt
+   b. parted /dev/sdb mkpart p1 ext4 1MB 500MB [ here 2048s is for boot loader ] or mkpart primary ext4 1MiB 500MiB
+   c. mkfs.ext4 /dev/sdb1
+   d. mkdir -pv /mnt/sdb1
+   e. mount /dev/sdb1 /mnt/sdb1
+   f. Get UUID: lsblk -pf
+   g. Edit fstab: UUID="uuid_of_sdb1" /mnt/data ext4 defaults 0 0
+   h. mount -a
+   i. Verify: findmnt | grep sdb1
+   j. Get metadata: tune2fs -l /dev/sdb1
+   h. After cehcing the free space: Its found that  only 397/500 MB is usable as reserved space is there for super user by default 5% of total space.
+      1. Ext4 reduces 500MB-> 430MB usable space for normal user. [ This is around 15% of 500MB]
+      2. 5% reserve for root + metadata reduced usable to ~397M [ This is around 20% of 500MB]
+    i. To change it to 1%: tune2fs -m 1 /dev/sdb1
+
+    Tip: mklabel-> mkpart -> mkfs -> mount -> fstab -> mount -a -> verify -> tune2fs
+
+2. Extend the partition /dev/sdb1 by 500MiB.
+   a. unmount /mnt/data
+   b. Safely reduce file system size: resize2fs /dev/sdb1 500M [ new_size= old_size - 500MiB]
+   b. parted /dev/sdb print [ to get the last sector of sdb1]
+   c. parted /dev/sdb rm 1
+   d. parted /dev/sdb mkpart p1 ext4 1MiB 1048MB [ new_last_sector= old_last_sector + 200MiB]
+   e. e2fsck -f /dev/sdb1 [ to check file system,Important step ]
+   g. mount -a
+   h. Verify : df -h /mnt/data
+
+   Tip: To shrink give the 300MB.But its not recomended.
+        DO not format the partition again after resizing.Only run: resize2fs /dev/sdb1
+
+3.
