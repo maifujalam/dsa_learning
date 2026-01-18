@@ -15,7 +15,6 @@
             7. Low size.As it only contains path to original file not the content of original file.
             8. can be created across file system.
 
-
     Hard=>
         1. same inode number. So update in one file reflects in another file.
         2. not allowed for directories.
@@ -25,6 +24,18 @@
         6. change file name works same
         7. same size of files.
         8. Has to be on the same file system.(lsblock to check.Else it gives error 'Invalid cross-device link ')
+
+4. What is inode in linux?
+   It is a index number.Its a uniq number assigned to all files and folders in linux.It stores metadata about file/folder
+   like:owner,group,permissions,file type,size,location on disk,creation/modification time etc.
+
+5. Find a file using indeo number?
+   find /path_where_to search -inum <inode_no>
+
+6. What are the dofferent stream in linux?
+   1. Standard Input (stdin) : 0
+   2. Standard Output (stdout) : 1
+   3. Standard Error (stderr) : 2
 
 4. Display file contenet without using cat?
     sed '' file.txt,awk '{print}' file.txt
@@ -104,3 +115,48 @@
 21. How to install this downloaded package?
     dnf localinstall -y /tmp/httpd/*
     sudo dnf localinstall -y /tmp/httpd-2.4.62-1.el9_5.2.x86_64.rpm
+
+2. List all running cpu:
+    ps aux [ a: all users, u: user format, x: all ps uax
+    processes including those not attached to terminal]
+
+3. Sort by mem and cpu:
+    ps aux --sort=-%mem
+    ps aux --sort=-%cpu
+    ps aux --sort=-%mem,-%cpu
+4. Top cpu and mem process:
+    top   or htop
+    Shift + M : sort by mem
+    Shift + P : sort by cpu
+    q : quit
+5. Check the disk space?
+    df -hiT [h:human readable,i:inode,T:type of fs]
+6. Check the disk usage of folder?
+    du -sh * [s:summary,h:human readable]
+7. Check open ports?
+    ss -tunlp [ t:tcp,u:udp,l:listening,n:numeric,p:process]
+8. Check network interfaces?
+    ip a
+9. Check routing table?
+    ip r
+10. Find the pid of running process by its name?
+     # sleep 3600 &
+     2384
+     $ pgrep sleep
+      2384
+11. Kill a process by its name?
+      pkill sleep
+12. Monitor real time network usage?
+      nload
+13. Monitor real time disk usage?
+    iotop
+14. Monitor real time cpu usage?
+    atop
+15. Monitor real time file system usage?
+    dstat
+16. Monitor real time system resource usage?
+    glances
+17. Check memory usage?
+    free -h
+18. Check systemd services status?
+    systemctl status <service_name>

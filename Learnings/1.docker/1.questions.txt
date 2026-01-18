@@ -20,7 +20,7 @@
       ex:- CMD echo hello => run container_image =>echo hello | run container_image host =>echo host_id
     ENTRYPOINT:- It tells the specific executable for container.When executable and params are static.
          ex:- ENT.. echo hello => run container_image => hello, run container_image host => hello host_id.
-    Bith CMD and ENT..=> ENTRYPOINT ["echo","hello"] CMD ["world"].(If run with no paramter it will print hello world).
+    Both CMD and ENT..=> ENTRYPOINT ["echo","hello"] CMD ["world"].(If run with no paramter it will print hello world).
         If run with paramter[run container_id alam] => It will print hello alam.
         Entrypoint can be used to use non default shell.(bash,sh,zsh).
 

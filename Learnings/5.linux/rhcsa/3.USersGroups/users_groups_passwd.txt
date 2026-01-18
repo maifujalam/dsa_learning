@@ -38,6 +38,8 @@
 18. /etc/groups contains group and its associated users.Get all group users:- getent group group_name
 19. Let admin user can do anything: echo "%admin ALL=(ALL) ALL" >> /etc/sudoers.d/admin
     "%admin[all members of admin group] ALL[logged in from anywhere]=(ALL)[Run command as all users] ALL[Can run all commands]"
+    alice db01=(root,www-data) NOPASSWD:/usr/bin/systemctl restart nginx
+    user: alice can restart nginx service on db01 server without password prompt.On the behalf of user(or the target user) root and www-data.
 20. Check password status:
     0. alam:!!:19304:0:99999:7:5:y:z [username:login key algo:epoch time since the last password changed:0 (have to wait no any number of days
     before changing passwd:password expires in 99999 days,7 days before time start worning,for extra 5 days user can login with expired password:

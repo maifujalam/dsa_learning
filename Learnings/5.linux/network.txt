@@ -116,6 +116,8 @@
    2. hostname --all-ip-addresses
    3. hostname --ip-address  | awk '{print $2}'
    4. ip a | grep inet  | awk '{print $2}' | cut -d/ -f 1
+   5.  ip a | grep eth | grep inet | awk {'print $2'} | cut -d / -f 1
+   6. ip a |  awk '/inet/{print $2}' | cut -d/ -f 1 | awk 'NR==3 {print}'
 
 
 

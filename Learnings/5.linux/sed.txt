@@ -24,3 +24,11 @@
 
 6. MASTER FORMULA:-
    sed '/varun/(i,a,c,d)'  (i:insert,a:append,c:change,d:delete on varun) [ -i change inplace,$ is for lsate line]
+7. Remove first n lines from file?
+   sed -i '1,Nd' file.txt  (N is number of lines to delete from start)
+8. Remove last n lines from stream?
+   sed -i ':'
+9. Append the stream output to a file?
+   ls | tee -a file.txt
+10. Overwrite the file with stream output?
+    ls | tee file.txt

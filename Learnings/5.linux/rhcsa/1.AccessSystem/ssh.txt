@@ -7,7 +7,7 @@
     a. System time status: timedatectl
     b. Get timezone name: timedatectl list-timezones | grep -i kolkata
     c. Set to IST: timedatectl set-timezone Asia/Kolkata
-5. Who is logged in to system what are they doing: w  AND w -f [to frint from]
+5. Who is logged in to system what are they doing: w  AND w -f [to print from]
 6. Copy public key to different server for key based authentication.
     a. ssh-copy-id -i alam.pub server2 [hare -i is for choosing different public key othrt then default]
     b. So,on remote server public key is added to the authorized_keys.
