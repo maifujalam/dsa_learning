@@ -9,6 +9,7 @@ ADDITIONAL_DISK_SIZE = "5GB"
 
 Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: NETWORK_IP ,virtualbox__intnet: "mynetwork"
+  config.vm.box_check_update = false
   config.vm.define "server" do |s|
     s.vm.box = BOX_NAME
     s.vm.box_version = BOX_VERSION
