@@ -1,0 +1,24 @@
+1. Create pv: pvcreate /dev/sdc [ Basically its formatting it with LVM metadata]
+2. Verify pv: pvdisplay /dev/sdc
+3. Remove pv: pvremove /dev/sdc
+4. Extend pv: (after adding new disk or partition) pvextend /dev/sdc1
+---
+VGS
+1. Create vg: vgcreate vg1 /dev/sdc1
+2. Verify vg: vgdisplay vg1
+3. Extend vg: vgextend vg1 /dev/sdc2
+4. Reduce vg: vgreduce vg1 /dev/sdc2
+5. Remove vg: vgremove vg1
+---
+LVS
+1. Create lv: lvcreate -n lv1 -L 100MiB vg1
+2. Verify lv: lvdisplay /dev/vg1/lv1
+3. Extend lv: lvextend -L +50MiB /dev/vg1/lv1 in percentage:  lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv --resize
+4. Reduce lv: lvreduce -L -50MiB /dev/vg1/lv1
+5. Remove lv: lvremove /dev/vg1/lv1
+---
+FS on LV
+1. Create FS: mkfs.ext4 /dev/vg1/lv1
+2. Mount FS: mount /dev/vg1/lv1 /mnt
+3. Extend FS: resize2fs /dev/vg1/lv1
+4. Unmount FS: umount /mnt
