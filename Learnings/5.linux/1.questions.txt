@@ -160,3 +160,9 @@
     free -h
 18. Check systemd services status?
     systemctl status <service_name>
+19. How to fix inode full issue?
+    a. find and delete unwanted files.
+    b. increase inode count by reformatting the partition with mkfs command with -i option to set bytes-per-inode ratio.
+    c. Move data to another partition with more free inodes.
+    d. Check for small files and delete them.
+       find /path/to/directory -type f -size -1M
