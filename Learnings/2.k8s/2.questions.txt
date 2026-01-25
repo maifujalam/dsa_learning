@@ -1,0 +1,88 @@
+1. taint and toleration:
+  kubectl taint nodes <node-name> key=value:<taint-effect>
+  taint-effect : NoSchedule,PreferNoSchedule,NoExecute
+
+2. how to remove taint from node:
+  kubectl taint nodes <node-name> key:NoSchedule-
+
+3. how to add toleration in pod yaml:
+   spec:
+      tolerations:
+      - key: "key"
+        operator: "Equal"
+        value: "value"
+        effect: "NoSchedule"
+
+   spec:
+      tolerations:
+      - key: "cpu"
+        operator: "Equal"
+        value: "high"
+        effect: "NoSchedule"
+
+Node     CPU(virus type)	               Taint	Who can run?
+Low	     cpu=low:NoSchedule	             Only lightweight pods that tolerate low CPU
+Medium	 cpu=medium:PreferNoSchedule	   Medium workload pods can go here if no high CPU node is free
+High	   cpu=high:NoSchedule	           CPU-intensive pods only
+
+Pod Type	    Node Taints tolerated(vaccine)     	Behavior
+Light	        low, medium, high	          Can go anywhere
+Medium	      medium, high	              Avoid low CPU
+High	        high	                      Must go high CPU
+
+--
+So Pod with low cpu should be having below:-
+  - key: "cpu"
+    operator: "Equal"
+    value: "low"
+    effect: "NoSchedule"
+  - key: "cpu"
+    operator: "Equal"
+    value: "medium"
+    effect: "PreferNoSchedule"
+  - key: "cpu"
+    operator: "Equal"
+    value: "high"
+    effect: "NoSchedule"
+So it can go anywhere.
+
+---
+pod with medium cpu should be having below:-
+  - key: "cpu"
+    operator: "Equal"
+    value: "medium"
+    effect: "PreferNoSchedule"
+  - key: "cpu"
+    operator: "Equal"
+    value: "high"
+    effect: "NoSchedule"
+So it can go medium and high cpu nodes.
+---
+pod with high cpu should be having below:-
+  - key: "cpu"
+    operator: "Equal"
+    value: "high"
+    effect: "NoSchedule"
+So it can go only high cpu nodes.
+
+4. node affinity:
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: disktype
+              operator: In
+              values:
+              - ssd
+              - nvme
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          preference:
+            matchExpressions:
+            - key: another-node-label-key
+              operator: In
+              values:
+              - another-node-label-value
+

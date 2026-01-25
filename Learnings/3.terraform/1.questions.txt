@@ -94,3 +94,90 @@
 
 21. What is destroy time provisioner?
     Execute provisioner when argument when=destroy is provided.
+
+22. overide teeaform stste file lock?
+    terraform apply -lock=false --lock-timeout=5s
+
+23. What is terraform backend?
+    Its a configuration that defines where terraform state is stored.
+    ex:- local backend,remote backend(S3,DynamoDB,GCS,Azure Blob Storage)
+
+24. Types of backend?
+    local backend,remote backend(S3,DynamoDB,GCS,Azure Blob Storage)
+
+25. How to migrate backend?
+    1. configure new backend in configuration file.
+    2. run terraform init -migrate-state
+    3. verify state is migrated successfully.
+26. What is terraform state?
+    Its a file that keeps track of the resources managed by terraform.
+    It maps the configuration files to real-world resources.
+    It is used to determine what changes need to be made to the infrastructure.
+27. Types of state file?
+    local state file,remote state file.
+28. How to manage state file?
+    a. remote state management using backend.
+    b. state locking to prevent concurrent modifications.
+    c. state encryption for security.
+    d. state versioning for rollback.
+29. What is terraform module?
+    Its a container for multiple resources that are used together.
+    It is a way to organize and reuse code.
+30. Types of module?
+    root module,child module,public module.
+31. How to create module?
+    1. create a directory for the module.
+    2. add resource,variable,output files.
+    3. use module block to call the module in root module.
+32. How to use module?
+    module "module_name" {
+      source = "./module_directory"
+      variable_name = value
+    }
+33. What is terraform variable?
+    Its a way to parameterize terraform configurations.
+    It allows you to define values that can be reused throughout the configuration.
+34. Types of variable?
+    a. input variable
+    b. output variable
+35. How to define variable?
+    variable "variable_name" {
+      type = string
+      default = "default_value"
+      description = "description of the variable"
+    }
+36. How to use variable?
+    var.variable_name
+37. What is terraform output?
+    Its a way to extract information from the terraform state.
+    It allows you to define values that can be used outside of terraform.
+38. How to define output?
+    output "output_name" {
+      value = resource_type.resource_name.attribute
+      description = "description of the output"
+    }
+39. How to use output?
+    terraform output output_name
+40. What is terraform workspace?
+    Its a way to manage multiple environments within a single terraform configuration.
+    It allows you to create isolated instances of your infrastructure.
+41. How to create workspace?
+    terraform workspace new workspace_name
+42. How to switch workspace?
+    terraform workspace select workspace_name
+43. How to list workspaces?
+    terraform workspace list
+44. How to delete workspace?
+    terraform workspace delete workspace_name
+45. What is terraform import?
+    Its a way to bring existing infrastructure under terraform management.
+    It allows you to import resources that were created outside of terraform.
+46. How to use terraform import?
+    terraform import resource_type.resource_name resource_id
+47. What is terraform taint?
+    Its a way to mark a resource for recreation on the next apply.
+    It forces terraform to destroy and recreate the resource.
+48. How to use terraform taint?
+    terraform taint resource_type.resource_name
+49. What is terraform graph?
+    Its a way to visualize the dependency graph of your terraform configuration.
