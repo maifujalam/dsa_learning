@@ -1,0 +1,27 @@
+Ceph architecture:
+
+A. Monitors (MONs):
+1. These are responsible for maintaining the cluster map and ensuring data consistency across the cluster.
+   They keep track of the state of the cluster and manage the membership of OSDs (Object Storage Daemons).
+2. MONs use a consensus algorithm to agree on the cluster state, ensuring high availability and fault tolerance.
+
+B. Object Storage Daemons (OSDs):
+1. OSDs are the workhorses of the Ceph storage cluster, responsible for
+    storing and retrieving data.
+2. Each OSD manages a portion of the storage and handles data replication, recovery, and rebalancing.
+
+C. Metadata Servers (MDSs):
+1. MDSs manage the metadata for the Ceph File System (CephFS),
+    which includes file names, directories, and permissions.
+2. They enable efficient file system operations by offloading metadata management from OSDs.
+
+D. RADOS Gateway (RGW):
+1. The RGW provides an object storage interface compatible with Amazon S3 and OpenStack Swift APIs.
+2. It allows users to interact with Ceph storage using familiar object storage protocols.
+
+E. Ceph Clients:
+1. These are the applications or services that interact with the Ceph cluster to read and write data.
+2. Clients can use various interfaces, including RADOS, CephFS, and RGW, to access the storage resources.
+
+RADOS: Reliable Autonomic Distributed Object Store
+1. RADOS is the underlying distributed object store that powers Ceph.
