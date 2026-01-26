@@ -1,0 +1,6 @@
+1. Run ceph adm shell: ceph adm shell
+2. Check cluster status: ceph adm status
+3. List all nodes: ceph adm node ls
+4. Add new node: ceph adm node add <node_ip>
+5. Remove node: ceph adm node rm <node_ip>
+6. Check OSD status: ceph adm osd status

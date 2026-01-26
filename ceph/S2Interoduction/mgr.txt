@@ -1,0 +1,4 @@
+Ceph Manager (MGR):
+1. Check MGR status: ceph mgr status
+2. Enable MGR module: ceph mgr module enable <module_name>
+3. Disable MGR module: ceph mgr module disable <module_name>

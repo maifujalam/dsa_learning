@@ -1,0 +1,3 @@
+Ceph Monitor Server (MON):
+1. Check MON status: ceph mon stat
+2. List MON daemons: ceph mon ls

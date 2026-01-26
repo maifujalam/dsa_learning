@@ -1,0 +1,27 @@
+Ceph PG (Placement Groups):
+1. ceph pg map
+2. ceph pg stat
+3. ceph pg dump
+4. ceph pg ls
+5. ceph pg repair <pg_id>
+6. ceph pg scrub <pg_id>
+7. ceph pg deep-scrub <pg_id>
+8. ceph pg force-recovery <pg_id>
+9. ceph pg force-backfill <pg_id>
+10. ceph pg force-scrub <pg_id>
+11. ceph pg set <pg_id> <flag>
+12. ceph pg unset <pg_id> <flag>
+13. ceph pg query <pg_id>
+14. ceph pg wait <pg_id>
+15. ceph pg dump_json
+16. ceph pg repair <pg_id> --yes-i-really-mean-it
+17. ceph pg scrub <pg_id> --yes-i-really-mean-it
+18. ceph pg deep-scrub <pg_id> --yes-i-really-mean-it
+19. ceph pg force-recovery <pg_id> --yes-i-really-mean
+20. ceph pg force-backfill <pg_id> --yes-i-really-mean-it
+21. ceph pg force-scrub <pg_id> --yes-i-really-mean-it
+22. ceph pg set <pg_id> <flag> --yes-i-really-mean-it
+23. ceph pg unset <pg_id> <flag> --yes-i-really-mean-it
+24. ceph pg query <pg_id> --yes-i-really-mean-it
+25. ceph pg wait <pg_id> --yes-i-really-mean-it
+26. Documentation: Refer to the official Ceph documentation for detailed information on PG management and best practices.

@@ -1,0 +1,4 @@
+Ceph Meta Data Servers (MDS):
+1. Check MDS status: ceph mds stat
+2. List MDS daemons: ceph mds ls
+3. Start MDS daemon: systemctl start ceph-mds@<fs_name>

@@ -1,0 +1,36 @@
+Ceph OSD:
+1. Check OSD status: ceph osd status
+2. List all OSDs: ceph osd ls
+3. Create OSD from disk: ceph-volume lvm create --data /dev/sdX
+4. Prepare OSD: ceph-volume lvm prepare --data /dev/sdX
+5. Activate OSD: ceph-volume lvm activate <osd_id>
+6. Deactivate OSD: ceph-volume lvm deactivate <osd_id>
+7. Remove OSD: ceph osd out <osd_id>
+8. Destroy OSD: ceph-volume lvm destroy <osd_id>
+9. Check OSD tree: ceph osd tree
+10. Check OSD utilization: ceph osd df
+11. Set OSD weight: ceph osd crush reweight <osd_id> <weight>
+12. Mark OSD as down: ceph osd down <osd_id>
+13. Mark OSD as up: ceph osd up <osd_id>
+14. Repair OSD: ceph osd repair <osd_id>
+15. Check OSD logs: tail -f /var/log/ceph/ceph-osd.<osd_id>.log
+16. Monitor OSD performance: ceph osd perf
+17. Check OSD heartbeat: ceph osd heartbeat
+18. Set OSD maintenance mode: ceph osd set-maintenance <osd_id>
+19. Clear OSD maintenance mode: ceph osd clear-maintenance <osd_id>
+20. Rebalance OSDs: ceph osd reweight-by-utilization
+21. Check OSD recovery status: ceph osd recovery-status
+22. Set OSD recovery priority: ceph osd set-recovery-priority <priority>
+23. Monitor OSD backfill status: ceph osd backfill-status
+24. Set OSD backfill priority: ceph osd set-backfill-priority <priority>
+25. Documentation: Refer to the official Ceph documentation for detailed information on OSD management and best practices.
+26. Dump OSD map: ceph osd dump
+27. Get OSD map: ceph osd getmap -o osdmap
+28. Show OSD metadata: ceph osd metadata <osd_id>
+29. Set OSD flags: ceph osd set <flag>
+30. ceph osd pool ls detail
+31. Ceph crush rule dump: ceph osd crush rule dump
+32. Ceph osd pool set <pool_name> <key> <value>
+33. Ceph osd pool get <pool_name> <key>
+34. Ceph osd pool delete <pool_name> <pool_name> --yes-i
+35. Ceph osd pool rename <old_pool_name> <new_pool_name>

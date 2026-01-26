@@ -17,7 +17,7 @@ C. Metadata Servers (MDSs):
 
 D. RADOS Gateway (RGW):
 1. The RGW provides an object storage interface compatible with Amazon S3 and OpenStack Swift APIs.
-2. It allows users to interact with Ceph storage using familiar object storage protocols.
+2. It allows users to interact w ith Ceph storage using familiar object storage protocols.
 
 E. Ceph Clients:
 1. These are the applications or services that interact with the Ceph cluster to read and write data.

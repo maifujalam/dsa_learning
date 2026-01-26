@@ -1,0 +1,5 @@
+Ceph Rados Gateway (RGW):
+1. Check RGW status: ceph rgw status
+2. Create RGW user: radosgw-admin user create --uid=<user
+3. Delete RGW user: radosgw-admin user rm --uid=<user_id>
+4. List RGW users: radosgw-admin user list

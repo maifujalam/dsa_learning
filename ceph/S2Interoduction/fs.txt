@@ -1,0 +1,27 @@
+Ceph File System (CephFS):
+1. Check file system: ceph fs ls
+2. Create file system: ceph fs new <fs_name> <metadata_pool> <data_pool>
+3. Remove file system: ceph fs rm <fs_name> --yes-iam-sure
+4. Create metadata pool: ceph osd pool create <metadata_pool> 128
+5. Create data pool: ceph osd pool create <data_pool> 128
+6. Mount CephFS on client:
+   a. Install ceph-common package: sudo apt-get install ceph-common
+   b. Create mount point: sudo mkdir /mnt/cephfs
+   c. Mount command: sudo mount -t ceph <mon_ip>:6789:/ /mnt/cephfs -o name=<client_name>,secret=<client_secret>
+7. Unmount CephFS: sudo umount /mnt/cephfs
+8. Check mounted file systems: mount | grep ceph
+9. Create directory in CephFS: mkdir /mnt/cephfs/mydir
+10. Create file in CephFS: echo "Hello CephFS" > /mnt/cephfs/myfile.txt
+11. List files in CephFS: ls /mnt/cephfs
+12. Remove file in CephFS: rm /mnt/cephfs/myfile.txt
+13. Remove directory in CephFS: rmdir /mnt/cephfs/mydir
+14. Check CephFS usage: ceph fs status <fs_name>
+15. Set quota on directory: ceph fs set-quota <fs_name> --path /mydir --max-bytes <size_in_bytes>
+16. Get quota on directory: ceph fs get-quota <fs_name> --path /mydir
+17. Monitor CephFS performance: ceph fs perf stats <fs_name>
+18. Check CephFS health: ceph health detail
+19. Backup CephFS data: Use standard Linux backup tools (e.g., rsync, tar) on the mounted CephFS.
+20. Restore CephFS data: Use standard Linux restore tools on the mounted CephFS.
+21. Upgrade CephFS: Follow the Ceph upgrade documentation to ensure compatibility and data integrity.
+22. Troubleshoot CephFS issues: Check Ceph logs, monitor cluster health, and consult Ceph documentation for common issues and solutions.
+23. Documentation: Refer to the official Ceph documentation for detailed information on CephFS features and best practices.
