@@ -1,4 +1,4 @@
-Ceph Rados Gateway (RGW):
+Ceph Rados Gateway (RGW) ( S3/Swift compatible ):
 1. Check RGW status: ceph rgw status
 2. Create RGW user: radosgw-admin user create --uid=<user
 3. Delete RGW user: radosgw-admin user rm --uid=<user_id>
