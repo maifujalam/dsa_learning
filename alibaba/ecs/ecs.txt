@@ -1,0 +1,9 @@
+ECS Elastic Compute Service (ECS)
+1. states
+
+• Starting (Initializing): Instance is booting up; wait until it transitions to Running.
+• Running: Instance OS is active.
+• Stopping: Instance is shutting down.
+• Stopped: Instance is powered off; you can restart it.
+• Deleted: Instance has been released; resources are no longer valid.
+---

@@ -1,0 +1,4 @@
+1. 2 Securit group Basic and advance.
+2. Default 22 is open
+3. SG has to attach to VPC
+4. Default all outgoing trrafic allowed.

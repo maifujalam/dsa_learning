@@ -1,0 +1,13 @@
+1. Create snapshot of 2 types:-
+ a. disk
+ b. instanmce (multiple disk)
+
+2. Instance from Snapshot.
+   a. create full snapshot
+   b. create image from snapshot [ image is reginal scope]
+   c. create vm on tareget zone from image.
+
+3. Attach disk to snapshot instance.
+   a. while attaching specify mount point.
+
+ 

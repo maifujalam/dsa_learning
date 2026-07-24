@@ -1,0 +1,2 @@
+1. Work bench: Instance and OS is running and completely booted, then it will be connected.
+2. VNC: Wn instance is in starting/stoping state.OS is not running,state.We can connect.

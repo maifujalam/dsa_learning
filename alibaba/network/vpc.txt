@@ -1,0 +1,11 @@
+VPC( Virtual Private Cloud)
+1. Virtual Provate Cloud Netowrk,provided by Alibaba at free of cost for provisioning Alibaba resources.
+2. It provides network isolation.So,one VPC is isolated from another.Its done throush layer-2 issolation.
+3. Its a sotware define network.U can choose network cidr and create subnet called vSwitch on each AZ.
+4. It provide securoity like RAM for netowrk promission ,Security Group as firewall.
+5. Internete acces can be done with NAT gateway which forovde SNAT.
+6. We can configure DNAT and ip address mapping.
+7. VPC can be used for VPC perring and hybrid connect lile:-
+  a. IDC Data connect (Laster Option from Data Center to Edge Network) Alibaba cloud express conenct.
+  b. A VPN connect with VPN Gteway.
+
