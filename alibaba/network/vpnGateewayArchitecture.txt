@@ -1,0 +1,229 @@
+1. ================================================================================
+ POC: SITE-TO-SITE IPsec VPN BETWEEN TWO ALIBABA CLOUD ACCOUNTS
+================================================================================
+Date        : 2026-07-25
+Region      : me-central-1
+Prepared by : Rahees Khan
+Objective   : Establish an IPsec tunnel between two VPCs in two separate
+              Alibaba Cloud accounts using Alibaba VPN Gateway, and verify
+              private connectivity (ICMP/ping) between ECS instances on each
+              side.
+
+================================================================================
+ 0. ARCHITECTURE / TRAFFIC FLOW DIAGRAM
+================================================================================
+
+  ACCOUNT A (rahees-uat)                          ACCOUNT B (waleed-uat)
+  ======================                          ======================
+
+ +----------------------------+                +----------------------------+
+ |  VPC  10.0.0.0/16          |                |  VPC 192.168.0.0/16        |
+ |  vpc-l4vvpuh1...           |                |  vpc-l4vv2r9t...           |
+ |                            |                |                            |
+ |   +--------------------+   |                |   +--------------------+   |
+ |   |  ECS               |   |                |   |  ECS               |   |
+ |   |  10.0.0.159        |   |                |   |  192.168.0.244     |   |
+ |   +---------+----------+   |                |   +---------+----------+   |
+ |             |              |                |             |              |
+ |     [ Security Group ]     |                |     [ Security Group ]     |
+ |      ICMP allow 0/0        |                |      ICMP allow 0/0        |
+ |             |              |                |             |              |
+ |   +---------+----------+   |                |   +---------+----------+   |
+ |   | VPC Route Table    |   |                |   | VPC Route Table    |   |
+ |   | 192.168.0.0/16     |   |                |   | 10.0.0.0/16        |   |
+ |   |   -> VPN Gateway   |   |                |   |   -> VPN Gateway   |   |
+ |   +---------+----------+   |                |   +---------+----------+   |
+ |             |              |                |             |              |
+ |   +---------+----------+   |                |   +---------+----------+   |
+ |   | VPN GATEWAY        |   |                |   | VPN GATEWAY        |   |
+ |   | vpn-l4vmar5j...    |   |                |   | vpn-l4vy7kih...    |   |
+ |   | Pub IP 8.213.29.35 |   |                |   | Pub IP 8.213.35.217|   |
+ |   |                    |   |                |   |                    |   |
+ |   | GW Route (THE FIX) |   |                |   | GW Route (THE FIX) |   |
+ |   | 192.168.0.0/16     |   |                |   | 10.0.0.0/16        |   |
+ |   |   -> vco (IPsec)   |   |                |   |   -> vco (IPsec)   |   |
+ |   +---------+----------+   |                |   +---------+----------+   |
+ +-------------|--------------+                +-------------|--------------+
+               |                                             |
+               |        IPsec Connection (vco)               |
+               |     IKEv2 / aes / sha1 / DH group2          |
+               |   PSK: rahees-key   SA: ESTABLISHED         |
+               |                                             |
+    8.213.29.35 =========== INTERNET / IPsec SA =========== 8.213.35.217
+        (master tunnel - active)  <---------->  (master tunnel - active)
+
+
+  END-TO-END PING FLOW (rahees ECS 10.0.0.159 -> waleed ECS 192.168.0.244):
+
+   [1] ECS 10.0.0.159 sends ICMP to 192.168.0.244
+        |
+   [2] VPC route table: 192.168.0.0/16 -> VPN Gateway ............ (was OK)
+        |
+   [3] VPN Gateway destination route: 192.168.0.0/16 -> vco ...... (WAS MISSING!)
+        |                                                            = black-hole
+        v                                                            before fix
+   [4] Encrypt + send over IPsec master tunnel (8.213.29.35 -> 8.213.35.217)
+        |
+   [5] Peer VPN Gateway decrypts -> VPC route -> Security Group (ICMP allow)
+        |
+   [6] ECS 192.168.0.244 receives, replies -> same path in reverse
+        |
+   [7] SUCCESS: 0% packet loss, RTT ~2 ms
+
+  Legend:  Steps [1][2][5][6] were already correct.
+           Step [3] (the gateway-level route into the IPsec connection) was the
+           missing link that black-holed traffic -> fixed in Section 5.
+
+================================================================================
+ 1. ENVIRONMENT / RESOURCE DETAILS
+================================================================================
+
+Account A  (aliyun profile: rahees-uat)
+---------------------------------------
+  VPC               : vpc-l4vvpuh1gxxfkswpuya6a
+  VPC CIDR          : 10.0.0.0/16  (subnets: 10.0.0.0/24, 10.0.1.0/24)
+  ECS private IP    : 10.0.0.159   (instance i-l4vce4apn5ly2thqdt2m)
+  VPN Gateway       : vpn-l4vmar5jpqtz38bdowvwg
+  VPN GW Public IP  : 8.213.29.35  (master) / 8.213.30.146 (DR/slave)
+  IPsec Connection  : vco-l4vu2jzn2rcz5tv050qrm
+  Customer Gateway  : cgw-l4vo8bowx2muhrhe6if0l  (points to 8.213.35.217)
+  Route Table       : vtb-l4v8g448jvu5aicxp1ngk
+  Security Group    : sg-l4vce4apn5ly2thlxawc
+
+Account B  (aliyun profile: waleed-uat)
+---------------------------------------
+  VPC               : vpc-l4vv2r9trvfp2ouole1hq
+  VPC CIDR          : 192.168.0.0/16 (subnets: 192.168.0.0/24, 192.168.1.0/24)
+  ECS private IP    : 192.168.0.244  (instance i-l4viu7g7yk1hv0dwmlcy)
+  VPN Gateway       : vpn-l4vy7kihph9spb4epjmo4
+  VPN GW Public IP  : 8.213.35.217 (master) / 8.213.45.136 (DR/slave)
+  IPsec Connection  : vco-l4vnui2cp5ir7yzt4041r
+  Customer Gateway  : cgw-l4v8o4597hoycjpi3j5y3  (points to 8.213.29.35)
+  Route Table       : vtb-l4vqqwo4wqgyigioj007k
+  Security Group    : sg-l4viu7g7yk1hv0e031ru
+
+IPsec / IKE parameters (identical on both sides):
+  IKE Version   : IKEv2      IKE Mode : main
+  IKE Enc/Auth  : aes / sha1     PFS/DH : group2     Lifetime : 86400
+  IPsec Enc/Auth: aes / sha1     PFS/DH : group2     Lifetime : 86400
+  PSK           : rahees-key
+  Local/Remote Subnet (traffic selector): 0.0.0.0/0 <-> 0.0.0.0/0
+
+================================================================================
+ 2. PROBLEM FACED
+================================================================================
+
+Ping between the two ECS instances (10.0.0.159 <-> 192.168.0.244) was FAILING
+with 100% packet loss in BOTH directions, even though the IPsec tunnel appeared
+to be established.
+
+  From rahees ECS -> 192.168.0.244 : 4 packets transmitted, 0 received (100% loss)
+  From waleed ECS -> 10.0.0.159     : 4 packets transmitted, 0 received (100% loss)
+
+================================================================================
+ 3. TROUBLESHOOTING STEPS PERFORMED
+================================================================================
+
+The connectivity path was verified layer by layer:
+
+STEP 1 - IPsec tunnel status
+  Command: aliyun vpc DescribeVpnConnections --profile <p> --VpnConnectionId <vco>
+  Result : Master tunnel on BOTH sides = "ipsec_sa_established" (State: active).
+           (Slave/DR tunnels showed "ike_sa_not_established" - expected, they are
+           standby only.)
+  Verdict: Tunnel is UP. Not the problem.
+
+STEP 2 - VPC route tables
+  Command: aliyun vpc DescribeRouteEntryList --profile <p> --RouteTableId <vtb>
+  Result : rahees : 192.168.0.0/16 -> VpnGateway  (Status: Available)
+           waleed : 10.0.0.0/16    -> VpnGateway  (Status: Available)
+  Verdict: VPC routes to peer subnet exist and are active. Not the problem.
+
+STEP 3 - Security Group rules (ICMP)
+  Command: aliyun ecs DescribeSecurityGroupAttribute --profile <p> \
+             --SecurityGroupId <sg> --Direction ingress
+  Result : Both security groups ALLOW ICMP -1/-1 from 0.0.0.0/0 (Accept).
+  Verdict: Security groups permit ping. Not the problem.
+
+STEP 4 - OS-level firewall + live ping (via ECS Cloud Assistant RunCommand)
+  Command: aliyun ecs RunCommand ... (ping + iptables -L + firewalld/ufw status)
+  Result : iptables INPUT policy = ACCEPT (no blocking rules);
+           firewalld = inactive; ufw = inactive; on BOTH instances.
+           Ping still 100% loss both directions.
+  Verdict: OS firewall is open. Not the problem.
+
+STEP 5 - VPN GATEWAY destination route table  <-- ROOT CAUSE FOUND HERE
+  Command: aliyun vpc DescribeVpnRouteEntries --profile <p> --VpnGatewayId <vpn>
+  Result : Custom destination routes = 0  (VpnRouteEntries: EMPTY) on BOTH gateways.
+           EnableBgp = True on the gateway, BUT the IPsec connection had
+           EnableTunnelsBgp = False, so NO BGP routes were learned either
+           (VPN_BGP route count = 0).
+
+================================================================================
+ 4. ROOT CAUSE
+================================================================================
+
+The VPC route entry ("peer CIDR -> VPN Gateway") only delivers the packet TO the
+gateway. In Alibaba's dual-tunnel VPN Gateway model, the gateway then needs its
+OWN destination route telling it to forward that traffic INTO the IPsec
+connection (vco).
+
+That gateway-level route was missing on both sides (custom routes = 0), and BGP
+was not active on the tunnels, so the gateway had no next-hop for the peer CIDR.
+Packets reached the gateway and were BLACK-HOLED -> 100% loss symmetrically,
+despite a healthy IPsec SA.
+
+================================================================================
+ 5. FIX APPLIED
+================================================================================
+
+Added one destination route on each VPN gateway, pointing the peer CIDR into the
+IPsec connection (weight 100 = use the active/master tunnel):
+
+  # rahees-uat account
+  aliyun vpc CreateVpnRouteEntry --profile rahees-uat --RegionId me-central-1 \
+    --VpnGatewayId vpn-l4vmar5jpqtz38bdowvwg \
+    --RouteDest 192.168.0.0/16 \
+    --NextHop vco-l4vu2jzn2rcz5tv050qrm \
+    --Weight 100 --PublishVpc false
+
+  # waleed-uat account
+  aliyun vpc CreateVpnRouteEntry --profile waleed-uat --RegionId me-central-1 \
+    --VpnGatewayId vpn-l4vy7kihph9spb4epjmo4 \
+    --RouteDest 10.0.0.0/16 \
+    --NextHop vco-l4vnui2cp5ir7yzt4041r \
+    --Weight 100 --PublishVpc false
+
+  (PublishVpc=false was used because the VPC route tables already contained the
+   peer routes to the gateway; publishing would have collided with them.)
+
+  To reverse: aliyun vpc DeleteVpnRouteEntry --profile <p> --VpnGatewayId <vpn> \
+              --RouteDest <cidr> --NextHop <vco> --Weight 100
+
+================================================================================
+ 6. VERIFICATION (AFTER FIX)
+================================================================================
+
+  rahees ECS -> 192.168.0.244 : 4 packets transmitted, 4 received, 0% loss
+                                rtt avg ~2.2 ms
+  waleed ECS -> 10.0.0.159     : 4 packets transmitted, 4 received, 0% loss
+                                rtt avg ~2.1 ms
+
+  RESULT: Bi-directional private connectivity over the IPsec tunnel CONFIRMED.
+
+================================================================================
+ 7. NOTES / RECOMMENDATIONS
+================================================================================
+
+  - Current setup uses STATIC routing on the gateways (works, no failover).
+  - The gateways have EnableBgp=True but the IPsec connection has
+    EnableTunnelsBgp=False, so BGP is effectively unused.
+  - For automatic failover to the DR/slave tunnel, either:
+      (a) enable BGP on the tunnels, or
+      (b) add a second gateway route through the DR path with a lower weight.
+  - Next possible tests: TCP services (SSH/HTTP) across the tunnel, MTU checks,
+    and throughput measurement.
+
+================================================================================
+ END OF DOCUMENT
+================================================================================

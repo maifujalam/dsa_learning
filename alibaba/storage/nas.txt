@@ -1,0 +1,8 @@
+# Network Attached Storages
+https://www.alibabacloud.com/help/en/nas/product-overview/general-purpose-nas-file-systems?spm=a2c63.l28256.0.0.ebf17bd7ftElup
+1. Types of NAS: general purpose,premium,performance.
+  Starts with r/w 150MBPS,300MBPS,600MBPS
+Max read/write :- 10/5 GB, 20/5,20/5 GBPS.
+
+2. Works on NFS V3/V4
+3.

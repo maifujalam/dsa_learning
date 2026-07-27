@@ -1,0 +1,4 @@
+1. Its private to private IP translation.Its used for connecting oerlaping CIDR in two Networks.
+2. It resolves Provate network conflict.
+3. It translates Private IP to another private NAT IP for internal communication.
+4. Use case is to interconenct to overlaping VPC.

@@ -1,0 +1,6 @@
+1. Outound internet access by translating provate ip to ElasticIP(EIPs).Called SNAT.
+2. Provides internet access for ECS instances in private vSwitches by mapping private IPs to EIPs (SNAT).
+3. Outbound internet access via shared EIP(s). Multiple ECS instances can share one EIP.
+4. No Inbound trrafic.
+5. Outbout internet via SNAT.
+6. Bound to VSwitch and support SNAT and DNAT.

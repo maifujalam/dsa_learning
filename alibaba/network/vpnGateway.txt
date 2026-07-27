@@ -1,0 +1,35 @@
+URL: https://www.alibabacloud.com/help/en/vpn/product-overview/what-is-vpn-gateway?spm=a2c63.l28256.help-menu-65234.d_0_0.14413ea4k18thG
+1. VPN Gateway creates encrypted tunnels between your on-premises data center, office network, or clients and your virtual private cloud (VPC).
+2. Two types of VPN Gateway:- IPSec VPN and SSL VPN
+
+IPSec VPN:
+1. Its site to Site VPN connection.
+2. It connects on-prem network to VPC to create hybrid netowrk.
+3. IT requires IPSec compatable devices like:- router or firewall.
+4. It requires co-ordinated configuration on the both the sites:- cloud vpc and onprem network.
+5. It work ons IPSec protocal on netwrk layer.
+
+SSL VPN:-
+1. It does site to client connect.
+2. It connects onprem to to client individual devices like:- laptop,mobile,PC.
+3. It requires client to  install vpn conenctimg software.
+4. It works on SSL/TLS protocal on Application layer.
+
+
+IPSEc binding modes:-
+A. Attach an IPsec-VPN connection to a VPN gateway instance.
+Best for connecting an on-premises data center to a single VPC.an on-premises data center and a single VPC.
+How it works: On-premises gateway device ↔ IPsec-VPN tunnel ↔ VPN gateway ↔ VPC
+
+B. Attach an IPsec-VPN connection directly to a Transit Router in Cloud Enterprise Network (CEN).
+Best for connecting an on-premises data center to multiple VPCs.an on-premises data center and multiple VPCs
+
+How it works: On-premises gateway device ↔ IPsec-VPN tunnel ↔ Transit Router ↔ Multiple VPCs
+
+Use cases::
+
+Connect to multiple VPCs in the same or different regions
+ECMP load balancing is required for high availability
+Require more than 1 Gbps bandwidth per connection (up to 2 Gbps)
+
+Components: https://www.alibabacloud.com/help/en/vpn/sub-product-ipsec-vpn/product-overview/what-is-ipsec-vpn#a24b8c608d42i

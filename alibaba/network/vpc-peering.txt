@@ -1,0 +1,5 @@
+1. Select account ttype: same acccount or cross account
+2. Selct VPC sourcer:
+Intra-Region
+Inter-Region
+3. Ckeck box the update route table.
