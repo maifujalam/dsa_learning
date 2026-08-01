@@ -1,0 +1,19 @@
+Its specifically for Layer 4.
+1. Create NLB
+2. Create Server Group
+    a. Server Based: Choose ECS Server
+    b. IP Based: Give IPV4 server details
+3. In Service group,Choose Scheduling Algorithm:
+    a. Round Robin: Equal all
+    b. Weighted Roundrobin: More wight more connection/trrafic
+    c. Weighted Least Connnect: Send new connectiont to the server has least active connection
+    d. Source IP Hashing: Hash the Source IP for sticky session
+    e. Four Element hashing: Hash the source ip,source port,destination ip ,destination porst for strict hashing in sticky session.
+4. In service group, Ccnfigure health check:
+    a. HTTP: Specify port and path
+    b. TCP: Specify port
+    c. Specify interval for check,timeout,success/failed threshold.
+
+5. Add EC2 nodes in the backend service of the server group.And add the port.
+6. Create listner and attach the server group.
+
