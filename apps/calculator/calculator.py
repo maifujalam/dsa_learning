@@ -1,3 +1,4 @@
+#!/bin/p
 from decorators.logger import loger
 
 @loger
