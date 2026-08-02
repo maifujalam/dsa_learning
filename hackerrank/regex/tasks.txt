@@ -1,0 +1,13 @@
+1. Regex to match email ID
+2. Regex to match IP ddress
+3. Regex to match URL
+4. Regex to match phone number
+5. Regex to match date in YYYY-MM-DD format
+6. Match xxx.xxx.xxx in any senetance: r"...\....\....\....$". Here dot(.) refers to any character.And
+   backword slash (\.) is the escape sequence for dot(.) character. The $ sign indicates the end of the string.
+7. Regex to match a valid password
+  (at least 8 characters, at least one uppercase letter, one lowercase letter, one number, and one special character)
+8. Create regex for dateof birth in DD/MM/YYYY format.
+9. Create regex for time in HH:MM:SS format (24-hour clock).
+10.
+
