@@ -18,4 +18,4 @@
 18. \S matches any **non-whitespace character**.Example of non whitespace character:- a,b,1,2,3,!,@,#,$,%,^,&,*,(,),_,+,=,{,[,],},|,:,;,",',<,>,?,/,\,.,~,`,-
 19. \b is zero-width—it doesn't consume any characters.It only checks if the current position is between a word character
     (\w: letters, numbers, underscores) and a non-word character (\W: spaces, punctuation, symbols, or the start/end of the string).
-20. More 
+20. (-?) here capture group 1. match either - or nothing (because ? is optional).
