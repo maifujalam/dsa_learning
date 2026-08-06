@@ -9,7 +9,7 @@
    h. The local DNS resolver will then send a DNS query to the authoritative DNS server for google.com.
    i. The authoritative DNS server will respond with the IP address of google.com.
 
-   Local System -> DNS Resolver -> Root DNS Server(.) -> TLD DNS Server(.com) -> Authoritative DNS Server (google.com) -> Return IP address of google.com to the local system
+   Local System Cache server ,if TTL is valid-> DNS Resolver -> Root DNS Server(.) -> TLD DNS Server(.com) -> Authoritative DNS Server (google.com) -> Return IP address of google.com to the local system
 
 2. difeerence between http and https?
 3. Ip address and port?

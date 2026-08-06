@@ -83,6 +83,7 @@ Reference urls:-
     It works by skipping proxy(i.e service discovery) and directly connecting to one of pods endpoint.
     Example:- nslookup normal-service => returns service ip (10.96.0.10),i.e A record
                nslookup headless-service = > retuens one po pods ip ( 192.168.6.20)
+               getent hosts headless-service => returns all pods ip (
 
     Without Selector:-
     It returns CNAME record with External type service.
