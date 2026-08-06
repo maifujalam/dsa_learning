@@ -1,5 +1,83 @@
 1. what happens in the backend when you type google.com?
+   a. Check system DNS cache for google.com.At /etc/hosts file if entry is present then return the IP address of google.com
+   b. If entry is not present in /etc/hosts file then check the local DNS resolver cache for google.com.If entry is present then return the IP address of google.com
+   c. If entry is not present in local DNS resolver cache then send a DNS query to the configured DNS server for google.com.If entry is present then return the IP address of google.com
+   d. If entry is not present in the configured DNS server then send a DNS query to the root DNS server
+   e. The root DNS server will respond with the IP address of the TLD (Top Level Domain) DNS server for .com.Example for google.com the TLD DNS server will be for .com domain at IP address 8.8.8.8.
+   f. The local DNS resolver will then send a DNS query to the TLD DNS server.
+   g. The TLD DNS server will respond with the IP address of the authoritative DNS server for google.com.
+   h. The local DNS resolver will then send a DNS query to the authoritative DNS server for google.com.
+   i. The authoritative DNS server will respond with the IP address of google.com.
+
+   Local System -> DNS Resolver -> Root DNS Server(.) -> TLD DNS Server(.com) -> Authoritative DNS Server (google.com) -> Return IP address of google.com to the local system
+
 2. difeerence between http and https?
 3. Ip address and port?
 4. Private ip vs public ip?
-5.
+
+Ping[l3 rechability] :-
+1. ping -c 4 google.com : Ping google 4 times
+2. ping -I eth0 google.com : Ping google using interface eth0
+
+L4 Debugging :-
+1. telnet google.com 80 : Check if port 80 is open on google.com
+2. nc -vz google.com 443 : Check if port 443 is open on google.com using netcat [ v: verbose, z: zero I/O mode]
+3. nc -vzu google.com 53 : Check if port 53 is open on google.com using netcat [ u: UDP mode]
+4. traceroute google.com : Trace the route packets take to reach google.com
+5. nslookup google.com : Query the DNS server for the IP address of google.com
+6. nslookup api.example.com 8.8.8.8      # bypass local resolver
+7. dig google.com : Query the DNS server for the IP address of google.com using dig command
+
+Local Syste listeing :-
+1. netstat -nltp : List all listening ports on the local system.[n: numeric, l: listening, t: tcp, p: process]
+2. ss -nltp : List all listening ports on the local system using ss command
+
+Local firewall rules :-
+ufw status : Check the status of UFW firewall
+ufw status numbered : Check the status of UFW firewall with rule numbers
+ufw allow 80/tcp : Allow incoming traffic on port 80 (HTTP)
+ufw allow 443/tcp : Allow incoming traffic on port 443 (HTTPS)
+ufw remove 80/tcp : Remove the rule allowing incoming traffic on port 80
+ufw reload : Reload UFW firewall to apply changes
+
+Allication layer debugging:-
+1. curl -I google.com : Fetch the HTTP headers from google.com
+2. curl -v google.com : Fetch the HTTP headers and body from google.com with verbose
+3. curl -X GET google.com : Send a GET request to google.com
+4. curl -X POST -d "param1=value1&param2=value2" : Send a POST request to google.com with data
+5. curl -X PUT -d "param1=value1&param2=value2" : Send a PUT request to google.com with data
+6. curl -X DELETE google.com : Send a DELETE request to google.com
+
+INterface debugging:-
+1. ifconfig : Display network interfaces and their configurations
+2. ip addr show : Display network interfaces and their configurations using ip command
+3. ip link show : Display network interfaces and their configurations using ip command
+4. ethtool eth0 : Display detailed information about the eth0 interface
+5. mii-tool eth0 : Display detailed information about the eth0 interface using mii
+
+Taking tcp dump :-
+1. tcpdump -i eth0 : Capture packets on the eth0 interface
+2. tcpdump -i eth0 -n : Capture packets on the eth0 interface without resolving hostnames
+3. tcpdump -i eth0 -nn : Capture packets on the eth0 interface without resolving hostnames and ports
+4. tcpdump -i eth0 -w capture.pcap : Capture packets on the eth0 interface and write to a file
+5. tcpdump -i eth0 -r capture.pcap : Read packets from a file and display them
+6 tcpdump -i eth0 -nn host 10.20.1.5 and port 443 -w a.pcap: Capture packets on the eth0 interface for host 10.20.1.5
+  and port 443.Also write the captured packets to a file named a.pcap without resolving hostnames and ports.
+
+NIC Monitor:
+1. ethtool -S eth0 : Display NIC statistics for the eth0 interface
+2. ifconfig eth0 : Display NIC statistics for the eth0 interface using ifconfig command
+3. ip -s link show eth0 : Display NIC statistics for the eth0 interface using ip command
+4. iftop : Display real-time network interface statistics
+
+Open a new port on the host:
+1. sudo ufw allow 8080/tcp : Allow incoming traffic on port 808
+2. nc -l 8080 : Start a simple TCP server listening on port 8080 using netcat
+3. python3 -m http.server 8080 : Start a simple HTTP server listening on
+
+Network throughput
+iperf3 -c 10.0.0.1 -n 1G -P 10
+
+Flush Local DDNS Cache:
+sudo resolvectl flush-caches
+resolvectl statistics
