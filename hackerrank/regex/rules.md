@@ -1,5 +1,5 @@
 1. Dot (.) matches any character
-2. Backslash (\) is used to escape special characters
+2. Backslash (\) is used to escape special characters.Special characters are: . ^ $ * + - \ ? { } [ ] | ( ).Ex:- \^\$\*\+.
 3. Caret (^) matches the start of a string
 4. Dollar sign ($) matches the end of a string.
 5. Asterisk (*) matches zero or more occurrences of the preceding character.Example:- 0,1,2,3
@@ -19,3 +19,11 @@
 19. \b is zero-width—it doesn't consume any characters.It only checks if the current position is between a word character
     (\w: letters, numbers, underscores) and a non-word character (\W: spaces, punctuation, symbols, or the start/end of the string).
 20. (-?) here capture group 1. match either - or nothing (because ? is optional).
+21. Inside square brackets [].Here dot . is trated as a literal dot, not as a wildcard character. So, [.] matches only the dot character itself.
+    Also there is no need to provid eescape character for dot inside square brackets. So, [.] is equivalent to \.
+22. Inside square brackets [].Here hyphen - is treated as a literal hyphen, not as a range operator. So, [-] matches only the hyphen character itself.
+    Also there is no need to provide escape character for hyphen inside square brackets. So, [-] is equivalent to \-.
+23. Inside square brackets [].Here caret ^ is treated as a literal caret, not as a negation operator. So, [^] matches only the caret character itself.
+    Also there is no need to provide escape character for caret inside square brackets. So, [^] is equivalent to \^.
+25. All the above rules applies for special characters like:- . ^ $ * + - \ ? { } [ ] | ( )
+26. 

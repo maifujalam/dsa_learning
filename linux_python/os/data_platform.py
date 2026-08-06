@@ -7,7 +7,7 @@ print(platform.version())
 
 
 print(socket.gethostname())
-print(socket.gethostbyname(socket.gethostname()))
+
 
 import os
 
@@ -23,4 +23,4 @@ print("Current directory contents:", os.listdir())
 
 # Execute a shell command
 # os.system("ls -l")  # For Unix-like systems
-os.system("dir")  # For Windows
+# os.system("dir")  # For Windows
