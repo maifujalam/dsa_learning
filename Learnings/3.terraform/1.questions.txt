@@ -181,3 +181,26 @@
     terraform taint resource_type.resource_name
 49. What is terraform graph?
     Its a way to visualize the dependency graph of your terraform configuration.
+50. Whats terraform state locking?
+    It prevents concurrent modifications to the state file by locking it during operations.
+51. How to enable state locking?
+    Use a backend that supports locking, such as S3 with DynamoDB for AWS.
+52. How to force remove lock on state file?
+    terraform force-unlock LOCK_ID
+53. What is terraform plan?
+    It shows the changes that will be made to the infrastructure without actually applying them.
+54. How to encrypt terraform state file?
+    Use a backend that supports encryption, such as S3 with server-side encryption for AWS.
+55. How to version terraform state file?
+    Use a backend that supports versioning, such as S3 with versioning enabled for AWS
+56. How do import state file if its deleted accidently?
+    If the state file is deleted, you can recreate it by importing the existing resources back into terraform using the terraform import command for each resource.
+57. How to handle sensitive data in terraform?
+    Use sensitive variables and outputs to prevent sensitive data from being displayed in logs or the terminal.
+58. How to handle secrets in terraform?
+    Use a secrets management tool like HashiCorp Vault, AWS Secrets Manager, or Azure Key Vault to securely store and retrieve secrets in your terraform configurations.
+59. How to handle multiple environments in terraform?
+    Use workspaces or separate state files for each environment (e.g., dev, staging, production) to isolate configurations and manage resources independently.
+60. How to handle dependencies between resources in terraform?
+    Use the depends_on meta-argument to explicitly define dependencies between resources, ensuring that resources
+61. State file questions: https://www.envzero.com/blog/a-guide-to-the-terraform-state-file
