@@ -175,3 +175,17 @@
     2. It have inbuild feature of wget and tar.And it does not requires its binary.
     3. Inbuild checksum vaidation.(Need to pass checksum value in --checksum parameter).
     4. File are cached and only available during the build and does not persist in the final image.
+
+45. Difference between docker and podman?
+  Docker: docker run nginx -> docker daemon service (docker.socket) -> contanerd service(helper tool) -> runc (OCI: Open Continaer Initiative)-> kernal(namespace isolation and container creation).
+  Podman: podman run nginx -> runc ( low level helper tool) ) -> kernal (namespace isolation and container creation)
+  containerd: its a light weight runtime use by kubernetes. containerd -> runc -> kernal
+  kubelet: containerd -> runc -> kernal
+  So,podman is daemonless and root less.
+  So disadvantages of daemon:- a. if daemon goes down we have a single point of failure.
+       b. daemon un as root.So,security compromise risk for host hijack.
+       c. latency on extra layer.
+  podman also have a feature of grouping of pods.
+
+46.
+

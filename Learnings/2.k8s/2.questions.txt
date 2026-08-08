@@ -85,4 +85,6 @@ So it can go only high cpu nodes.
               operator: In
               values:
               - another-node-label-value
+1. Whats dns policy: ClusterFirst means?
+
 
