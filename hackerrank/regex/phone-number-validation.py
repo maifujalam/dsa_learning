@@ -1,7 +1,7 @@
 import re
 
 def validate(txt):
-    pattern=re.compile(r"\+(\d){2,3}(\d){10,12}")
+    pattern=re.compile(r"\+(\d){2,4}(\d){10,12}")
     return pattern.match(txt)
 
 if __name__ == '__main__':
