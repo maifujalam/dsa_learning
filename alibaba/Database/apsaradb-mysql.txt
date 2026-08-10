@@ -1,0 +1,8 @@
+1. Billing,:- pay asyou go,Subscription(a long duration),ServerLess
+2. DB Engine: MySQL,PostgreSQL,Microsfot SQL,MariaDB.
+3. Choose the edition: Standard,Cluster Edition
+4. Choose networking: VPC,vSwitch,Add to whitelist(add to Security Group automaitcally)
+5. Deployment method: Single zone or multi zonal.
+6. Instance type:   4/16 CPU/RAM to 16/128 CPU/RAM.
+7. Sotrage capacity: 20 GB 128 TB [auto strage expansion]
+8. Backup and snapshot.

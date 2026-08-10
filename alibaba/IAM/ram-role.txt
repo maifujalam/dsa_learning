@@ -1,0 +1,12 @@
+1. A RAM role is a RAM identity type with attached policies.
+Who are the principals for ram role?
+1. Any other alibaba cloud account.
+2. Any alybaba cloud servie trying to access another service.
+3. Any Identity Provider leik:- OIDC and assume role.
+
+
+Service Linked Roles?(SLR)
+Its alibaba managed RAM role . Which used by alibaba cloud serice securely access other serice.It does nto require any manual permission setup.
+
+
+

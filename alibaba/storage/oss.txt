@@ -1,0 +1,11 @@
+https://www.alibabacloud.com/help/en/oss/developer-reference/install-ossbrowser-1-0?spm=a2c63.p38356.0.i0#task-2065478
+
+Infrequent Access, Archive, Cold Archive, or Deep Cold Archive
+
+Storage class	Minimum duration	Duration starts from
+Infrequent Access	30 days	Last-Modified time in OSS
+Archive	60 days	Last-Modified time in OSS
+Cold Archive	180 days	Time the object is transitioned to Cold Archive
+Deep Cold Archive	180 days	Time the object is transitioned to Deep Cold Archive
+
+OSS Browser 1.0 support bith partial and resubmable upload by default.

@@ -1,0 +1,30 @@
+A. Compute Serviec:-
+1. ECS Elastic Compute Service.Like:-Instance Creation,Access,Update Instance type,
+2.
+
+B. Networking:
+VPC
+vSwitch
+
+
+C. Storage:
+1. OSS: Object Storage Service
+2. SOS: File Storage by NAS (Network attached storage)
+3. EBS: Elastic Block Storage
+
+D. Database
+1. ApsaraDB RDS for: MySQL and PostgreSQL
+2. Apsara DB for: MongoDB
+3. Access DB to ECS:
+
+E. Security & Auditing and Monitoring:-
+RAM: SLR(Service Link ROle)
+KMS Key:
+Cloud Trail:
+Security Center:
+Resource Group:
+VPC Log
+Monitoring:- Prometheus
+Backup Service: Instance backup.
+
+

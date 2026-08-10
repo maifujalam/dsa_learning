@@ -1,1 +1,12 @@
-User:
+1. It helps to control the access of alibaba resources.
+2. We can create users and accesskey&secret key for API access.And assign permissions to the user.
+3. For Human we user users,group to give access to console and key pairs.
+4. For non-human (scripts,applications,service):- Long teram access key,STS
+
+
+
+Whats ARN?
+Alibaba Cloud Resource Name (ARN)
+acs:ram::<account-id>:role/<role-name>
+
+

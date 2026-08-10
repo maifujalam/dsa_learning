@@ -1,0 +1,6 @@
+Elastic COntainer Instance:-
+https://www.alibabacloud.com/help/en/eci/?spm=a2c63.m28257.0.i1
+
+Its a serverless container management service.
+No need to manage the underlying service,or plan resource capacity.
+Only hcarged for the resouce consumed by your container.
