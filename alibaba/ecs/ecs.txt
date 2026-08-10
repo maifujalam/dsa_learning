@@ -7,3 +7,4 @@ ECS Elastic Compute Service (ECS)
 • Stopped: Instance is powered off; you can restart it.
 • Deleted: Instance has been released; resources are no longer valid.
 ---
+1. Create instance launch template.
