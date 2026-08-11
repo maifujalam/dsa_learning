@@ -1,5 +1,5 @@
 1.After key pair is created a private key is downloaded
 2. Extract public key from pvt key: ssh-keygen -y -f <path_to_key_pair> Ex: ssh-keygen -y -f ~/.ssh/id_rsa
-3. Generate key pair: ssh-keygen -t rsa -b 2048 -f id_rsa_custom
+3. Generate key pair: ssh-keygen -t rsa -b 2048 -f id_rsa_custom -N "" [ N: donot ask for password and generate key]
 4. We can import the public key and keep ourself the pvt key and sill cretae key pair.
 5. 

@@ -8,3 +8,18 @@ ECS Elastic Compute Service (ECS)
 • Deleted: Instance has been released; resources are no longer valid.
 ---
 1. Create instance launch template.
+
+2. Whats Economical mode stop?
+- Its a cost saving aproach to stop ECS.
+- Computation is released(CPU,memory,GPU,system assigned public-ip)
+- THigs which are retained like:- disks,snapshot,provate ips are retained.
+- It reduse const but little risk of application failure.If Strict public ip bound,etc.
+
+
+Cloud Moniroing Agent:-
+Install it with one click in UI.
+
+Whats release protection?
+If enabled,could not release.
+
+

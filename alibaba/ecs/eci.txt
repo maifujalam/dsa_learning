@@ -1,4 +1,4 @@
-Elastic COntainer Instance:-
+Elastic Container Instance:-
 https://www.alibabacloud.com/help/en/eci/?spm=a2c63.m28257.0.i1
 
 Its a serverless container management service.

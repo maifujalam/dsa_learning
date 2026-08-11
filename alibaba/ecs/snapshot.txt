@@ -1,6 +1,6 @@
 1. Create snapshot of 2 types:-
  a. disk
- b. instanmce (multiple disk)
+ b. instance (multiple disk)
 
 2. Instance from Snapshot.
    a. create full snapshot

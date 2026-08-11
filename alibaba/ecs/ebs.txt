@@ -6,4 +6,4 @@
 2. EBS only expand and not shrink.
 3. EBS is of 2 types system and data disk.
 4. OS disk can only be detached in stop state.
-5. 
+5. Disk types:-
