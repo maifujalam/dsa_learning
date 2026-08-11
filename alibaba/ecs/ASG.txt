@@ -1,0 +1,12 @@
+Auto Scaling Group:
+Create Instnce Launch Template (VPC,SUBnet,instance type,os,sg,disk).
+Different types of scaling groups:-
+1. Simple Scaling Group,operations:-
+   a. Add 1 Instance
+   b. Remove 1 Instance
+   c. Change to 3 Instance
+Execution mode: manual,at a cron time, or Reccurence(Repetatiove by days,weeks,months).
+
+2. Target Tracking Scaling Rule: -Like keep CPU target to 70%
+3. Predictive scaling group:- Average CP utilization,target 80%.
+

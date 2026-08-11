@@ -1,0 +1,10 @@
+Action: Allow,deny
+Priority:- 1-100 (1 higest priority,100 lowest priority).
+Protocol: All,tcp,udp,icmp(protocol 1),GRE(General Routing Encapsulation for VPN tunneling,and IPSec ecryption,protocol 47).
+Port Ranege: 80,9090/9095,(-1/-1) for all port open.
+In one rule column we can add multiple port or multiple DEstination IP also.
+Detination IP can have multiple vaues:- MyIP,or Private CIDR like:- 172.16.0.0
+
+For Egress,bydefault all allowed.
+
+

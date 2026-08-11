@@ -1,0 +1,7 @@
+1. How does a request flow from a browser to a Kubernetes pod?
+2. What happens internally when you run a Docker container?
+3. What are kernal namespace?
+4. What are cgroups?
+5. What happens internally when u run kubectl command?
+6. Difference between L4 and L7 LB?
+7.  Whats gRPC?

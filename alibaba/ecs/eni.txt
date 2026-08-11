@@ -1,0 +1,14 @@
+Elastic Network Interface
+1.Support for multiple IP addresses.
+2. Release with Instance
+3.
+
+
+ENI Types:-
+Primary ENI: Each ECS instance in a VPC has a default ENI, is called the primary ENI. Each ECS instance has only one primary ENI.
+Secondary ENIs: Create another ENI to do network isolation and bind to same VPC. Its indepenently created and dyna,ically boudnded.
+
+
+ENI States:-
+Bind
+Released

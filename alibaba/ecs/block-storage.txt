@@ -1,0 +1,27 @@
+Block Storage:-
+
+Cloud Disks:
+- Gives feature of multili attach otion.
+- Gives disk encryption using KMS,like default Cloud Managed Key (CMK).
+- Survices instance live cycles:- stop,restart,release.
+- Used for database,production data,critical applications.
+
+Local Disk:
+- Disks that are directly attached to the physical servers where ECS instance is running.
+- Hisgh random IO,hig throughut and ultra low latency.
+- Used for high performance systems like:- cache servers like- redis,mongodb,elastic hot data.
+- Datamay loose of the host is corruppted.
+
+
+Ephemeral Disks:-
+- High IOPs used to store temporary data.
+- Released when instance is released.
+
+
+Enterprose SSDS (ESSD) and Remote Direct Memory Access (RDMA)
+- There are 25 GBPS bandwith
+- There are different perfocrmance levels (PL)
+  - P0 : Uptp 10,00 IOPS.
+  - P1: Upto 50,00 IPS
+  - P1: Upto 1 Lakh IOS
+  - P3: Upto 10 Lakh IOps

@@ -1,0 +1,53 @@
+1. How does a request flow from a browser to a Kubernetes pod?
+DNS Name in browser-> Route 53 to resolves to LB IP (NLB or ALB) -> ALB IP -> Ingress Controller Node IP
+-> Ingress COntroller -> Resolves the Ingress object -> Service IP -> Pod Endpoint (Roubd robin)-> Pod->Application(port).
+
+2. What happens internally when you run a Docker container?
+   Docker command (docker run -d nginx -p 8080:80) -> docker daemon (/var/run/docker/docker.sock) -> containerd service
+   (containerd is a container runtime, which manages full life cycle of container) -> runc (OCI: Open Container Initiative)
+   (its a low level container runtime,implements the actual container management) -> kernal -> creates namespace & cgrups
+
+3. What are this kernal namespaces?
+  Seperate isolation for UID,PID,NET,MNT(file system).
+
+4. What are cgroups?
+  Its a kernal management for CPU,maemeory, and IO Quota.
+
+5. What happens internally when u run kubectl command?
+ kubectl get no -> load kubeconfig file (server ep,users client-certificate-data,client-key)-> Hit API Endpoint with
+ API Request -> API Server authenticate(cleinec cert) & Authorizion(role,clusterrole) -> controller-manager -> etcd
+ -> traverse the path back.
+
+6. Difference between L4 and L7 LB?
+
+L4 (Netork Load Balancer)
+- Layer 4 of OSI model.
+- Protocol supported  TCP,UDP,TLS protocol
+- Works with IP and Port
+- Ultra low latency
+- Used in Gaming Server,DB,Straming,Finance.
+- No authentication and no WAF.
+
+L7 (Application LB)
+- Layed 7 of OSI model
+- Protocol supported are HTTP,HTTPS,gRPC,Web Socket
+- Works with hostbased and path based routing.
+- Low latency but solwer than NLB.
+- Used in Webapps,API,microservices.
+- Authencication and WAF support by checking client headers in request.Can also preserve cients data like(source ip.port).
+
+7. Whats gRPC?
+google remote procedure call.
+Applicatios useses grpc:- etcd,argocd api server,dockerd -> containerd
+
+8.
+
+
+
+
+
+
+
+
+
+
