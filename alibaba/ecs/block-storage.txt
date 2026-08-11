@@ -8,7 +8,7 @@ Cloud Disks:
 
 Local Disk:
 - Disks that are directly attached to the physical servers where ECS instance is running.
-- Hisgh random IO,hig throughut and ultra low latency.
+- High random IO,high throughput and ultra low latency.
 - Used for high performance systems like:- cache servers like- redis,mongodb,elastic hot data.
 - Datamay loose of the host is corruppted.
 
@@ -18,10 +18,10 @@ Ephemeral Disks:-
 - Released when instance is released.
 
 
-Enterprose SSDS (ESSD) and Remote Direct Memory Access (RDMA)
+Enterprise SSDS (ESSD) and Remote Direct Memory Access (RDMA)
 - There are 25 GBPS bandwith
 - There are different perfocrmance levels (PL)
-  - P0 : Uptp 10,00 IOPS.
-  - P1: Upto 50,00 IPS
-  - P1: Upto 1 Lakh IOS
-  - P3: Upto 10 Lakh IOps
+  - PL0 : Uptp 10,00 IOPS. ~ 105 MBPS
+  - PL1: Upto 50,00 IPS  ~ 130 MBPS
+  - PL2: Upto 1 Lakh IOS (more storage)
+  - PL3: Upto 10 Lakh IOps
