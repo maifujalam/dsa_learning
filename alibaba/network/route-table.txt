@@ -1,0 +1,17 @@
+Route Table
+1. It have 2 parts:-
+   a. Route entry list
+   b. Associated vSwitches
+
+2. In route entry list of 3 types:-
+    a. System route: vSwitch Route and NAT Route to 100.64.0.0/10
+    b. Dynamic route:
+    c. Custom route: For NAT Gateway,VPC Oerring
+
+
+ Important Note: The block 100.64.0.0/10 (from 100.64.0.0 to 100.127.255.255) is reserved by IANA for Carrier-Grade NAT (CGNAT).
+
+ Each Route Table will have below entrys:-
+ a. Destination: 10.0.0.0/16 (or 0.0.0.0/0 for NAT Gateway)
+ b. Next Hop: VPC Peering (NAT Gateway)
+ d. Status: Available

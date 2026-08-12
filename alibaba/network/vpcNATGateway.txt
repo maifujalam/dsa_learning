@@ -2,3 +2,20 @@
 2. It resolves Provate network conflict.
 3. It translates Private IP to another private NAT IP for internal communication.
 4. Use case is to interconenct to overlaping VPC.
+
+
+Create Nat Gagteway:-
+1. Click create nat gateway -> choose Zone, VPC and VSwitch
+2. Associate EIP:- Selecet resurce group->Select EIP-> Verify that it have received a public ip.
+3. Configure SNAT:- Allow EC2 instance to acess internet
+4. COnfigure DNAT: Allow ECS instance to be dicovred by Internt.Like.let it provide service by internet.
+
+
+SNAT Entry of 4 types:
+1. Specific VPC and EIP: Allow VPC on a Zone to allow interet.
+2. Specific vSwitch and EIP: Allow vSwitch on a Region to allow interet.
+3. Specific ECS Instance/ENI and EIP: Allow ECS Instance /ENI on a Region to allow interet.
+4. Specific CIDR Block and EIP: Allow Specific CIDR block on VPC on a Zone to allow interet.
+
+DNAT Entry 1 type:-
+1. Specify EIP,Specify Private IP,And port Mapping (Public port <-> Private Port) or Any port, and Protocol (TCP/UDP)
