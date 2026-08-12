@@ -1,0 +1,15 @@
+1. What are different instance family types?
+  General purpose
+  Compute Optimized
+  Memory Optimized
+  Network Optimized
+2. What are the differnt billing models?
+    pay as you go
+    Subnscription based
+    preemptable/spot
+3. Whats the difference between economy mode and standard shutdown?
+4. Whats an elastic IPs?
+5. How to change instance type,small to large and large to small?
+6. How to expad a disk?
+
+
