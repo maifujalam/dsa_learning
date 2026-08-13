@@ -35,4 +35,11 @@
     b. git remote add origin https://github.com/maifujalam/k8s_vagrant.git
     c. git push origin --tags --force
 10. Fir repo Size: git count-objects -vH  or du -sh (s: summery h: human).
-11.
+11. Accidently poshed secret to git?What to do?
+    a. Remove secret from git history:-
+        i. git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ./secrets.txt" --prune-empty --tag-name-filter cat -- --all
+        ii. git filter-repo --strip-
+        iii. git push origin --tags --force
+        iv. Create prehook secret scanner to avoid future mistakes.
+
+12.

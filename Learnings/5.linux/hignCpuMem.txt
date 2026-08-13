@@ -1,0 +1,25 @@
+1. If servrer is very gigh in CPU?
+    a. Check the process which is taking high CPU:- top,htop,ps -aux --sort=-%cpu | head -n 10
+    b. Kill the process:- kill -9 <pid>
+    c. If it is a service then restart the service:- systemctl restart <service_name>
+    d. If it is a docker container then restart the container:- docker restart <container_id>
+    e. If it is a pod then delete the pod:- kubectl delete pod <pod_name> -n <namespace>
+
+2. If server is very high in memory?
+    a. Check the process which is taking high memory:- top (shift +c ,shift + m) ,htop,ps -aux --sort=-%mem | head -n 10
+    b. Kill the process:- kill -9 <pid>
+    c. If it is a service then restart the service:- systemctl restart <service_name>
+    d. If it is a docker container then restart the container:- docker restart <container_id>
+    e. If it is a pod then delete the pod:- kubectl delete pod <pod_name> -n <namespace>
+
+    top (shift +c ,shift + m) : sort by cpu and mem
+    htop: Fn+F6: sort by cpu and mem
+
+ 3. If server is very high in disk usage?
+    a. Check the disk usage:- df -h
+    b. Check the disk usage of folder:- du -sh *
+    c. Find the large files:- find / -type f -size +100M
+    d. Delete the unwanted files:- rm -rf <file_name>
+    e. If it is a service then restart the service:- systemctl restart <service_name>
+    f. If it is a docker container then restart the container:- docker restart <container_id>
+    g. If it is a pod then delete the pod:- kubectl delete pod <pod_name> -n <namespace>

@@ -349,10 +349,19 @@ Reference urls:-
 
 48.  k explain pod --recursive  | grep -A 3 -B 3 command
 
+49. Different types of node updates?
+   1. Surge update: It is a rolling update with surge option. It creates new node and then delete old node.
+   2. In place update: It is a rolling update without surge option. It updates the node in place without creating new node. It is faster than surge update but it may break the node if the update fails.
+      It is not recommended for production environment.
 
+50. If the dns is rsolving google.com but not the service?
+    Its most changes the dnsPolicy is set to Default.To resolve it,se to ClusterFirsrt.
 
+51. Whats ndot: 5 in /etc/resolv.conf?
+    if <=5 dots: The resolver will append the search list to the name and try to resolve it. If a name has more dots than this value, the resolver will not append the search list and will try to resolve it as is.
+    if >5 dots: The resolver will not append the search list and will try to resolve it as is.
 
-
-
+    It is the number of dots in a domain name that must be present before the resolver will attempt to resolve the name using the search list.
+    If a name has fewer dots than this value, the resolver will append the search list to the name and try to resolve it. If a name has more dots than this value, the resolver will not append the search list and will try to resolve it as is.
 
 

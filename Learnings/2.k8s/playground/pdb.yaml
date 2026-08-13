@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: zk-pdb
+spec:
+  maxUnavailable: "10%"  # Either value of percentage or absolute number can be used.
+  selector:
+    matchLabels:
+      app: zookeeper

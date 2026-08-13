@@ -59,13 +59,23 @@
 14. What are the files present in root module and child modules?
     child module:- main.tf, variables.tf,outputs.tf, README.md,datasource.tf,                ,            ,
     root module:-  main.tf, variables.tf,outputs.tf, README.md,             ,terraform.tfvars, provider.tf,  versions.tf
+
+    main.tf: Main login
+    provider.td: Provider confioguration like AWS,GCP,AZURE.
+    versions.tf: Terraform version and provider version.
+    variables.tf: All variables used in main.tf and other files.
+    terraform.tfvars: All variable values used in main.tf and other files.
+    datasource.tf: All data source used in main.tf and other files.
+    outputs.tf: All output values used in main.tf and other files.
+
+
 15. How to destroy only a single reource out of multiple reources in main.tf?
     comment the resource and do terraform apply.
 16. Copy file to ec2 in /opt/any_file localtion.
 17. What is lifecycle meta argument?
     Its a meta ragument which prodide desorce life cycle begave where it is defined.
     lifecycle {
-    create_before_destroy = true
+        create_before_destroy = true
      }
     prevent_destroy: true
     ignore_changes: ignore resource drifft.
