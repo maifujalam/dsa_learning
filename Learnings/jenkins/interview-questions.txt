@@ -1,0 +1,20 @@
+1. How CICD workds in Jenkins?
+    a. Jenkins is a continuous integration and continuous delivery (CI/CD) tool that automates the process of building, testing, and deploying software.
+    b. It works by monitoring changes in the source code repository (like Git) and triggering jobs based on those changes.
+    c. Jobs can include tasks like compiling code, running tests, creating build artifacts, and deploying to different environments.
+    d. Jenkins uses pipelines to define the sequence of steps in the CI/CD process, which can be written in a declarative or scripted format.
+    e. It also supports plugins to integrate with various tools and services, enhancing its capabilities for different stages of the CI/CD workflow.
+
+2. Jenkins CI Steps?
+    a. Source Code Management: Jenkins pulls the latest code from the version control system (like Git).
+    b. Build: Jenkins compiles the code and creates build artifacts.
+    c. Test: Jenkins runs automated tests to ensure code quality and functionality.
+    d. Package: Jenkins packages the build artifacts for deployment.
+    e. Deploy: Jenkins deploys the packaged artifacts to the target environment (like staging or production).
+    f. Monitor: Jenkins monitors the deployment and provides feedback on the success or failure of the process.
+
+3. Jenkind CD steps?
+    a. Continuous Delivery (CD) in Jenkins involves automating the deployment of applications to different environments.
+    b. It includes steps like deploying to staging, running integration tests, and promoting the application to production.
+    c. Jenkins can be configured to trigger deployments based on successful builds or manual approvals.
+    d. It ensures that the application is always in a deployable state and can be released at any time.

@@ -33,4 +33,11 @@
 11. Find with case sensitive?
     find . -type f -iname "*resume*"
 
+12. Find file which are larger than 1MB?
+    find . -type f -size +1M
+
+
+12. Find file which are larger than 1KB?
+    find . -type f -size +1k
+
 

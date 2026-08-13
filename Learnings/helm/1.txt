@@ -31,4 +31,9 @@
 
 7. How to get all helm related env variables?
     helm env
-8.
+8. How to rollback a helm release?
+    helm rollback <release_name> <revision_number>
+9. How to get all helm release history?
+    helm history <release_name>
+10. How to get all helm release status?
+    helm status <release_name>
