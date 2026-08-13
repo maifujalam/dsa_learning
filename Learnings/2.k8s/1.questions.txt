@@ -302,11 +302,17 @@ Reference urls:-
                                                         runAsGroup: 3000 ]
     c. linux capabilities: give process some priviledge.    securityContext:   [like:- CHOWN,KILL,SETUID,SETGID]
                                                               capabilities:
-                                                                add: ["NET_ADMIN", "SYS_TIME"]
+                                                                add: ["NET_ADMIN", "SYS_TIME","NET_BIND_SERVICE","SYS_ADMIN"]
+                                                                drop: ["MKNOD", "SYS_CHROOT","ALL"]
 
     d. SELinux options: securityContext:
                         seLinuxOptions:
                           level: "s0:c123,c456"
+    e. readonly root filesystem: securityContext:
+                                        readOnlyRootFilesystem: false
+    f. allow privilege escalation: securityContext:
+                                        privileged: false
+                                        allowPrivilegeEscalation: false
 
 41. How to run pod as root:
     ...

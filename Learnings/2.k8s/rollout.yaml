@@ -1,0 +1,39 @@
+1. Check rollout history of a deployment?
+kubectl rollout history deployment <deployment-name> -n <namespace>
+
+2. Restart a deployment?
+kubectl rollout restart deployment <deployment-name> -n <namespace>
+
+3. Rollback to the last deployment revision?
+kubectl rollout undo deployment <deployment-name> -n <namespace>
+
+4. hell deployment rollout status?
+kubectl rollout status deployment <deployment-name> -n <namespace>
+
+5. Rollback to a specific revision of a deployment?
+kubectl rollout undo deployment <deployment-name> --to-revision=<revision-number> -n <namespace>
+
+6. What to do if the new deployment rollout stuck?
+Thongs not to do are, no delete existing pod,rs,deployment.
+Check the rollout status using `kubectl rollout status deployment <deployment-name> -n <namespace>` 
+to see if there are any issues. You can also describe the deployment using 
+`kubectl describe deployment <deployment-name> -n <namespace>` to get more details about the current state and events. 
+If necessary, you can scale down the deployment temporarily or adjust resource limits/requests to help with the rollout.
+
+Important check events# k get events -n <namespace> --sort-by=".lastTimestamp"
+
+Possible issues:-
+a. Pending, There could be resource crunch,or any dependent object not available.
+b. CrashLoopBackOff, Application is crashing due to some error.Check the application logs.
+c. ImagePullBackOff,  Tag is missing.
+d. Insufficient resources,  Pending pods due to insufficient CPU/memory resources.
+e. Readiness/Liveness probe failures, Misconfigured probs.
+f. Network issues, SVC not configured properly, or network policies blocking traffic.
+g. Configuration errors, Any wrong application configs like wrong port, env variables, secrets, configmaps etc.
+
+Solution#  Rollback to the previous stable deployment using `kubectl rollout undo deployment <deployment-name> -n <namespace>` 
+  and investigate the issues before attempting a new rollout.
+
+7.
+
+
