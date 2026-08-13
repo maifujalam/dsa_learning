@@ -85,6 +85,12 @@ So it can go only high cpu nodes.
               operator: In
               values:
               - another-node-label-value
+
 1. Whats dns policy: ClusterFirst means?
+   When a pod tryes to resolves a dns forst it goes to cluster dns resolver (i.e core dns)
+   then nodes dns server(or public dns server).
+
+
+
 
 
