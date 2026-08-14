@@ -1,0 +1,16 @@
+1. Internal trrafic
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+  internalTrafficPolicy: Local
+
+The kube-proxy filters the endpoints it routes to based on the spec.internalTrafficPolicy setting. When it's set to Local, only node local endpoints are considered. When it's Cluster (the default), or is not set, Kubernetes considers all endpoints.
+

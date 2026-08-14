@@ -1,0 +1,14 @@
+137: oom
+
+-Xmx=2Gi Xms=2Gi
+
+-XX:+UseG1GC
+-XX:MaxGCPauseMillis=150
+-XX:G1HeapRegionSize=16m
+-XX:InitiatingHeapOccupancyPercent=35
+
+STAR:
+Situation: Pod OOM kill with 137.
+Task fix it: Fix the OOM issue.
+Action: Increased resource -> Adjust XMX and Xms -> use GIGC
+Result: NoOOM for Jva springboot
