@@ -37,7 +37,7 @@
 
 
 7. What is EXPOSE is docker file.
-    It's for documentation, as it does not actually expose any port in reality.
+    It's for documentation, as it does not actually expose any port in reality.Its env variable defination.
 
 8. Docker mount?
    docker run -d \

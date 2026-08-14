@@ -1,0 +1,13 @@
+ENTRYPOINT ["echo","hello"]
+CMD ["world"]
+
+
+
+hello world
+
+
+docker exec -it abc alam
+hello alam
+
+docker exec -it abc -- bash
+
