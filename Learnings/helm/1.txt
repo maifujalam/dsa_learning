@@ -1,5 +1,5 @@
 1. What files are present in helm chart?
-    a. templates [M]: _hekpers.tpl,_config.tpl and k8s templates.
+    a. templates [M]: _helpers.tpl,_config.tpl and k8s templates.
     b. values.yaml [M]: The default values for this chart.
     c. Chart.yaml [M]: Information about helm chart.Like:- name,version,appVersion,description,maintainer,dependencies
     d. .helmignore : helm package will ignore this file written in by matching regex.[like:- .txt,.gitignore

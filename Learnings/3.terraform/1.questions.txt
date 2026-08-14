@@ -105,7 +105,7 @@
 21. What is destroy time provisioner?
     Execute provisioner when argument when=destroy is provided.
 
-22. overide teeaform stste file lock?
+22. Disable terraform state locking?
     terraform apply -lock=false --lock-timeout=5s
 
 23. What is terraform backend?
@@ -214,3 +214,17 @@
 60. How to handle dependencies between resources in terraform?
     Use the depends_on meta-argument to explicitly define dependencies between resources, ensuring that resources
 61. State file questions: https://www.envzero.com/blog/a-guide-to-the-terraform-state-file
+62. Migrate the whole local state file to remote?
+  terraform init --migrate-state
+
+63. Migrate state files between modules?
+    terraaform state mv aws_instance.vm module.app.aws_instance.vm
+63. How to remove terraform state lock?
+  a. When we run terraform plan/apply we get state is locked with lock id,path,operaton,who.
+  Go to that path and delete the lock file.
+  or
+  terraform force-unlock  <lock_id>
+
+64. Destroy/plan only on certain object?
+  tf plan --target=
+

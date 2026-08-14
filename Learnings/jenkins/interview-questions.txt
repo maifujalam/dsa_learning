@@ -19,4 +19,38 @@
     c. Jenkins can be configured to trigger deployments based on successful builds or manual approvals.
     d. It ensures that the application is always in a deployable state and can be released at any time.
 
-4.
+4. Optimize jenkins performance?
+    a. choose right agent
+    b. age should be quicky schedulable
+    c. Shallow clone or clone only when change detected feature.
+    d. Re utilize the last slave
+    e. docker file optimization
+    f. Image push delay
+
+5. Sonar scan implementaion:
+   a. Install sonar server
+   b. create sonar scan for jenkins token
+   c. Install jenkins sonar plugin
+   d. Configure Sonar pipeline for project with token receoved before.
+   e. Create stage with sonar-scan
+                  script {
+                    withSonarQubeEnv('Sonar') {
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=<project-key> \
+                            -Dsonar.projectName=<project-name> \
+                            -Dsonar.projectVersion=<project-version> \
+                            -Dsonar.sources=<project-path>"
+                    }
+           stage("SonarQube Quality Gate Check") {
+            steps {
+                script {
+                def qualityGate = waitForQualityGate()
+
+                    if (qualityGate.status != 'OK') {
+                        echo "${qualityGate.status}"
+                        error "Quality Gate failed: ${qualityGateStatus}"
+                    }
+                    else {
+                        echo "${qualityGate.status}"
+                        echo "SonarQube Quality Gates Passed"
+                    }
