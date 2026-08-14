@@ -81,3 +81,9 @@ iperf3 -c 10.0.0.1 -n 1G -P 10
 Flush Local DDNS Cache:
 sudo resolvectl flush-caches
 resolvectl statistics
+
+
+1. How to updatet the host name in curl?
+ curl -v http://1.2.3.4/ -H "Host: mydomain.com"
+
+2.

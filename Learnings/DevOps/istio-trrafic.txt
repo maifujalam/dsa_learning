@@ -1,0 +1,124 @@
+1. Trrafic management:
+a. Gateway: It is the entry point for all the traffic coming into the service mesh.
+    It is responsible for routing the traffic to the appropriate service.
+b. Virtual Service: It is responsible for routing the traffic to the appropriate service.
+    It defines the rules for routing the traffic to the appropriate service.
+    It handles:- service path matches on regex/exact,weight on destination rules,match header and route,
+    Example:-
+          apiVersion: networking.istio.io/v1alpha3
+          kind: VirtualService
+          metadata:
+            name: my-service
+          spec:
+            hosts:
+            - my-service.com
+            http:
+            - match:
+              - uri:
+                  prefix: /api
+              - uri:
+                  exact: /v1
+            - route:
+              - destination:
+                  host: my-service
+                  subset: v1
+                  port:
+                    number: 80
+                  weight: 99  # Existing service takes 99% of the traffic.
+              - destination:
+                  host: my-service
+                  subset: v2
+                  port:
+                    number: 80
+                  weight: 1  # New service takes 1% of the traffic.
+
+c.Destination Rule: It is responsible for defining the policies for the traffic to the appropriate service.
+    It defines the rules for routing the traffic to the appropriate service.
+    It handles the service selection, and the routing algorithms
+      like round robin, least connection, random, weighted etc.
+
+
+When istio is deployed,it creates:-
+a. istio-ingressgateway( kind of mesh gateway envoy): It is the gateway for all the traffic coming into the service mesh.
+b. istiod: It is the control plane for the service mesh.
+c. istio-proxy: It is the sidecar proxy for the service mesh.
+d. istio-egressgateway( kind of mesh gateway envoy): It is the gateway for all the traffic going out of the service mesh.
+
+Istio uses Envoy proxy as a sidecar proxy for the service mesh.
+It is responsible for routing the traffic to the appropriate service.
+
+How the subset is created in istio?
+Subset is created in istio by using the Destination Rule.
+Example:-
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: my-service
+spec:
+  host: my-service.default.svc.cluster.local [ Try fully qualified domain name like my-service.default.svc.cluster.local]
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+
+IngressGateway -> VirtualService (hosts,matchs,routes)-> DestinationRule (having subsets)-> Service[k8s service] -> Pod[app container]
+
+Destination rules algorithm for routing traffic to the appropriate service:
+a. pass through: It is used to route the traffic to the appropriate service without any modification.
+b. least connection: It is used to route the traffic to the appropriate service based on the least number of connections.
+c. round robin: It is used to route the traffic to the appropriate service based on the round robin algorithm.
+d. random: It is used to route the traffic to the appropriate service based on the random algorithm.
+e. weighted: It is used to route the traffic to the appropriate service based on the weight assigned to the service.
+
+trraficPolicy:
+tls:
+    mode: DISABLE or SIMPLE or MUTUAL
+loadbalancer:
+    simple: ROUND_ROBIN or RANDOM or LEAST_CONN or PASSTHROUGH
+
+
+1. Analyze istio trrafic: istioctl analyze -n <namespace> <file.yaml>
+
+2. Istio defaults 2 reties for failed request agter gap of 250ms. It can be changed by adding the following in the destination rule:
+retries:
+  attempts: 5
+  perTryTimeout: 2s
+3. Circuit breakers:
+
+kind: DestinationRule
+metadata:
+  name: my-service
+spec:
+  host: my-service.default.svc.cluster.local [ Try fully qualified domain name like my-service.default.svc.cluster.local]
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+    trraficPolicy:
+      connectionPool:
+        tcp:
+          maxConnections: 3  # 3 maximum connections to the service.
+        http:
+          http1MaxPendingRequests: 1 # 1 maximum pending request to the service.
+          maxRequestsPerConnection: 1 # 1 maximum request per connection to the service.
+      outlierDetection:
+        consecutive5xxErrors: 1
+        interval: 1s
+        baseEjectionTime: 30s
+        maxEjectionPercent: 100
+  - name: v2
+    labels:
+      version: v2
+
+
+5. CLI Load testing: h2load -n 1000 -c 10 -m POST -H "Content-Type: application/json" -d '{"key":"value"}' http://<istio-ingressgateway-ip>:<port>/api/v1/resource
+  n: number of requests to send
+  c: number of concurrent requests to send
+  d: data to send in the request body
+6. Istio trrafic management: https://istio.io/latest/docs/concepts/traffic-management/
+
+7. Two types of faults:
+   Delay and Abort.

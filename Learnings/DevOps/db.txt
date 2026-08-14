@@ -1,0 +1,21 @@
+1. DB Query is taking lots of time,liek 30 seconds instead of <1s.
+Its the Query index problem.Developer should check the query and add index to the table if required.
+Make sure the unique primary key is set for the table and the query is using the primary key to fetch the data.
+Check the DB Resources like CPU, Memory, Disk space etc.
+
+2. DB is taking lots of time to start or restart.
+Check the DB logs for any errors or warnings.
+Check the DB configuration file for any misconfiguration.
+Check the DB server resources like CPU, Memory, Disk space etc.
+
+3. DB is taking lots of time to connect.
+Check the DB logs for any errors or warnings.
+Check the DB configuration file for any misconfiguration.
+Check the DB server resources like CPU, Memory, Disk space etc.
+
+4. DB is taking lots of time to execute a query.
+Check the DB logs for any errors or warnings.
+Check the DB configuration file for any misconfiguration.
+Check the DB server resources like CPU, Memory, Disk space etc.
+
+5.

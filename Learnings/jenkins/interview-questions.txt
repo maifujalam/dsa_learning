@@ -18,3 +18,5 @@
     b. It includes steps like deploying to staging, running integration tests, and promoting the application to production.
     c. Jenkins can be configured to trigger deployments based on successful builds or manual approvals.
     d. It ensures that the application is always in a deployable state and can be released at any time.
+
+4.
