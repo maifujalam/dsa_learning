@@ -1,6 +1,14 @@
 137: oom
 
+jps
+
+cat /proc/19/cmdline
+
+concurrent mark swap (CMS) deprechard in 9 and emoved in 14.
+-XX:+UseConcMarkSweepGC
+
 -Xmx=2Gi Xms=2Gi
+
 
 -XX:+UseG1GC
 -XX:MaxGCPauseMillis=150
