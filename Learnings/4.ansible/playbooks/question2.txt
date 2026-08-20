@@ -1,0 +1,4 @@
+1. When we use copy module why its failing but using shell copy its working?
+ Becuase in copy module if we use ~/file in src .I does not resolves to home.
+ But in cp command it resolves.So we have to provide full path in copy module.
+
